@@ -1,0 +1,112 @@
+/*
+  Design tokens. Every colour, size, spacing step, radius, border, shadow and
+  duration lives here. Ported from docs/design/scroll/css/tokens.css (locked).
+  Other CSS files only use var(--...). Breakpoint: 700px.
+*/
+:root {
+  /* fonts */
+  --font-head: "Space Grotesk", Inter, sans-serif;
+  --font-body: Inter, -apple-system, Helvetica, sans-serif;
+
+  /* colour: semantic */
+  --color-bg: #fff4e0;
+  --color-text: #1a1a1a;
+  --color-muted: #4b4b4b;
+  --color-line: #1a1a1a;
+  --color-accent: #d93a16;
+  --color-on-accent: #fff;
+  --color-card: #fff;
+  --color-link: #b82e0e;
+  --color-shadow: #1a1a1a;
+  --color-ink: #1a1a1a; /* text on the fixed bright colours below, both themes */
+
+  /* colour: fixed bright blocks */
+  --color-yellow: #ffd23f;
+  --color-mint: #a6f0c6;
+  --color-pink: #ffb3c7;
+  --color-blue: #2b59ff;
+
+  /* colour: section backgrounds, cycled by .section--tone-N */
+  --color-surface-1: #fff4e0;
+  --color-surface-2: #ffd23f;
+  --color-surface-3: #a6f0c6;
+  --color-surface-4: #ffb3c7;
+
+  /* spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 56px;
+  --space-8: 80px;
+  --space-gutter: 28px;
+
+  /* type */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-md: 18px;
+  --text-name: 17px;
+  --text-h3: 20px;
+  --text-h2: clamp(28px, 4vw, 42px);
+  --text-h1: clamp(40px, 6.4vw, 84px);
+
+  /* shape */
+  --border-width: 2.5px;
+  --border-width-thin: 2px;
+  --radius-card: 22px;
+  --radius-pill: 999px;
+  --radius-sheet: 36px;
+  --shadow-hard: 5px 5px 0 var(--color-shadow);
+  --dot-size: 16px;
+  --dot-ring: 3px;
+
+  /* layout */
+  --nav-height: 64px;
+  --content-width: 1040px;
+
+  /* motion */
+  --duration-reveal: 0.6s;
+  --reveal-distance: 40px;
+  --tilt-a: -1.4deg;
+  --tilt-b: 1.4deg;
+  --highlight-tilt: -1.5deg;
+  --blob-display: block;
+}
+
+:root[data-theme="dark"] {
+  --color-bg: #15122a;
+  --color-text: #fff;
+  --color-muted: #c3bee6;
+  --color-line: #fff;
+  --color-accent: #ff7a5c;
+  --color-on-accent: #15122a;
+  --color-card: #201b3f;
+  --color-link: #ff7a5c;
+  --color-shadow: #ff7a5c;
+  --color-surface-1: #15122a;
+  --color-surface-2: #241d4a;
+  --color-surface-3: #1b2f45;
+  --color-surface-4: #3a1f3a;
+}
+
+/* tilts, highlight rotation and blob off on small screens and with reduced motion */
+@media (max-width: 700px) {
+  :root {
+    --tilt-a: 0deg;
+    --tilt-b: 0deg;
+    --highlight-tilt: 0deg;
+    --blob-display: none;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --tilt-a: 0deg;
+    --tilt-b: 0deg;
+    --highlight-tilt: 0deg;
+    --duration-reveal: 0s;
+    --reveal-distance: 0px;
+  }
+}
