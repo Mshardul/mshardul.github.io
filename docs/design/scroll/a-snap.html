@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<!--
+  EXPLORATION (not locked). Option A, Snap. Each section fills the screen and snaps into place. Cost: sections taller than the screen scroll awkwardly inside the snap.
+  Same content and look as the other two options; only data-scroll on <body> differs (see css/modes.css).
+  Opened on its own, this page sends you to index.html (the common header). Text is placeholder only.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Scroll option A, Snap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/site.css">
+<link rel="stylesheet" href="css/modes.css">
+</head>
+<body data-scroll="snap">
+<nav class="nav">
+  <div class="nav__inner">
+    <span class="nav__name">YOUR NAME</span>
+    <span class="nav__links">
+      <a class="nav__link" data-scroll-to="experience">Experience</a>
+      <a class="nav__link" data-scroll-to="built">Things I've built</a>
+      <a class="nav__link" data-scroll-to="skills">Skills</a>
+      <a class="nav__link" data-scroll-to="about">About</a>
+      <a class="nav__pill" data-scroll-to="build">Build with me</a>
+      <button class="nav__toggle" data-theme-toggle aria-label="Toggle theme">◐</button>
+      <button class="nav__menu">☰ Menu</button>
+    </span>
+  </div>
+</nav>
+
+<main>
+  <section class="section section--tone-1" id="intro">
+    <div class="section__inner reveal">
+      <span class="label">Engineering Lead</span>
+      <h1 class="heading heading--hero">I lead teams that <span class="highlight">build things</span> people use.</h1>
+      <p class="lead">Two or three lines summarising what I do, how I work and what I'm looking for next. Placeholder text.</p>
+      <div class="button-row"><a class="button button--primary">Download resume</a><a class="button">Let's talk</a></div>
+      <div class="fact-grid">
+        <div class="fact"><b class="fact__title">Role</b><span class="fact__note">Company</span></div>
+        <div class="fact"><b class="fact__title">10+ years</b><span class="fact__note">Experience</span></div>
+        <div class="fact"><b class="fact__title">City, Country</b><span class="fact__note">Location</span></div>
+        <div class="fact"><b class="fact__title">Leadership · Web · Mobile</b><span class="fact__note">Core focus</span></div>
+      </div>
+      <div class="blob"></div>
+    </div>
+  </section>
+
+  <section class="section section--tone-2" id="experience">
+    <div class="section__inner reveal">
+      <div class="section__head"><h2 class="heading heading--section">Experience</h2><a class="section__link">Full experience →</a></div>
+      <div class="timeline">
+        <div class="timeline__role"><div class="timeline__when">2022 – Present</div><h3 class="heading heading--item">Engineering Lead, Company A</h3><p class="timeline__text">Impact in one line, scope and team size.</p></div>
+        <div class="timeline__role"><div class="timeline__when">2019 – 2022</div><h3 class="heading heading--item">Senior Engineer, Company B</h3><p class="timeline__text">Impact in one line, scope and team size.</p></div>
+        <div class="timeline__gap"></div>
+        <div class="timeline__role"><div class="timeline__when">2016 – 2018</div><h3 class="heading heading--item">Software Engineer, Company C</h3><p class="timeline__text">Impact in one line, scope and team size.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tone-3" id="built">
+    <div class="section__inner reveal">
+      <div class="section__head"><h2 class="heading heading--section">Things I've built</h2><a class="section__link">All projects →</a></div>
+      <div class="project-grid">
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">jugnu</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">Web</span><span class="tag">Astro</span><span class="tag">Open source</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">Tools</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">macOS</span><span class="tag">Swift</span><span class="tag">Download</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">SystemDesign-Wiki</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">Extension</span><span class="tag">TypeScript</span><span class="tag">Live</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">tool-stack</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">Web</span><span class="tag">Astro</span><span class="tag">Open source</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">DrawIt</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">macOS</span><span class="tag">Swift</span><span class="tag">Download</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">Ink2Doc</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">Extension</span><span class="tag">TypeScript</span><span class="tag">Live</span></div>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-card__shot"></div>
+            <div class="project-card__body">
+              <h3 class="heading heading--item">ContentVault</h3>
+              <p class="project-card__text">One-line pitch for the project.</p>
+              <div class="tag-list"><span class="tag">Web</span><span class="tag">Astro</span><span class="tag">Open source</span></div>
+            </div>
+          </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tone-4" id="skills">
+    <div class="section__inner reveal">
+      <div class="section__head"><h2 class="heading heading--section">Skills</h2></div>
+      <div class="skill-grid">
+        <div><h4 class="skill-grid__title">Leadership</h4><div class="tag-list"><span class="tag">Team building</span><span class="tag">Architecture</span><span class="tag">Delivery</span></div></div>
+        <div><h4 class="skill-grid__title">Frontend</h4><div class="tag-list"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Astro</span></div></div>
+        <div><h4 class="skill-grid__title">Mobile &amp; Desktop</h4><div class="tag-list"><span class="tag">Swift</span><span class="tag">React Native</span><span class="tag">Electron</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tone-1" id="education">
+    <div class="section__inner reveal">
+      <div class="section__head"><h2 class="heading heading--section">Education</h2></div>
+      <div class="card"><h3 class="heading heading--item">Degree, Subject</h3><p class="card__text">Institution · Years</p></div>
+    </div>
+  </section>
+
+  <section class="section section--tone-2" id="about">
+    <div class="section__inner reveal">
+      <div class="section__head"><h2 class="heading heading--section">About</h2></div>
+      <div class="bio">
+        <p class="bio__paragraph">A short professional bio in two or three paragraphs: what I do, how I work, what I care about in engineering.</p>
+        <p class="bio__paragraph">Outside work: a few lines about interests, written in a human voice.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tone-3" id="build">
+    <div class="section__inner reveal">
+      <div class="band">
+        <div><h2 class="heading heading--section">Build with me</h2><p class="band__text">Need a web app, mobile app, Mac app or Chrome extension built?</p></div>
+        <a class="button button--primary">See what I build →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tone-4" id="contact">
+    <div class="section__inner reveal">
+      <div class="section__head"><h2 class="heading heading--section">Get in touch</h2></div>
+      <p class="lead">One line inviting people to reach out. Placeholder text.</p>
+      <div class="contact-list"><a>Email</a><a>LinkedIn</a><a>GitHub</a><a>Download resume</a></div>
+    </div>
+  </section>
+</main>
+
+<script src="js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+# macOS
+.DS_Store
+
+# dependencies and build output
+node_modules/
+dist/
+.astro/
+
+# local env and logs
+.env
+.env.*
+!.env.example
+*.log
+npm-debug.log*
+
+# editor
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# agent workspace (superpowers executing-plans ledger, briefs, review packages)
+.superpowers/

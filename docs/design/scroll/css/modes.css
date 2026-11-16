@@ -1,0 +1,44 @@
+/*
+  The only difference between the three options. Selected by <body data-scroll="snap|stack|flow">.
+  snap  = each section fills the screen and snaps into place
+  stack = each section slides up over the previous one
+  flow  = normal long page, content fades in as you reach it
+*/
+
+/* every section sits below the fixed nav in full-screen modes */
+[data-scroll="snap"] .section,
+[data-scroll="stack"] .section {
+  min-height: 100vh;
+  min-height: 100svh; /* excludes the phone browser's address bar */
+  padding-top: calc(var(--nav-height) + var(--space-5));
+  padding-bottom: var(--space-6);
+}
+
+/* ---- snap ---- */
+html:has([data-scroll="snap"]) { scroll-snap-type: y mandatory; }
+[data-scroll="snap"] .section { scroll-snap-align: start; }
+
+/* ---- stack ---- */
+[data-scroll="stack"] .section {
+  position: sticky;
+  top: 0; /* tall sections get a negative top from js/site.js so their bottom stays reachable */
+  border-top-left-radius: var(--radius-sheet);
+  border-top-right-radius: var(--radius-sheet);
+}
+[data-scroll="stack"] .section:first-of-type { border-radius: 0; }
+
+/* ---- flow ---- */
+[data-scroll="flow"] .section:first-of-type { padding-top: calc(var(--nav-height) + var(--space-7)); }
+
+/* ---- fade/slide in (snap and flow) ---- */
+[data-scroll="snap"] .reveal,
+[data-scroll="flow"] .reveal {
+  opacity: 0;
+  transform: translateY(var(--reveal-distance));
+  transition: opacity var(--duration-reveal), transform var(--duration-reveal);
+}
+[data-scroll="snap"] .reveal.is-visible,
+[data-scroll="flow"] .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
