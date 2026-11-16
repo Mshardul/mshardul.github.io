@@ -1,7 +1,157 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Cta from "../components/Cta.astro";
+import { profile } from "../content/profile.ts";
+import { roles } from "../content/experience.ts";
+import { projects } from "../content/projects.ts";
+import { skillGroups } from "../content/skills.ts";
+import { education } from "../content/education.ts";
+import { about } from "../content/about.ts";
+import { githubUrl, linkedinUrl } from "../lib/contact.ts";
+import { hasResume } from "../lib/site.ts";
+import "../styles/components/section.css";
 ---
 
-<BaseLayout title="Shardul Lingwal" description="Portfolio placeholder.">
-  <h1>Shardul Lingwal</h1>
+<BaseLayout title={profile.name} description={profile.summary}>
+  <main data-scroll="stack">
+    <section class="section section--tone-1" id="intro">
+      <div class="section__inner reveal">
+        <span class="label">{profile.role}</span>
+        <h1 class="heading heading--hero">{profile.headline}</h1>
+        <p class="lead">{profile.summary}</p>
+        <div class="btn-row">
+          {hasResume && <Cta primary label="Download resume" href="/resume.pdf" />}
+          <Cta primary={!hasResume} label="Let's talk" mail />
+        </div>
+        <div class="fact-grid">
+          {profile.facts.map((fact) => (
+            <div class="fact">
+              <b class="fact__title">{fact.title}</b>
+              <span class="fact__note">{fact.note}</span>
+            </div>
+          ))}
+        </div>
+        <div class="blob"></div>
+      </div>
+    </section>
+
+    <section class="section section--tone-2" id="experience">
+      <div class="section__inner reveal">
+        <div class="section__head">
+          <h2 class="heading heading--section">Experience</h2>
+          <a class="section__link" href="/experience">Full experience →</a>
+        </div>
+        <div class="timeline">
+          {roles.map((role) => (
+            "gap" in role ? (
+              <div class="timeline__gap"></div>
+            ) : (
+              <div class="timeline__role">
+                <div class="timeline__when">{role.start} – {role.end}</div>
+                <h3 class="heading heading--item">{role.title}, {role.company}</h3>
+                <p class="timeline__text">{role.summary}</p>
+              </div>
+            )
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-3" id="built">
+      <div class="section__inner reveal">
+        <div class="section__head">
+          <h2 class="heading heading--section">Things I've built</h2>
+          <a class="section__link" href="/projects">All projects →</a>
+        </div>
+        <div class="project-grid">
+          {projects.map((project) => (
+            <a class="project-card" href={`/projects/${project.slug}`}>
+              <div class="project-card__shot"></div>
+              <div class="project-card__body">
+                <h3 class="heading heading--item">{project.name}</h3>
+                <p class="project-card__text">{project.pitch}</p>
+                <div class="tag-list">
+                  {project.tags.map((tag) => <span class="tag">{tag}</span>)}
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-4" id="skills">
+      <div class="section__inner reveal">
+        <div class="section__head">
+          <h2 class="heading heading--section">Skills</h2>
+        </div>
+        <div class="skill-grid">
+          {skillGroups.map((group) => (
+            <div>
+              <h4 class="skill-grid__title">{group.title}</h4>
+              <div class="tag-list">
+                {group.items.map((item) => <span class="tag">{item}</span>)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-1" id="education">
+      <div class="section__inner reveal">
+        <div class="section__head">
+          <h2 class="heading heading--section">Education</h2>
+        </div>
+        {education.map((item) => (
+          <div class="card">
+            <h3 class="heading heading--item">{item.degree}</h3>
+            <p class="card__text">{item.institution} · {item.years}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section section--tone-2" id="about">
+      <div class="section__inner reveal">
+        <div class="section__head">
+          <h2 class="heading heading--section">About</h2>
+        </div>
+        <div class="bio">
+          {about.map((paragraph) => (
+            <p class="bio__paragraph">{paragraph}</p>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-3" id="build">
+      <div class="section__inner reveal">
+        <div class="band">
+          <div>
+            <h2 class="heading heading--section">Build with me</h2>
+            <p class="band__text">
+              Need a web app, mobile app, Mac app or Chrome extension built?
+            </p>
+          </div>
+          <Cta href="/build-with-me" label="See what I build →" primary />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-4" id="contact">
+      <div class="section__inner reveal">
+        <div class="section__head">
+          <h2 class="heading heading--section">Get in touch</h2>
+        </div>
+        <p class="lead">Have a project, a question or just want to say hello? Reach out.</p>
+        <div class="contact-list">
+          <Cta label="Email" mail />
+          <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn</a>
+          <a href={githubUrl} target="_blank" rel="noopener">GitHub</a>
+          {hasResume && <a href="/resume.pdf">Download resume</a>}
+        </div>
+      </div>
+    </section>
+  </main>
 </BaseLayout>

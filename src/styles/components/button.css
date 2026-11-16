@@ -41,3 +41,10 @@
   background: var(--color-accent);
   color: var(--color-on-accent);
 }
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}

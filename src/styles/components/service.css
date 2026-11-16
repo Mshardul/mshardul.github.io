@@ -1,0 +1,55 @@
+/*
+  Build-with-me page blocks: services and engagement cards.
+  Uses only tokens from tokens.css.
+*/
+
+.svc {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-5);
+}
+
+.eng {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.svc .card h3,
+.eng .card b {
+  display: block;
+  font-family: var(--font-head);
+  font-size: var(--text-h3);
+  letter-spacing: -0.02em;
+}
+
+.svc .card p,
+.eng .card p {
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  margin-bottom: var(--space-3);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-accent);
+  box-shadow: var(--shadow-hard);
+}
+
+.see {
+  display: inline-block;
+  margin-top: var(--space-3);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-link);
+}
+
+@media (max-width: 700px) {
+  .svc,
+  .eng {
+    grid-template-columns: 1fr;
+  }
+}

@@ -55,12 +55,15 @@ function bindNavMenu() {
 /** Assemble mailto hrefs for a[data-mail] anchors. */
 function bindMailtoLinks() {
   const anchors = document.querySelectorAll<HTMLAnchorElement>("a[data-mail]");
-  const href = buildMailto({ user: emailParts.user, domain: emailParts.domain });
 
   anchors.forEach((a) => {
     if (a.dataset.mailBound) return;
     a.dataset.mailBound = "1";
-    a.href = href;
+    a.href = buildMailto({
+      user: emailParts.user,
+      domain: emailParts.domain,
+      subject: a.dataset.mailSubject,
+    });
   });
 }
 

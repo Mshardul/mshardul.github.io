@@ -1,0 +1,74 @@
+/*
+  Project detail page blocks: hero shot, story cards, screenshots and next link.
+  Uses only tokens from tokens.css.
+*/
+
+.bigshot {
+  height: 320px;
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: linear-gradient(135deg, var(--color-accent), var(--color-yellow) 140%);
+  box-shadow: var(--shadow-hard);
+}
+
+.story {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.story h3 {
+  margin-bottom: var(--space-2);
+}
+
+.story p {
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.shots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.shots > div {
+  height: 160px;
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  box-shadow: var(--shadow-hard);
+}
+
+.next {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.next span {
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.next a {
+  font-weight: 700;
+  color: var(--color-link);
+}
+
+@media (max-width: 700px) {
+  .bigshot {
+    height: 180px;
+  }
+
+  .story,
+  .shots {
+    grid-template-columns: 1fr;
+  }
+}

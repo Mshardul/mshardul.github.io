@@ -1,0 +1,56 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Cta from "../components/Cta.astro";
+import { roles } from "../content/experience.ts";
+import { hasResume } from "../lib/site.ts";
+import "../styles/components/section.css";
+import "../styles/components/timeline.css";
+---
+
+<BaseLayout title="Experience — Shardul Lingwal" description="Every role with the impact, the tech and the scope. Claim-level detail only.">
+  <main class="page-main">
+    <div class="pagehead">
+      <span class="label">Experience</span>
+      <h1 class="heading heading--page">Ten years of <span class="highlight">leading</span> and building.</h1>
+      <p class="lead">Every role with the impact, the tech and the scope. Claim-level detail only.</p>
+    </div>
+
+    <section class="section section--tone-2">
+      <div class="section__inner">
+        <div class="timeline">
+          {roles.map((role) => (
+            "gap" in role ? (
+              <div class="timeline__gap"></div>
+            ) : (
+              <div class="timeline__role">
+                <div class="timeline__when">{role.start} – {role.end}</div>
+                <h3 class="heading heading--item">{role.title}, {role.company}</h3>
+                <ul>
+                  {role.bullets.map((bullet) => <li>{bullet}</li>)}
+                </ul>
+                <div class="tag-list">
+                  {role.tech.map((tech) => <span class="tag">{tech}</span>)}
+                </div>
+                {role.scope && <span class="scope">{role.scope}</span>}
+              </div>
+            )
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-3">
+      <div class="section__inner">
+        <div class="band">
+          <div>
+            <h2 class="heading heading--section">Like what you see?</h2>
+          </div>
+          <div class="btn-row">
+            {hasResume && <Cta primary label="Download resume" href="/resume.pdf" />}
+            <Cta primary={!hasResume} label="Let's talk" mail />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

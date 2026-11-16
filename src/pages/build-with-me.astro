@@ -1,0 +1,80 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Cta from "../components/Cta.astro";
+import "../styles/components/section.css";
+import "../styles/components/service.css";
+
+const services = [
+  { title: "Web apps", text: "One line on the kind of web products I build, from sites to full apps.", project: "jugnu" },
+  { title: "Mobile & desktop", text: "One line on native Mac apps, downloads and mobile work.", project: "tools" },
+  { title: "Chrome extensions", text: "One line on browser extensions I ship.", project: "tool-stack" },
+  { title: "Open source", text: "One line on the tools and docs I maintain in the open.", project: "systemdesign-wiki" },
+];
+
+const engagements = [
+  { title: "One-off project", text: "A defined build, from idea to launch." },
+  { title: "Ongoing", text: "A longer relationship, building and improving over time." },
+  { title: "Consulting", text: "Architecture, reviews and technical leadership." },
+];
+---
+
+<BaseLayout title="Build with me — Shardul Lingwal" description="From small tools to full products. What I build and how we can work together.">
+  <main class="page-main">
+    <div class="pagehead">
+      <span class="label">Build with me</span>
+      <h1 class="heading heading--page">Web, mobile, Mac and Chrome, <span class="highlight">built</span> properly.</h1>
+      <p class="lead">From small tools to full products. Here is what I build and how we can work together.</p>
+      <div class="btn-row">
+        <Cta primary label="Start a project" mail />
+      </div>
+    </div>
+
+    <section class="section section--tone-2">
+      <div class="section__inner">
+        <div class="section__head">
+          <h2 class="heading heading--section">What I build</h2>
+        </div>
+        <div class="svc">
+          {services.map((service) => (
+            <div class="card">
+              <div class="icon"></div>
+              <h3 class="heading heading--item">{service.title}</h3>
+              <p>{service.text}</p>
+              <a class="see" href={`/projects/${service.project}`}>
+                See: {service.project} →
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-3">
+      <div class="section__inner">
+        <div class="section__head">
+          <h2 class="heading heading--section">How we can work</h2>
+        </div>
+        <div class="eng">
+          {engagements.map((engagement) => (
+            <div class="card">
+              <b>{engagement.title}</b>
+              <p>{engagement.text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tone-4">
+      <div class="section__inner">
+        <div class="band">
+          <div>
+            <h2 class="heading heading--section">Have something in mind?</h2>
+            <p class="band__text">Send a short note about what you want built.</p>
+          </div>
+          <Cta primary label="Start a project" mail />
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

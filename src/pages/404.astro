@@ -1,0 +1,17 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Cta from "../components/Cta.astro";
+import "../styles/components/section.css";
+---
+
+<BaseLayout title="Page not found — Shardul Lingwal" description="That page does not exist.">
+  <main class="page-main">
+    <div class="pagehead">
+      <h1 class="heading heading--page">Page not found.</h1>
+      <p class="lead">That page does not exist. Try the home page.</p>
+      <div class="btn-row">
+        <Cta primary label="Back home" href="/" />
+      </div>
+    </div>
+  </main>
+</BaseLayout>
