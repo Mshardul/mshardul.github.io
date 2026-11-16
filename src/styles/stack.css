@@ -1,0 +1,40 @@
+/*
+  Stacking + reveal rules for the home page.
+  Only active under html.has-stack and prefers-reduced-motion: no-preference.
+  Adapted from docs/design/scroll/css/modes.css.
+*/
+
+@media (prefers-reduced-motion: no-preference) {
+  html.has-stack [data-scroll="stack"] .section {
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-top: calc(var(--nav-height) + var(--space-5));
+    padding-bottom: var(--space-6);
+    position: sticky;
+    top: 0;
+    border-top-left-radius: var(--radius-sheet);
+    border-top-right-radius: var(--radius-sheet);
+  }
+
+  html.has-stack [data-scroll="stack"] .section:first-of-type {
+    border-radius: 0;
+  }
+
+  html.has-stack [data-scroll="stack"] .reveal {
+    opacity: 0;
+    transform: translateY(var(--reveal-distance));
+    transition: opacity var(--duration-reveal), transform var(--duration-reveal);
+  }
+
+  html.has-stack [data-scroll="stack"] .reveal.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Tilts and blob off below 700px (tokens already neutralise --tilt-a/b and --blob-display) */
+@media (max-width: 700px) {
+  html.has-stack [data-scroll="stack"] .section {
+    min-height: 100svh;
+  }
+}

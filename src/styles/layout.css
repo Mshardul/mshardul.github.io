@@ -1,0 +1,86 @@
+/*
+  Layout primitives. .wrap, .section, section internals, grid helpers.
+  Uses only tokens from tokens.css.
+*/
+
+.wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-gutter);
+}
+
+.section {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: var(--space-8) 0;
+  border-top: var(--border-width) solid var(--color-line);
+  background: var(--color-bg);
+}
+
+.section--tone-1 {
+  --surface: var(--color-surface-1);
+  background: var(--color-surface-1);
+}
+.section--tone-2 {
+  --surface: var(--color-surface-2);
+  background: var(--color-surface-2);
+}
+.section--tone-3 {
+  --surface: var(--color-surface-3);
+  background: var(--color-surface-3);
+}
+.section--tone-4 {
+  --surface: var(--color-surface-4);
+  background: var(--color-surface-4);
+}
+
+.section__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-gutter);
+}
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.section__link {
+  font-size: var(--text-sm);
+  font-weight: 700;
+  color: var(--color-link);
+  white-space: nowrap;
+}
+
+/* Grid helpers */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 700px) {
+  .grid-2,
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,17 @@
+/*
+  Card component. .card and .card__text.
+  Uses only tokens from tokens.css.
+*/
+
+.card {
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  box-shadow: var(--shadow-hard);
+}
+
+.card__text {
+  margin-top: var(--space-1);
+  color: var(--color-muted);
+}

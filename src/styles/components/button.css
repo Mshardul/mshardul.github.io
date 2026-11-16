@@ -1,0 +1,43 @@
+/*
+  Button component. .button and .button--primary.
+  Used by Cta and standalone buttons.
+  Uses only tokens from tokens.css.
+*/
+
+.button {
+  display: inline-block;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  color: var(--color-text);
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: var(--shadow-hard);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.button--primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-card);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+  cursor: pointer;
+  border: var(--border-width) solid var(--color-line);
+  background: var(--color-card);
+  color: var(--color-text);
+  box-shadow: var(--shadow-hard);
+}
+
+.btn.primary {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}

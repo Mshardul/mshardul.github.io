@@ -1,0 +1,55 @@
+---
+import "../styles/tokens.css";
+import "../styles/base.css";
+import "../styles/layout.css";
+import "../styles/stack.css";
+
+import "@fontsource/space-grotesk/500.css";
+import "@fontsource/space-grotesk/700.css";
+import "@fontsource/inter/400.css";
+import "@fontsource/inter/500.css";
+import "@fontsource/inter/600.css";
+import "@fontsource/inter/700.css";
+import "@fontsource/inter/800.css";
+
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { inlineThemeScript } from "../scripts/init.ts";
+import { INDEXABLE } from "../lib/site.ts";
+
+interface Props {
+  title: string;
+  description: string;
+  current?: "home" | "experience" | "projects" | "build";
+}
+
+const { title, description, current } = Astro.props;
+
+const themeScript = inlineThemeScript();
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {INDEXABLE ? null : (
+      <meta name="robots" content="noindex, nofollow" />
+    )}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script set:html={themeScript} />
+    <script>
+      import { init } from "../scripts/init.ts";
+      init();
+      window.addEventListener("astro:page-load", init);
+    </script>
+  </head>
+  <body>
+    <Nav {current} />
+    <slot />
+    <Footer />
+  </body>
+</html>

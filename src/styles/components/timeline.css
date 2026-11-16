@@ -1,0 +1,62 @@
+/*
+  Timeline component. .timeline, .timeline__role, .timeline__when, .timeline__text, .timeline__gap.
+  Uses only tokens from tokens.css.
+*/
+
+.timeline {
+  margin-left: var(--space-2);
+  padding-left: var(--space-5);
+  border-left: var(--border-width) solid var(--color-line);
+}
+
+.timeline__role {
+  position: relative;
+  padding-bottom: var(--space-5);
+}
+
+.timeline__role::before {
+  content: "";
+  position: absolute;
+  top: var(--space-1);
+  left: calc(-1 * (var(--space-5) + (var(--border-width) + var(--dot-size)) / 2));
+  width: var(--dot-size);
+  height: var(--dot-size);
+  border: var(--dot-ring) solid var(--color-bg);
+  border-radius: 50%;
+  background: var(--color-accent);
+}
+
+.timeline__when {
+  font-size: var(--text-sm);
+  color: var(--color-muted);
+}
+
+.timeline__text {
+  max-width: 44em;
+  color: var(--color-muted);
+}
+
+.timeline__gap {
+  position: relative;
+  height: var(--space-7);
+  margin-bottom: var(--space-4);
+}
+
+.timeline__gap::before,
+.timeline__gap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(-1 * (var(--space-5) + var(--border-width)));
+  width: var(--border-width);
+}
+
+.timeline__gap::before {
+  background: var(--color-bg);
+}
+
+.timeline__gap::after {
+  border-left: var(--border-width) dotted var(--color-muted);
+  width: 0;
+}

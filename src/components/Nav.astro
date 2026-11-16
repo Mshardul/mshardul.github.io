@@ -1,0 +1,25 @@
+---
+import "../styles/components/nav.css";
+import ThemeToggle from "./ThemeToggle.astro";
+
+interface Props {
+  current?: "home" | "experience" | "projects" | "build";
+}
+
+const { current } = Astro.props;
+---
+
+<nav class="nav" aria-label="Main navigation">
+  <div class="nav__inner">
+    <span class="nav__name" aria-label="Shardul Lingwal">Shardul Lingwal</span>
+    <div class="nav__links" id="nav-links">
+      <a class="nav__link" href="/#experience" aria-current={current === "experience" ? "page" : undefined}>Experience</a>
+      <a class="nav__link" href="/#built" aria-current={current === "projects" ? "page" : undefined}>Things I've built</a>
+      <a class="nav__link" href="/#skills" aria-current={undefined}>Skills</a>
+      <a class="nav__link" href="/#about" aria-current={undefined}>About</a>
+      <a class="nav__pill" href="/build-with-me" aria-current={current === "build" ? "page" : undefined}>Build with me</a>
+      <ThemeToggle />
+      <button class="nav__menu" aria-expanded="false" aria-controls="nav-links">☰ Menu</button>
+    </div>
+  </div>
+</nav>

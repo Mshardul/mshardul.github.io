@@ -1,0 +1,15 @@
+---
+import "../styles/components/footer.css";
+import { githubUrl, linkedinUrl } from "../lib/contact.ts";
+---
+
+<footer class="footer">
+  <div class="footer__wrap">
+    <h2 class="footer__head">Get in touch</h2>
+    <div class="footer__links">
+      <a href="#" data-mail>Email</a>
+      <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn</a>
+      <a href={githubUrl} target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</footer>

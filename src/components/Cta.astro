@@ -1,0 +1,23 @@
+---
+interface Props {
+  primary?: boolean;
+  label: string;
+  href?: string;
+  mail?: boolean;
+}
+
+const { primary = false, label, href, mail = false } = Astro.props;
+---
+
+{mail ? (
+  <a class={`btn ${primary ? "primary" : ""}`} href="#" data-mail data-mail-subject={label}>
+    {label}
+    <noscript>Enable JavaScript to email me</noscript>
+  </a>
+) : href ? (
+  <a class={`btn ${primary ? "primary" : ""}`} href={href}>
+    {label}
+  </a>
+) : (
+  <button class={`btn ${primary ? "primary" : ""}`}>{label}</button>
+)}
