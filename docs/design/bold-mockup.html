@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<!--
+  APPROVED DESIGN REFERENCE (locked 2026-11-16). Do not edit casually.
+  This is the visual spec for the portfolio site: Bold and colourful, full volume, light and dark, desktop and phone.
+  Open in a browser. The top bar switches Page, Device and Theme.
+  Deep link: bold-mockup.html#<page>-<device>-<theme>, e.g. #build-phone-dark
+  Pages: home, experience, index, project, build. Devices: desktop, phone. Themes: light, dark.
+  Text is placeholder only. Real content comes from approved text (see docs/plan/rules.md).
+  If the design direction changes, change docs/plan/decisions/design.md first, then update this file.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bold: all pages</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,-apple-system,Helvetica,sans-serif;background:#dcdce3}
+.bar{position:sticky;top:0;z-index:50;background:#111;color:#fff;display:flex;gap:20px;align-items:center;padding:10px 20px;font-size:13px;flex-wrap:wrap}
+.bar .grp{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.bar .lbl{opacity:.6;margin-right:4px}
+.bar button{background:#2a2a2a;color:#fff;border:1px solid #444;padding:7px 12px;border-radius:7px;font:inherit;cursor:pointer}
+.bar button.on{background:#fff;color:#111;border-color:#fff}
+.stage{container-type:inline-size;margin:0 auto;width:100%;transition:width .2s}
+.stage.phone{width:390px;box-shadow:0 0 0 10px #111,0 20px 60px rgba(0,0,0,.35);margin-top:24px;margin-bottom:24px;border-radius:2px}
+
+/* ---------- tokens ---------- */
+.site{
+  --font-head:'Space Grotesk',Inter,sans-serif;
+  --bg:#fff4e0;--fg:#1a1a1a;--muted:#4b4b4b;--line:#1a1a1a;--accent:#d93a16;--card:#fff;--on-accent:#fff;--hard:5px 5px 0 #1a1a1a;--linkc:#b82e0e;
+  --yellow:#ffd23f;--mint:#a6f0c6;--pink:#ffb3c7;--blue:#2b59ff;
+  --bw:2.5px;--shadow:var(--hard);--tilt1:-1.4deg;--tilt2:1.4deg;--blob:block;--radius:22px;--hlrot:-1.5deg;
+  background:var(--bg);color:var(--fg);font-family:Inter,sans-serif;min-height:100vh;transition:background .2s,color .2s
+}
+.site[data-theme=dark]{--bg:#15122a;--fg:#fff;--muted:#c3bee6;--line:#fff;--accent:#ff7a5c;--card:#201b3f;--on-accent:#15122a;--hard:5px 5px 0 #ff7a5c;--blue:#7a8cff;--linkc:#ff7a5c}
+@media(prefers-reduced-motion:reduce){.site{--tilt1:0deg;--tilt2:0deg;--hlrot:0deg}}
+
+.wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+nav.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0;border-bottom:var(--bw) solid var(--line);font-size:14px;gap:12px}
+nav.top .name{font-family:var(--font-head);font-weight:700;font-size:17px}
+nav.top .links{display:flex;gap:20px;color:var(--muted);align-items:center}
+nav.top .links .cur{color:var(--fg);font-weight:700;border-bottom:3px solid var(--accent)}
+nav.top .links .pill{background:var(--accent);color:var(--on-accent);padding:7px 13px;border-radius:999px;font-weight:700;border:2px solid var(--line)}
+.menu{display:none;border:2px solid var(--line);border-radius:999px;padding:6px 12px;font-weight:700;font-size:13px}
+.toggle{border:2px solid var(--line);border-radius:999px;padding:5px 12px;font-size:12px;color:var(--fg)}
+.label{font-size:12px;font-weight:700;color:var(--linkc);text-transform:uppercase;letter-spacing:.08em}
+h1{font-family:var(--font-head);font-weight:700;font-size:clamp(40px,6.4cqw,84px);letter-spacing:-.035em;line-height:.98;margin:14px 0 22px;max-width:8.2em}
+h1.page{font-size:clamp(36px,5.4cqw,68px);max-width:12em}
+h2{font-family:var(--font-head);font-weight:700;font-size:clamp(26px,3.4cqw,38px);letter-spacing:-.03em;line-height:1.1}
+h3{font-family:var(--font-head)}
+.lead{font-size:18px;line-height:1.65;color:var(--muted);max-width:36em}
+.hl{background:var(--accent);color:var(--on-accent);padding:0 .14em;border-radius:12px;display:inline-block;transform:rotate(var(--hlrot))}
+.hero{padding:70px 0 52px;position:relative}
+.hero::after{content:"";display:var(--blob);position:absolute;right:20px;top:64px;width:190px;height:230px;background:var(--accent);border:var(--bw) solid var(--line);border-radius:110px 110px 18px 110px;box-shadow:var(--shadow);transform:rotate(6deg)}
+.pagehead{padding:58px 0 38px;position:relative}
+.pagehead::after{content:"";display:var(--blob);position:absolute;right:24px;top:40px;width:150px;height:180px;background:var(--blue);border:var(--bw) solid var(--line);border-radius:80px 80px 14px 80px;box-shadow:var(--shadow);transform:rotate(-6deg)}
+.hero>*,.pagehead>*{position:relative;z-index:1}
+.cta{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:var(--radius);font-weight:700;font-size:15px;border:var(--bw) solid var(--line);background:var(--card);color:var(--fg);box-shadow:var(--shadow)}
+.btn.primary{background:var(--accent);color:var(--on-accent)}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:40px}
+.fact{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:16px 18px;background:var(--card);box-shadow:var(--shadow)}
+.fact b{display:block;font-family:var(--font-head);font-size:18px;margin-bottom:3px}.fact span{font-size:13px;color:var(--muted)}
+section{padding:56px 0;border-top:2.5px solid var(--line)}
+section .head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:28px;gap:12px}
+section .head a{font-size:14px;color:var(--linkc);font-weight:700;white-space:nowrap}
+.tl{position:relative;padding-left:30px;border-left:var(--bw) solid var(--line);margin-left:6px}
+.role{position:relative;padding-bottom:30px}
+.role::before{content:"";position:absolute;left:-39px;top:6px;width:15px;height:15px;border-radius:50%;background:var(--accent);border:3px solid var(--bg)}
+.role .when{font-size:13px;color:var(--muted)}.role h3{font-size:20px;margin:3px 0 4px}
+.role p{color:var(--muted);font-size:15px;line-height:1.6;max-width:44em}
+.role ul{margin:10px 0 0 18px;color:var(--muted);font-size:15px;line-height:1.7;max-width:44em}
+.scope{display:inline-block;margin-top:10px;font-size:12px;font-weight:700;background:var(--yellow);color:#1a1a1a;border:2px solid #1a1a1a;border-radius:999px;padding:4px 10px}
+.gap{height:56px;width:8px;margin-left:-35px;margin-bottom:18px;background:var(--bg);position:relative}
+.gap::after{content:"";position:absolute;left:3px;top:0;bottom:0;border-left:3px dotted var(--muted)}
+.projects{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.proj{border:var(--bw) solid var(--line);border-radius:var(--radius);background:var(--card);overflow:hidden;box-shadow:var(--shadow)}
+.proj:nth-child(3n+1){transform:rotate(var(--tilt1))}.proj:nth-child(3n){transform:rotate(var(--tilt2))}
+.proj .shot{height:140px;border-bottom:var(--bw) solid var(--line);background:linear-gradient(135deg,var(--accent),var(--yellow) 140%)}
+.proj:nth-child(3n+2) .shot{background:linear-gradient(200deg,var(--blue),var(--mint) 130%)}
+.proj:nth-child(3n) .shot{background:linear-gradient(40deg,#ff5a9a,var(--yellow) 120%)}
+.proj .body{padding:18px}.proj h3{font-size:18px;margin-bottom:6px}.proj p{font-size:14px;color:var(--muted);line-height:1.55}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:12px}
+.tag{font-size:12px;font-weight:600;padding:4px 10px;border-radius:999px;border:2px solid #1a1a1a;color:#1a1a1a}
+.tags .tag:nth-child(3n+1){background:var(--yellow)}.tags .tag:nth-child(3n+2){background:var(--mint)}.tags .tag:nth-child(3n){background:var(--pink)}
+.skills{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.skills h4{font-size:13px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em;margin-bottom:12px;font-weight:700}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.card{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:24px;background:var(--card);box-shadow:var(--shadow)}
+.card h3{font-size:19px;margin-bottom:6px}.card p{color:var(--muted);font-size:15px;line-height:1.65}
+.bio p{color:var(--muted);font-size:16px;line-height:1.75;margin-bottom:14px;max-width:38em}
+.band{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:32px;background:var(--card);display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:var(--shadow);flex-wrap:wrap}
+.band p{color:var(--muted);margin-top:8px;max-width:32em;line-height:1.6}
+.band .cta{margin-top:0}
+footer{padding:44px 0 70px;border-top:2.5px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer .links{display:flex;gap:20px;color:var(--muted);font-size:15px;flex-wrap:wrap}
+.crumb{font-size:13px;color:var(--muted);margin-bottom:6px}
+.meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:14px}.meta b{display:block;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:3px}
+.bigshot{height:340px;border:var(--bw) solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);background:linear-gradient(135deg,var(--blue),var(--mint));position:relative;overflow:hidden}
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.story>div{border:var(--bw) solid var(--line);border-radius:var(--radius);padding:22px;background:var(--card);box-shadow:var(--shadow)}
+.story>div:nth-child(1){transform:rotate(var(--tilt1))}.story>div:nth-child(3){transform:rotate(var(--tilt2))}
+.story h3{font-size:19px;margin-bottom:8px}.story p{color:var(--muted);font-size:14px;line-height:1.65}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.shots div{height:150px;border:var(--bw) solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+.shots div:nth-child(1){background:linear-gradient(135deg,var(--yellow),var(--accent))}.shots div:nth-child(2){background:linear-gradient(135deg,var(--mint),var(--blue))}.shots div:nth-child(3){background:linear-gradient(135deg,var(--pink),var(--yellow))}
+.next{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:22px;font-weight:700;flex-wrap:wrap}
+.next a{color:var(--linkc)}
+.svc{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.svc .card:nth-child(odd){transform:rotate(var(--tilt1))}.svc .card:nth-child(even){transform:rotate(var(--tilt2))}
+.svc .icon{width:46px;height:46px;border-radius:14px;border:var(--bw) solid var(--line);margin-bottom:14px;background:var(--yellow)}
+.svc .card:nth-child(2) .icon{background:var(--mint)}.svc .card:nth-child(3) .icon{background:var(--pink)}.svc .card:nth-child(4) .icon{background:var(--blue)}
+.svc .see{margin-top:14px;font-size:13px;font-weight:700;color:var(--linkc)}
+.eng{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.eng .card b{font-family:var(--font-head);font-size:18px;display:block;margin-bottom:6px}
+
+[data-pg]{display:none}
+.site[data-page=home] [data-pg~=home],.site[data-page=experience] [data-pg~=experience],.site[data-page=project] [data-pg~=project],.site[data-page=index] [data-pg~=index],.site[data-page=build] [data-pg~=build]{display:block}
+
+/* narrow layout, driven by the container so the Phone switch works */
+@container (max-width:820px){
+  .site{--tilt1:0deg;--tilt2:0deg;--blob:none;--hlrot:0deg}
+  .wrap{padding:0 18px}
+  .facts{grid-template-columns:1fr 1fr}
+  .projects,.skills,.story,.shots,.svc,.eng,.two{grid-template-columns:1fr}
+  nav.top .links>span:not(.pill):not(.toggle):not(.menu){display:none}
+  .menu{display:inline-block;white-space:nowrap}
+  nav.top .name{white-space:nowrap;font-size:15px}
+  nav.top .links{gap:8px}
+  nav.top .links .pill{white-space:nowrap;padding:6px 10px;font-size:12px}
+  .hero{padding:44px 0 34px}.pagehead{padding:40px 0 28px}
+  h1{max-width:none}
+  section{padding:40px 0}
+  .band{padding:22px}
+  .bigshot{height:200px}
+}
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="grp"><span class="lbl">Page</span>
+    <button data-page="home" class="on">Home</button>
+    <button data-page="experience">Experience</button>
+    <button data-page="index">Projects</button>
+    <button data-page="project">Project</button>
+    <button data-page="build">Build with me</button>
+  </div>
+  <div class="grp"><span class="lbl">Device</span>
+    <button data-device="desktop" class="on">Desktop</button>
+    <button data-device="phone">Phone</button>
+  </div>
+  <div class="grp"><span class="lbl">Theme</span>
+    <button data-theme="light" class="on">Light</button>
+    <button data-theme="dark">Dark</button>
+  </div>
+</div>
+
+<div class="stage" id="stage">
+<div class="site" id="site" data-page="home" data-theme="light">
+  <div class="wrap">
+
+    <nav class="top">
+      <span class="name">YOUR NAME</span>
+      <span class="links"><span id="n1">Experience</span><span id="n2">Things I've built</span><span>Skills</span><span>About</span><span class="pill" id="n3">Build with me</span><span class="toggle">◐</span><span class="menu">☰ Menu</span></span>
+    </nav>
+
+    <!-- ===== HOME ===== -->
+    <div data-pg="home">
+      <div class="hero">
+        <div class="label">Engineering Lead</div>
+        <h1>I lead teams that <span class="hl">build things</span> people use.</h1>
+        <p class="lead">Two or three lines summarising what I do, how I work and what I'm looking for next. Placeholder text.</p>
+        <div class="cta"><span class="btn primary">Download resume</span><span class="btn">Let's talk</span></div>
+        <div class="facts">
+          <div class="fact"><b>Role</b><span>Company</span></div>
+          <div class="fact"><b>10+ years</b><span>Experience</span></div>
+          <div class="fact"><b>City, Country</b><span>Location</span></div>
+          <div class="fact"><b>Leadership · Web · Mobile</b><span>Core focus</span></div>
+        </div>
+      </div>
+      <section>
+        <div class="head"><h2>Experience</h2><a>Full experience →</a></div>
+        <div class="tl">
+          <div class="role"><div class="when">2022 – Present</div><h3>Engineering Lead, Company A</h3><p>Impact in one line, scope and team size.</p></div>
+          <div class="role"><div class="when">2019 – 2022</div><h3>Senior Engineer, Company B</h3><p>Impact in one line, scope and team size.</p></div>
+          <div class="gap"></div>
+          <div class="role"><div class="when">2016 – 2018</div><h3>Software Engineer, Company C</h3><p>Impact in one line, scope and team size.</p></div>
+        </div>
+      </section>
+      <section>
+        <div class="head"><h2>Things I've built</h2><a>All projects →</a></div>
+        <div class="projects">
+          <div class="proj"><div class="shot"></div><div class="body"><h3>Project One</h3><p>One-line pitch for the project.</p><div class="tags"><span class="tag">Web</span><span class="tag">Astro</span><span class="tag">Open source</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>Project Two</h3><p>One-line pitch for the project.</p><div class="tags"><span class="tag">macOS</span><span class="tag">Swift</span><span class="tag">Download</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>Project Three</h3><p>One-line pitch for the project.</p><div class="tags"><span class="tag">Extension</span><span class="tag">TypeScript</span><span class="tag">Live</span></div></div></div>
+        </div>
+      </section>
+      <section>
+        <div class="head"><h2>Skills</h2></div>
+        <div class="skills">
+          <div><h4>Leadership</h4><div class="tags"><span class="tag">Team building</span><span class="tag">Architecture</span><span class="tag">Delivery</span></div></div>
+          <div><h4>Frontend</h4><div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">Astro</span></div></div>
+          <div><h4>Mobile &amp; Desktop</h4><div class="tags"><span class="tag">Swift</span><span class="tag">React Native</span><span class="tag">Electron</span></div></div>
+        </div>
+      </section>
+      <section>
+        <div class="head"><h2>Education</h2></div>
+        <div class="card"><h3>Degree, Subject</h3><p>Institution · Years</p></div>
+      </section>
+      <section>
+        <div class="head"><h2>About</h2></div>
+        <div class="bio">
+          <p>A short professional bio in two or three paragraphs: what I do, how I work, what I care about in engineering.</p>
+          <p>Outside work: a few lines about interests, written in a human voice.</p>
+        </div>
+      </section>
+      <section>
+        <div class="band">
+          <div><h2>Build with me</h2><p>Need a web app, mobile app, Mac app or Chrome extension built?</p></div>
+          <span class="btn primary">See what I build →</span>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <div data-pg="experience">
+      <div class="pagehead">
+        <div class="label">Experience</div>
+        <h1 class="page">Ten years of <span class="hl">leading</span> and building.</h1>
+        <p class="lead">Every role with the impact, the tech and the scope. Claim-level detail only.</p>
+      </div>
+      <section>
+        <div class="tl">
+          <div class="role"><div class="when">2022 – Present</div><h3>Engineering Lead, Company A</h3>
+            <ul><li>Impact bullet one, written as a claim.</li><li>Impact bullet two with a number.</li><li>Impact bullet three about the team or product.</li></ul>
+            <div class="tags"><span class="tag">TypeScript</span><span class="tag">React</span><span class="tag">AWS</span></div><span class="scope">Led a team of 8</span></div>
+          <div class="role"><div class="when">2019 – 2022</div><h3>Senior Engineer, Company B</h3>
+            <ul><li>Impact bullet one, written as a claim.</li><li>Impact bullet two with a number.</li></ul>
+            <div class="tags"><span class="tag">Swift</span><span class="tag">Node</span></div><span class="scope">Owned 3 services</span></div>
+          <div class="gap"></div>
+          <div class="role"><div class="when">2016 – 2018</div><h3>Software Engineer, Company C</h3>
+            <ul><li>Impact bullet one, written as a claim.</li><li>Impact bullet two with a number.</li></ul>
+            <div class="tags"><span class="tag">Java</span><span class="tag">SQL</span></div><span class="scope">Team of 5</span></div>
+        </div>
+      </section>
+      <section>
+        <div class="band"><div><h2>Like what you see?</h2></div><div class="cta"><span class="btn primary">Download resume</span><span class="btn">Let's talk</span></div></div>
+      </section>
+    </div>
+
+    <!-- ===== PROJECTS INDEX ===== -->
+    <div data-pg="index">
+      <div class="pagehead">
+        <div class="label">Things I've built</div>
+        <h1 class="page">Seven things, <span class="hl">built</span> with care.</h1>
+        <p class="lead">A curated set, not every repo. Each one has its own page with the story behind it.</p>
+      </div>
+      <section>
+        <div class="projects">
+          <div class="proj"><div class="shot"></div><div class="body"><h3>jugnu</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>Tools</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>SystemDesign-Wiki</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>tool-stack</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>DrawIt</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>Ink2Doc</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+          <div class="proj"><div class="shot"></div><div class="body"><h3>ContentVault</h3><p>One-line pitch.</p><div class="tags"><span class="tag">Tag</span><span class="tag">Tag</span></div></div></div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ===== PROJECT PAGE ===== -->
+    <div data-pg="project">
+      <div class="pagehead">
+        <div class="crumb">Things I've built / Project One</div>
+        <h1 class="page">Project One, <span class="hl">made</span> to be used.</h1>
+        <p class="lead">A one-line pitch for the project, then the story of why it exists and how it works.</p>
+        <div class="cta"><span class="btn primary">View live</span><span class="btn">Source code</span><span class="btn">Download for Mac</span></div>
+        <div class="meta"><div><b>Role</b>Design &amp; build</div><div><b>Year</b>2025</div><div><b>Stack</b>Astro · TypeScript</div></div>
+      </div>
+      <div class="bigshot"></div>
+      <section style="border-top:none;padding-top:50px">
+        <div class="story">
+          <div><h3>Why I built it</h3><p>A short paragraph on the problem and what was missing from existing tools.</p></div>
+          <div><h3>How it works</h3><p>A short paragraph on the approach, the main pieces and one interesting decision.</p></div>
+          <div><h3>What I learned</h3><p>A short paragraph on the trade-offs, surprises and what you'd do differently.</p></div>
+        </div>
+      </section>
+      <section>
+        <div class="head"><h2>Screenshots</h2></div>
+        <div class="shots"><div></div><div></div><div></div></div>
+      </section>
+      <section>
+        <div class="band"><div><h2>Need something like this?</h2><p>Tell me what you're building and we'll take it from there.</p></div><span class="btn primary">Start a project</span></div>
+        <div class="next"><span>Next project</span><a>Project Two →</a></div>
+      </section>
+    </div>
+
+    <!-- ===== BUILD WITH ME ===== -->
+    <div data-pg="build">
+      <div class="pagehead">
+        <div class="label">Build with me</div>
+        <h1 class="page">Web, mobile, Mac and Chrome, <span class="hl">built</span> properly.</h1>
+        <p class="lead">From small tools to full products. Here is what I build and how we can work together.</p>
+        <div class="cta"><span class="btn primary">Start a project</span></div>
+      </div>
+      <section>
+        <div class="head"><h2>What I build</h2></div>
+        <div class="svc">
+          <div class="card"><div class="icon"></div><h3>Web apps</h3><p>One line on the kind of web products you build, from sites to full apps.</p><div class="see">See: Project One →</div></div>
+          <div class="card"><div class="icon"></div><h3>Mobile apps</h3><p>One line on the mobile work you take on.</p><div class="see">See: Project Four →</div></div>
+          <div class="card"><div class="icon"></div><h3>Mac apps</h3><p>One line on native Mac apps and downloads.</p><div class="see">See: Project Two →</div></div>
+          <div class="card"><div class="icon"></div><h3>Chrome extensions</h3><p>One line on browser extensions you ship.</p><div class="see">See: Project Three →</div></div>
+        </div>
+      </section>
+      <section>
+        <div class="head"><h2>How we can work</h2></div>
+        <div class="eng">
+          <div class="card"><b>One-off project</b><p>A defined build, from idea to launch.</p></div>
+          <div class="card"><b>Ongoing</b><p>A longer relationship, building and improving over time.</p></div>
+          <div class="card"><b>Consulting</b><p>Architecture, reviews and technical leadership.</p></div>
+        </div>
+      </section>
+      <section>
+        <div class="band"><div><h2>Have something in mind?</h2><p>Send a short note about what you want built.</p></div><span class="btn primary">Start a project</span></div>
+      </section>
+    </div>
+
+    <footer>
+      <div><h2>Get in touch</h2></div>
+      <div class="links"><span>Email</span><span>LinkedIn</span><span>GitHub</span><span>Resume</span></div>
+    </footer>
+  </div>
+</div>
+</div>
+
+<script>
+const site=document.getElementById('site'),stage=document.getElementById('stage');
+function setBtn(attr,val){document.querySelectorAll('.bar [data-'+attr+']').forEach(b=>b.classList.toggle('on',b.dataset[attr]===val))}
+function pick(attr,val){
+  if(attr==='device'){stage.classList.toggle('phone',val==='phone');setBtn('device',val);return}
+  site.dataset[attr]=val;setBtn(attr,val);
+  if(attr==='page'){
+    document.getElementById('n1').classList.toggle('cur',val==='experience');
+    document.getElementById('n2').classList.toggle('cur',val==='index'||val==='project');
+    document.getElementById('n3').classList.toggle('cur',val==='build');
+    window.scrollTo(0,0);
+  }
+}
+['page','device','theme'].forEach(a=>document.querySelectorAll('.bar [data-'+a+']').forEach(b=>b.onclick=()=>pick(a,b.dataset[a])));
+// deep link: #page-device-theme, e.g. #build-phone-dark
+const [p,d,t]=location.hash.slice(1).split('-');
+if(p)pick('page',p);if(d)pick('device',d);if(t)pick('theme',t);
+</script>
+</body>
+</html>
