@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "../styles/tokens.css";
 import "../styles/base.css";
 import "../styles/layout.css";
@@ -40,6 +41,7 @@ const themeScript = inlineThemeScript();
       <meta name="robots" content="noindex, nofollow" />
     )}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ClientRouter />
     <script set:html={themeScript} />
     <script>
       import { init } from "../scripts/init.ts";

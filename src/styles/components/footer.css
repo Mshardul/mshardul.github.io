@@ -38,5 +38,5 @@
 .footer__links a {
   color: var(--color-link);
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: var(--underline-offset);
 }

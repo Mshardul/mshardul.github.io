@@ -12,7 +12,7 @@
   background: var(--color-card);
   color: var(--color-text);
   font-weight: 700;
-  font-size: 15px;
+  font-size: var(--button-font-mobile);
   box-shadow: var(--shadow-hard);
   cursor: pointer;
   text-decoration: none;
@@ -28,7 +28,7 @@
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-card);
   font-weight: 700;
-  font-size: 15px;
+  font-size: var(--button-font-mobile);
   text-decoration: none;
   cursor: pointer;
   border: var(--border-width) solid var(--color-line);

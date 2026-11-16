@@ -36,10 +36,10 @@
   top: 0;
   right: var(--space-gutter);
   display: var(--blob-display);
-  width: 190px;
-  height: 230px;
+  width: var(--blob-width);
+  height: var(--blob-height);
   border: var(--border-width) solid var(--color-line);
-  border-radius: 110px 110px 18px 110px;
+  border-radius: var(--blob-radius);
   background: var(--color-accent);
   box-shadow: var(--shadow-hard);
   transform: rotate(6deg);

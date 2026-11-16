@@ -46,8 +46,8 @@
 .nav__link[aria-current="page"] {
   color: var(--color-text);
   font-weight: 700;
-  border-bottom: 3px solid var(--color-accent);
-  padding-bottom: 4px;
+  border-bottom: var(--nav-active-border) solid var(--color-accent);
+  padding-bottom: var(--nav-active-padding);
 }
 
 .nav__pill {
@@ -115,13 +115,13 @@
     display: inline-block;
   }
   .nav__name {
-    font-size: 15px;
+    font-size: var(--nav-name-mobile);
   }
   .nav__links {
-    gap: 8px;
+    gap: var(--nav-gap-mobile);
   }
   .nav__pill {
-    padding: 6px 10px;
-    font-size: 12px;
+    padding: var(--nav-pill-padding-y) var(--nav-pill-padding-x);
+    font-size: var(--nav-pill-font);
   }
 }

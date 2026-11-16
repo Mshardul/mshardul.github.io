@@ -4,7 +4,7 @@
 */
 
 .bigshot {
-  height: 320px;
+  height: var(--project-shot-tall);
   border: var(--border-width) solid var(--color-line);
   border-radius: var(--radius-card);
   background: linear-gradient(135deg, var(--color-accent), var(--color-yellow) 140%);
@@ -33,7 +33,7 @@
 }
 
 .shots > div {
-  height: 160px;
+  height: var(--project-shot-mid);
   border: var(--border-width) solid var(--color-line);
   border-radius: var(--radius-card);
   background: var(--color-card);
@@ -64,7 +64,7 @@
 
 @media (max-width: 700px) {
   .bigshot {
-    height: 180px;
+    height: var(--project-shot-small);
   }
 
   .story,

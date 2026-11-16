@@ -65,6 +65,26 @@
 
   /* layout */
   --nav-height: 64px;
+  --text-page: clamp(32px, 5vw, 60px);
+  --radius-highlight: 12px;
+  --blob-width: 190px;
+  --blob-height: 230px;
+  --blob-radius: 110px 110px 18px 110px;
+  --nav-active-border: 3px;
+  --nav-active-padding: 4px;
+  --icon-size: 40px;
+  --project-shot-height: 110px;
+  --nav-name-mobile: 15px;
+  --nav-gap-mobile: 8px;
+  --nav-pill-padding-y: 6px;
+  --nav-pill-padding-x: 10px;
+  --nav-pill-font: 12px;
+  --outline-offset: 2px;
+  --button-font-mobile: 15px;
+  --project-shot-tall: 320px;
+  --project-shot-mid: 160px;
+  --project-shot-small: 180px;
+  --underline-offset: 3px;
   --content-width: 1040px;
 
   /* motion */

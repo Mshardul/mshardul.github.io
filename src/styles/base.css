@@ -61,7 +61,7 @@ ul {
 
 .heading--page {
   margin: var(--space-3) 0 var(--space-4);
-  font-size: clamp(32px, 5vw, 60px);
+  font-size: var(--text-page);
   letter-spacing: -0.035em;
   line-height: 1;
 }
@@ -85,7 +85,7 @@ ul {
 .highlight {
   display: inline-block;
   padding: 0 0.14em;
-  border-radius: 12px;
+  border-radius: var(--radius-highlight);
   background: var(--color-accent);
   color: var(--color-on-accent);
   transform: rotate(var(--highlight-tilt));
@@ -93,7 +93,7 @@ ul {
 
 :focus-visible {
   outline: var(--border-width) solid var(--color-accent);
-  outline-offset: 2px;
+  outline-offset: var(--outline-offset);
 }
 
 /* Reduced motion: neutralise animations and transitions */
