@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Cta from "../components/Cta.astro";
 import { roles } from "../content/experience.ts";
-import { hasResume } from "../lib/site.ts";
+import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/section.css";
 import "../styles/components/timeline.css";
 ---
@@ -46,7 +46,7 @@ import "../styles/components/timeline.css";
             <h2 class="heading heading--section">Like what you see?</h2>
           </div>
           <div class="btn-row">
-            {hasResume && <Cta primary label="Download resume" href="/resume.pdf" />}
+            {hasResume && <Cta primary label="Download resume" href={RESUME_URL} />}
             <Cta primary={!hasResume} label="Let's talk" mail />
           </div>
         </div>

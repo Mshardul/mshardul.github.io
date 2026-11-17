@@ -8,7 +8,7 @@ import { skillGroups } from "../content/skills.ts";
 import { education } from "../content/education.ts";
 import { about } from "../content/about.ts";
 import { githubUrl, linkedinUrl } from "../lib/contact.ts";
-import { hasResume } from "../lib/site.ts";
+import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/section.css";
 ---
 
@@ -20,7 +20,7 @@ import "../styles/components/section.css";
         <h1 class="heading heading--hero">{profile.headline}</h1>
         <p class="lead">{profile.summary}</p>
         <div class="btn-row">
-          {hasResume && <Cta primary label="Download resume" href="/resume.pdf" />}
+          {hasResume && <Cta primary label="Download resume" href={RESUME_URL} />}
           <Cta primary={!hasResume} label="Let's talk" mail />
         </div>
         <div class="fact-grid">
@@ -149,7 +149,7 @@ import "../styles/components/section.css";
           <Cta label="Email" mail />
           <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn</a>
           <a href={githubUrl} target="_blank" rel="noopener">GitHub</a>
-          {hasResume && <a href="/resume.pdf">Download resume</a>}
+          {hasResume && <a href={RESUME_URL}>Download resume</a>}
         </div>
       </div>
     </section>
