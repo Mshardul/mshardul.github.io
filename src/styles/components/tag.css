@@ -1,6 +1,6 @@
 /*
-  Tag component. .tag-list and .tag.
-  Uses only tokens from tokens.css.
+  Tag list component. .tag-list and .tag.
+  Imported by TagList. Uses only tokens from tokens.css.
 */
 
 .tag-list {

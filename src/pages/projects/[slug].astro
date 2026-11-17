@@ -2,12 +2,12 @@
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Cta from "../../components/Cta.astro";
+import Band from "../../components/Band.astro";
+import PageHead from "../../components/PageHead.astro";
+import Section from "../../components/Section.astro";
 import { projects, type Project } from "../../content/projects.ts";
 import { nextProject } from "../../lib/projects.ts";
-import "../../styles/components/section.css";
-import "../../styles/components/band.css";
 import "../../styles/components/project-detail.css";
-import "../../styles/components/tag.css";
 
 export const getStaticPaths = (() => {
   return projects.map((project) => ({
@@ -22,69 +22,58 @@ const next = nextProject(project.slug);
 
 <BaseLayout title={`${project.name} | Shardul Lingwal`} description={project.pitch}>
   <main class="page-main">
-    <div class="pagehead">
-      <div class="crumb"><a href="/projects">Things I've built</a> / {project.name}</div>
-      <h1 class="heading heading--page">{project.name}</h1>
-      <p class="lead">{project.pitch}</p>
-      <div class="tag-list">
-        {project.tags.map((tag) => <span class="tag">{tag}</span>)}
+    <PageHead crumb={project.name} lead={project.pitch} tags={project.tags}>
+      {project.name}
+      <div slot="after">
+        {(project.stack?.length || project.aiNote) && (
+          <div class="project-meta">
+            {project.stack && project.stack.length > 0 && (
+              <p class="project-meta__stack"><strong>Stack:</strong> {project.stack.join(", ")}</p>
+            )}
+            {project.aiNote && <p class="project-meta__note">{project.aiNote}</p>}
+          </div>
+        )}
+        {project.links && project.links.length > 0 && (
+          <div class="project-links">
+            {project.links.map((link) => (
+              <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+            ))}
+          </div>
+        )}
       </div>
-      {(project.stack?.length || project.aiNote) && (
-        <div class="project-meta">
-          {project.stack && project.stack.length > 0 && (
-            <p class="project-meta__stack"><strong>Stack:</strong> {project.stack.join(", ")}</p>
-          )}
-          {project.aiNote && <p class="project-meta__note">{project.aiNote}</p>}
-        </div>
-      )}
-      {project.links && project.links.length > 0 && (
-        <div class="project-links">
-          {project.links.map((link) => (
-            <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
-          ))}
-        </div>
-      )}
-    </div>
+    </PageHead>
 
     <div class="wrap">
       <div class="bigshot"></div>
     </div>
 
     {project.story && (
-      <section class="section section--tone-2">
-        <div class="section__inner">
-          <div class="story">
-            <div>
-              <h2 class="heading heading--item">Why I built it</h2>
-              <p>{project.story.why}</p>
-            </div>
-            <div>
-              <h2 class="heading heading--item">How it works</h2>
-              <p>{project.story.how}</p>
-            </div>
-            <div>
-              <h2 class="heading heading--item">What I learned</h2>
-              <p>{project.story.learned}</p>
-            </div>
+      <Section tone={2}>
+        <div class="story">
+          <div>
+            <h2 class="heading heading--item">Why I built it</h2>
+            <p>{project.story.why}</p>
+          </div>
+          <div>
+            <h2 class="heading heading--item">How it works</h2>
+            <p>{project.story.how}</p>
+          </div>
+          <div>
+            <h2 class="heading heading--item">What I learned</h2>
+            <p>{project.story.learned}</p>
           </div>
         </div>
-      </section>
+      </Section>
     )}
 
-    <section class="section section--tone-3">
-      <div class="section__inner">
-        <div class="band">
-          <div>
-            <h2 class="heading heading--section">Need something like this?</h2>
-            <p class="band__text">Tell me what you're building and we'll take it from there.</p>
-          </div>
-          <Cta primary label="Start a project" mail />
-        </div>
-        <div class="next">
-          <span>Next project</span>
-          <a href={`/projects/${next.slug}`}>{next.name} →</a>
-        </div>
+    <Section tone={3}>
+      <Band heading="Need something like this?" text="Tell me what you're building and we'll take it from there.">
+        <Cta primary label="Start a project" mail />
+      </Band>
+      <div class="next">
+        <span>Next project</span>
+        <a href={`/projects/${next.slug}`}>{next.name} →</a>
       </div>
-    </section>
+    </Section>
   </main>
 </BaseLayout>

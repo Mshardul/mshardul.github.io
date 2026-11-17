@@ -1,6 +1,6 @@
 /*
   Card component. .card and .card__text.
-  Uses only tokens from tokens.css.
+  Imported by Card. Uses only tokens from tokens.css.
 */
 
 .card {

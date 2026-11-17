@@ -1,6 +1,6 @@
 /*
-  Build-with-me page blocks: services and engagement cards.
-  Uses only tokens from tokens.css.
+  Build-with-me page blocks: .svc, .eng, .icon and .see.
+  Imported by build-with-me.astro. Uses only tokens from tokens.css.
 */
 
 .svc {

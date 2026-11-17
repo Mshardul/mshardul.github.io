@@ -1,0 +1,22 @@
+/*
+  Layout helpers shared by pages and components: .wrap, .page-main, .btn-row.
+  Imported only by BaseLayout. Uses only tokens from tokens.css.
+*/
+
+.wrap {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-gutter);
+}
+
+/* Detail pages sit below the fixed nav. */
+.page-main {
+  padding-top: var(--nav-height);
+}
+
+.btn-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}

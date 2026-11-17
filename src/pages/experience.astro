@@ -1,54 +1,33 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Cta from "../components/Cta.astro";
+import Band from "../components/Band.astro";
+import PageHead from "../components/PageHead.astro";
+import Section from "../components/Section.astro";
+import TimelineRole from "../components/TimelineRole.astro";
 import { roles } from "../content/experience.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
-import "../styles/components/section.css";
-import "../styles/components/band.css";
-import "../styles/components/tag.css";
-import "../styles/components/timeline.css";
 ---
 
 <BaseLayout title="Experience — Shardul Lingwal" description="Every role with the impact, the tech and the scope. Claim-level detail only.">
   <main class="page-main">
-    <div class="pagehead">
-      <span class="label">Experience</span>
-      <h1 class="heading heading--page">Ten years of <span class="highlight">leading</span> and building.</h1>
-      <p class="lead">Every role with the impact, the tech and the scope. Claim-level detail only.</p>
-    </div>
+    <PageHead label="Experience" lead="Every role with the impact, the tech and the scope. Claim-level detail only.">
+      Ten years of <span class="highlight">leading</span> and building.
+    </PageHead>
 
-    <section class="section section--tone-2">
-      <div class="section__inner">
-        <div class="timeline">
-          {roles.map((role) => (
-            <div class="timeline__role">
-              <div class="timeline__when">{role.start} – {role.end}</div>
-              <h3 class="heading heading--item">{role.title}, {role.company}</h3>
-              {role.scope && <span class="scope">{role.scope}</span>}
-              <ul>
-                {role.bullets.map((bullet) => <li>{bullet}</li>)}
-              </ul>
-              <div class="tag-list">
-                {role.tech.map((tech) => <span class="tag">{tech}</span>)}
-              </div>
-            </div>
-          ))}
-        </div>
+    <Section tone={2}>
+      <div class="timeline">
+        {roles.map((role) => (
+          <TimelineRole {role} detail />
+        ))}
       </div>
-    </section>
+    </Section>
 
-    <section class="section section--tone-3">
-      <div class="section__inner">
-        <div class="band">
-          <div>
-            <h2 class="heading heading--section">Like what you see?</h2>
-          </div>
-          <div class="btn-row">
-            {hasResume && <Cta primary label="Download resume" href={RESUME_URL} />}
-            <Cta primary={!hasResume} label="Let's talk" mail />
-          </div>
-        </div>
-      </div>
-    </section>
+    <Section tone={3}>
+      <Band heading="Like what you see?" spaced>
+        {hasResume && <Cta primary label="Download resume" href={RESUME_URL} />}
+        <Cta primary={!hasResume} label="Let's talk" mail />
+      </Band>
+    </Section>
   </main>
 </BaseLayout>

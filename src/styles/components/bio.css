@@ -1,0 +1,14 @@
+/*
+  About paragraphs on the home page: .bio, .bio__paragraph.
+  Imported by index.astro. Uses only tokens from tokens.css.
+*/
+
+.bio {
+  max-width: 38em;
+  color: var(--color-muted);
+  line-height: 1.75;
+}
+
+.bio__paragraph + .bio__paragraph {
+  margin-top: var(--space-4);
+}

@@ -1,6 +1,7 @@
 /*
-  Project detail page blocks: hero shot, story cards, screenshots and next link.
-  Uses only tokens from tokens.css.
+  Project detail page blocks: hero shot, story cards, project meta, links,
+  next-project row.
+  Imported by projects/[slug].astro. Uses only tokens from tokens.css.
 */
 
 .bigshot {
@@ -17,7 +18,7 @@
   gap: var(--space-5);
 }
 
-.story h3 {
+.story h2 {
   margin-bottom: var(--space-2);
 }
 

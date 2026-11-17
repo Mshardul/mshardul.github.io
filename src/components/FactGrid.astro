@@ -1,0 +1,18 @@
+---
+import "../styles/components/fact-grid.css";
+
+interface Props {
+  facts: { title: string; note: string }[];
+}
+
+const { facts } = Astro.props;
+---
+
+<div class="fact-grid">
+  {facts.map((fact) => (
+    <div class="fact">
+      <b class="fact__title">{fact.title}</b>
+      <span class="fact__note">{fact.note}</span>
+    </div>
+  ))}
+</div>

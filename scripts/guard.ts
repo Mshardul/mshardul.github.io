@@ -38,11 +38,7 @@ const WARN_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [
 // generic-bans/placeholders/style are scoped to src trees.
 const MESSAGE_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [privateTerms];
 
-const GLOBAL_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [noindex];
-
-// Repo-level warn guards: warn until Task 10 clears the CSS-usage failures,
-// then move to GLOBAL_GUARDS.
-const GLOBAL_WARN_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [cssUsage];
+const GLOBAL_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [noindex, cssUsage];
 
 function readFile(path: string): string {
   try {
@@ -164,15 +160,10 @@ function main(argv: string[]): number {
         }
       }
     }
-    // Global guards (e.g. noindex) evaluate repo-level config once.
+    // Global guards (e.g. noindex, css-usage) evaluate repo-level config once.
     for (const guard of GLOBAL_GUARDS) {
       for (const f of guard({ file: "", content: "" })) {
         addFailure(failures, seen, f);
-      }
-    }
-    for (const guard of GLOBAL_WARN_GUARDS) {
-      for (const f of guard({ file: "", content: "" })) {
-        addFailure(strict ? failures : warnings, strict ? seen : warnSeen, f);
       }
     }
   }

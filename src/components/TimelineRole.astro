@@ -1,0 +1,32 @@
+---
+import "../styles/components/timeline.css";
+import "../styles/components/scope.css";
+import TagList from "./TagList.astro";
+import type { Role } from "../content/experience.ts";
+
+interface Props {
+  role: Role;
+  /** Detail pages render scope, bullets and tech; the home page renders highlights. */
+  detail?: boolean;
+}
+
+const { role, detail = false } = Astro.props;
+---
+
+<div class="timeline__role">
+  <div class="timeline__when">{role.start} – {role.end}</div>
+  <h3 class="heading heading--item">{role.title}, {role.company}</h3>
+  {detail ? (
+    <>
+      {role.scope && <span class="scope">{role.scope}</span>}
+      <ul>
+        {role.bullets.map((bullet) => <li>{bullet}</li>)}
+      </ul>
+      <TagList items={role.tech} />
+    </>
+  ) : (
+    <ul class="timeline__highlights">
+      {role.highlights.map((item) => <li>{item}</li>)}
+    </ul>
+  )}
+</div>

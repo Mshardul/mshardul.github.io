@@ -1,110 +1,54 @@
 /*
-  Section internals shared by the home and detail pages:
-  fact grid, hero blob, skills, bio and contact list.
-  Uses only tokens from tokens.css.
+  Section component. .section, tone modifiers, .section__inner,
+  .section__head and .section__link.
+  Imported by Section. Uses only tokens from tokens.css.
 */
 
-.fact-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: var(--space-4);
-  margin-top: var(--space-6);
-}
-
-.fact {
-  grid-column: span 2;
-}
-
-.fact:nth-child(n + 4) {
-  grid-column: span 3;
-}
-
-.fact {
-  padding: var(--space-4);
-  border: var(--border-width) solid var(--color-line);
-  border-radius: var(--radius-card);
-  background: var(--color-card);
-  box-shadow: var(--shadow-hard);
-}
-
-.fact__title {
-  display: block;
-  font-family: var(--font-head);
-  font-size: var(--text-md);
-  font-weight: 700;
-}
-
-.fact__note {
-  font-size: var(--text-sm);
-  color: var(--color-muted);
-}
-
-.blob {
-  position: absolute;
-  top: 0;
-  right: var(--space-gutter);
-  display: var(--blob-display);
-  width: var(--blob-width);
-  height: var(--blob-height);
-  border: var(--border-width) solid var(--color-line);
-  border-radius: var(--blob-radius);
-  background: var(--color-accent);
-  box-shadow: var(--shadow-hard);
-  transform: rotate(6deg);
-}
-
-.skill-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-5);
-}
-
-.skill-grid__title {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--color-muted);
-}
-
-.bio {
-  max-width: 38em;
-  color: var(--color-muted);
-  line-height: 1.75;
-}
-
-.bio__paragraph + .bio__paragraph {
-  margin-top: var(--space-4);
-}
-
-.contact-list {
+.section {
+  position: relative;
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  gap: var(--space-5);
-  margin-top: var(--space-5);
+  padding: var(--space-8) 0;
+  border-top: var(--border-width) solid var(--color-line);
+  background: var(--color-bg);
+}
+
+.section--tone-1 {
+  --surface: var(--color-surface-1);
+  background: var(--color-surface-1);
+}
+.section--tone-2 {
+  --surface: var(--color-surface-2);
+  background: var(--color-surface-2);
+}
+.section--tone-3 {
+  --surface: var(--color-surface-3);
+  background: var(--color-surface-3);
+}
+.section--tone-4 {
+  --surface: var(--color-surface-4);
+  background: var(--color-surface-4);
+}
+
+.section__inner {
+  position: relative;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 0 var(--space-gutter);
+}
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.section__link {
+  font-size: var(--text-sm);
   font-weight: 700;
-}
-
-.contact-list a:not(.btn) {
   color: var(--color-link);
-}
-
-@media (max-width: 700px) {
-  .fact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .fact,
-  .fact:nth-child(n + 4) {
-    grid-column: auto;
-  }
-
-  .fact:last-child {
-    grid-column: span 2;
-  }
-
-  .skill-grid {
-    grid-template-columns: 1fr;
-  }
+  white-space: nowrap;
 }

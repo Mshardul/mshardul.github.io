@@ -1,6 +1,6 @@
 /*
-  Base styles. Reset, body, typography, links, focus, reduced-motion.
-  Uses only tokens from tokens.css. Imports nothing.
+  Base reset and element defaults. No class selectors.
+  Imported only by BaseLayout. Uses only tokens from tokens.css.
 */
 *,
 *::before,
@@ -33,62 +33,6 @@ ul {
 
 ul {
   padding-left: var(--space-5);
-}
-
-/* ---------- type ---------- */
-.label {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-link);
-}
-
-.heading {
-  font-family: var(--font-head);
-  font-weight: 700;
-  letter-spacing: -0.03em;
-  line-height: 1.05;
-}
-
-.heading--hero {
-  max-width: 8.2em;
-  margin: var(--space-3) 0 var(--space-5);
-  font-size: var(--text-h1);
-  letter-spacing: -0.035em;
-  line-height: 0.98;
-}
-
-.heading--page {
-  margin: var(--space-3) 0 var(--space-4);
-  font-size: var(--text-page);
-  letter-spacing: -0.035em;
-  line-height: 1;
-}
-
-.heading--section {
-  font-size: var(--text-h2);
-}
-
-.heading--item {
-  font-size: var(--text-h3);
-  letter-spacing: -0.02em;
-}
-
-.lead {
-  max-width: 36em;
-  font-size: var(--text-md);
-  line-height: 1.65;
-  color: var(--color-muted);
-}
-
-.highlight {
-  display: inline-block;
-  padding: 0 0.14em;
-  border-radius: var(--radius-highlight);
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-  transform: rotate(var(--highlight-tilt));
 }
 
 :focus-visible {

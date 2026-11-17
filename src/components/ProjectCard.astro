@@ -1,0 +1,20 @@
+---
+import "../styles/components/project-card.css";
+import TagList from "./TagList.astro";
+import type { Project } from "../content/projects.ts";
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<a class="project-card" href={`/projects/${project.slug}`}>
+  <div class="project-card__shot"></div>
+  <div class="project-card__body">
+    <h3 class="heading heading--item">{project.name}</h3>
+    <p class="project-card__text">{project.pitch}</p>
+    <TagList items={project.tags} />
+  </div>
+</a>

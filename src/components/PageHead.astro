@@ -1,0 +1,23 @@
+---
+import "../styles/components/pagehead.css";
+import TagList from "./TagList.astro";
+
+interface Props {
+  label?: string;
+  lead?: string;
+  /** Name of the current project, shown after the "Things I've built" breadcrumb link. */
+  crumb?: string;
+  tags?: string[];
+}
+
+const { label, lead, crumb, tags } = Astro.props;
+---
+
+<div class="pagehead">
+  {crumb && <div class="crumb"><a href="/projects">Things I've built</a> / {crumb}</div>}
+  {label && <span class="label">{label}</span>}
+  <h1 class="heading heading--page"><slot /></h1>
+  {lead && <p class="lead">{lead}</p>}
+  {tags && tags.length > 0 && <TagList items={tags} />}
+  <slot name="after" />
+</div>

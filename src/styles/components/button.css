@@ -1,7 +1,6 @@
 /*
-  Button component. .btn, .btn.primary and .btn-row.
-  Imported by Cta.
-  Uses only tokens from tokens.css.
+  Button component. .btn and .btn.primary.
+  Imported by Cta. Uses only tokens from tokens.css.
 */
 
 .btn {

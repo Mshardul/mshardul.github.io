@@ -1,0 +1,14 @@
+---
+import "../styles/components/card.css";
+
+interface Props {
+  note?: string;
+}
+
+const { note } = Astro.props;
+---
+
+<div class="card">
+  <slot />
+  {note && <p class="card__text">{note}</p>}
+</div>

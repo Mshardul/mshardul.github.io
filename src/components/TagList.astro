@@ -1,0 +1,13 @@
+---
+import "../styles/components/tag.css";
+
+interface Props {
+  items: string[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="tag-list">
+  {items.map((item) => <span class="tag">{item}</span>)}
+</div>

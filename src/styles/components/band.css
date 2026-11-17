@@ -1,7 +1,6 @@
 /*
-  Band component. .band and .band__text.
-  Used for call-to-action bands on home and project pages.
-  Uses only tokens from tokens.css.
+  Band component. .band, .band__text, .band__actions and .band__actions--spaced.
+  Imported by Band. Uses only tokens from tokens.css.
 */
 
 .band {
@@ -21,4 +20,14 @@
   max-width: 32em;
   margin-top: var(--space-2);
   color: var(--color-muted);
+}
+
+.band__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.band__actions--spaced {
+  margin-top: var(--space-5);
 }

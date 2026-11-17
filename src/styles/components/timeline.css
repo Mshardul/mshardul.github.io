@@ -1,6 +1,7 @@
 /*
-  Timeline component. .timeline, .timeline__role, .timeline__when, .timeline__highlights.
-  Uses only tokens from tokens.css.
+  Timeline component. .timeline, .timeline__role, .timeline__when and
+  .timeline__highlights.
+  Imported by TimelineRole. Uses only tokens from tokens.css.
 */
 
 .timeline {
@@ -43,12 +44,4 @@
 
 .timeline__highlights li + li {
   margin-top: var(--space-2);
-}
-
-.scope {
-  display: inline-block;
-  margin-top: var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  color: var(--color-muted);
 }
