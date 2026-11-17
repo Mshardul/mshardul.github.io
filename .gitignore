@@ -20,3 +20,7 @@ npm-debug.log*
 
 # agent workspace (superpowers executing-plans ledger, briefs, review packages)
 .superpowers/
+
+# local planning docs (not published)
+docs/plan/
+docs/superpowers/
