@@ -6,13 +6,17 @@ import PageHead from "../components/PageHead.astro";
 import Section from "../components/Section.astro";
 import TimelineRole from "../components/TimelineRole.astro";
 import { roles } from "../content/experience.ts";
+import { copy } from "../content/copy.ts";
+import { meta } from "../content/meta.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
+
+const { headline } = copy.experience;
 ---
 
-<BaseLayout title="Experience — Shardul Lingwal" description="Every role with the impact, the tech and the scope. Claim-level detail only.">
+<BaseLayout title={meta.experience.title} description={meta.experience.description}>
   <main class="page-main">
-    <PageHead label="Experience" lead="Every role with the impact, the tech and the scope. Claim-level detail only.">
-      Ten years of <span class="highlight">leading</span> and building.
+    <PageHead label="Experience" lead={copy.experience.lead}>
+      {headline.before}<span class="highlight">{headline.highlight}</span>{headline.after}
     </PageHead>
 
     <Section tone={2}>

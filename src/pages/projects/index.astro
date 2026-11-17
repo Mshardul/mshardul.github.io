@@ -4,12 +4,16 @@ import PageHead from "../../components/PageHead.astro";
 import ProjectCard from "../../components/ProjectCard.astro";
 import Section from "../../components/Section.astro";
 import { projects } from "../../content/projects.ts";
+import { copy } from "../../content/copy.ts";
+import { meta } from "../../content/meta.ts";
+
+const { headline } = copy.projects;
 ---
 
-<BaseLayout title="Things I've built — Shardul Lingwal" description="A curated set of projects, each with its own page and the story behind it.">
+<BaseLayout title={meta.projects.title} description={meta.projects.description}>
   <main class="page-main">
-    <PageHead label="Things I've built" lead="A curated set, not every repo. Each one has its own page with the story behind it.">
-      Seven things, <span class="highlight">built</span> with care.
+    <PageHead label="Things I've built" lead={copy.projects.lead}>
+      {headline.before}<span class="highlight">{headline.highlight}</span>{headline.after}
     </PageHead>
 
     <Section tone={2}>

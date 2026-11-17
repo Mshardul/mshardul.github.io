@@ -14,6 +14,8 @@ import { projects } from "../content/projects.ts";
 import { skillGroups } from "../content/skills.ts";
 import { education } from "../content/education.ts";
 import { about } from "../content/about.ts";
+import { copy } from "../content/copy.ts";
+import { meta } from "../content/meta.ts";
 import { githubUrl, linkedinUrl } from "../lib/contact.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/skills.css";
@@ -22,7 +24,7 @@ import "../styles/components/contact.css";
 import "../styles/components/blob.css";
 ---
 
-<BaseLayout title={profile.name} description={profile.summary}>
+<BaseLayout title={meta.home.title} description={meta.home.description}>
   <main data-scroll="stack">
     <Section tone={1} id="intro" reveal>
       <span class="label">{profile.role}</span>
@@ -80,13 +82,13 @@ import "../styles/components/blob.css";
     </Section>
 
     <Section tone={3} id="build" reveal>
-      <Band heading="Build with me" text="Need a web app, mobile app, Mac app or Chrome extension built?">
+      <Band heading="Build with me" text={copy.home.buildBandText}>
         <Cta href="/build-with-me" label="See what I build →" primary />
       </Band>
     </Section>
 
     <Section tone={4} id="contact" heading="Get in touch" reveal>
-      <p class="lead">Have a project, a question or just want to say hello? Reach out.</p>
+      <p class="lead">{copy.home.contactLead}</p>
       <div class="contact-list">
         <Cta label="Email" mail />
         <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn</a>

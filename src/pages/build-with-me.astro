@@ -5,6 +5,7 @@ import Card from "../components/Card.astro";
 import Band from "../components/Band.astro";
 import PageHead from "../components/PageHead.astro";
 import Section from "../components/Section.astro";
+import { meta } from "../content/meta.ts";
 import "../styles/components/service.css";
 
 const services = [
@@ -21,7 +22,7 @@ const engagements = [
 ];
 ---
 
-<BaseLayout title="Build with me — Shardul Lingwal" description="From small tools to full products. What I build and how we can work together.">
+<BaseLayout title={meta.build.title} description={meta.build.description}>
   <main class="page-main">
     <PageHead label="Build with me" lead="From small tools to full products. Here is what I build and how we can work together.">
       Web, mobile, Mac and Chrome, <span class="highlight">built</span> properly.
