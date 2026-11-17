@@ -7,7 +7,7 @@ import { meta } from "../content/meta.ts";
 ---
 
 <BaseLayout title={meta.notFound.title} description={meta.notFound.description}>
-  <main class="page-main">
+  <main id="main" class="page-main">
     <PageHead lead={copy.notFound.lead}>
       {copy.notFound.headline}
       <Fragment slot="after">

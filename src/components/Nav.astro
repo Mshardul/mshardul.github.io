@@ -10,17 +10,19 @@ interface Props {
 const { current } = Astro.props;
 ---
 
-<nav class="nav" aria-label="Main navigation">
-  <div class="nav__inner">
-    <span class="nav__name">{profile.name}</span>
-    <div class="nav__links" id="nav-links">
-      <a class="nav__link" href="/#experience">Experience</a>
-      <a class="nav__link" href="/#built">Things I've built</a>
-      <a class="nav__link" href="/#skills">Skills</a>
-      <a class="nav__link" href="/#about">About</a>
-      <a class="nav__pill" href="/build-with-me" aria-current={current === "build" ? "page" : undefined}>Build with me</a>
-      <ThemeToggle />
-      <button class="nav__menu" aria-expanded="false" aria-controls="nav-links">☰ Menu</button>
+<header>
+  <nav class="nav" aria-label="Main navigation">
+    <div class="nav__inner">
+      <span class="nav__name">{profile.name}</span>
+      <div class="nav__links" id="nav-links">
+        <a class="nav__link" href="/#experience">Experience</a>
+        <a class="nav__link" href="/#built">Things I've built</a>
+        <a class="nav__link" href="/#skills">Skills</a>
+        <a class="nav__link" href="/#about">About</a>
+        <a class="nav__pill" href="/build-with-me" aria-current={current === "build" ? "page" : undefined}>Build with me</a>
+        <ThemeToggle />
+        <button class="nav__menu" aria-expanded="false" aria-controls="nav-links">☰ Menu</button>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
+</header>

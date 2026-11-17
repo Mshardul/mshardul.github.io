@@ -25,7 +25,7 @@ import "../styles/components/blob.css";
 ---
 
 <BaseLayout title={meta.home.title} description={meta.home.description}>
-  <main data-scroll="stack">
+  <main id="main" data-scroll="stack">
     <Section tone={1} id="intro" reveal>
       <span class="label">{profile.role}</span>
       <h1 class="heading heading--hero">{profile.headline}</h1>
@@ -58,7 +58,7 @@ import "../styles/components/blob.css";
       <div class="skill-grid">
         {skillGroups.map((group) => (
           <div>
-            <h4 class="skill-grid__title">{group.title}</h4>
+            <h3 class="skill-grid__title">{group.title}</h3>
             <TagList items={group.items} />
           </div>
         ))}
@@ -91,8 +91,8 @@ import "../styles/components/blob.css";
       <p class="lead">{copy.home.contactLead}</p>
       <div class="contact-list">
         <Cta label="Email" mail />
-        <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn</a>
-        <a href={githubUrl} target="_blank" rel="noopener">GitHub</a>
+        <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn <span class="visually-hidden">(opens in new tab)</span></a>
+        <a href={githubUrl} target="_blank" rel="noopener">GitHub <span class="visually-hidden">(opens in new tab)</span></a>
         {hasResume && <a href={RESUME_URL}>Download resume</a>}
       </div>
     </Section>

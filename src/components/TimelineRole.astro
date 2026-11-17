@@ -8,14 +8,17 @@ interface Props {
   role: Role;
   /** Detail pages render scope, bullets and tech; the home page renders highlights. */
   detail?: boolean;
+  /** Heading level of the role title: 2 when no h2 precedes it, 3 under a section heading. */
+  level?: 2 | 3;
 }
 
-const { role, detail = false } = Astro.props;
+const { role, detail = false, level = 3 } = Astro.props;
+const Heading = `h${level}` as "h2" | "h3";
 ---
 
 <div class="timeline__role">
   <div class="timeline__when">{role.start} – {role.end}</div>
-  <h3 class="heading heading--item">{role.title}, {role.company}</h3>
+  <Heading class="heading heading--item">{role.title}, {role.company}</Heading>
   {detail ? (
     <>
       {role.scope && <span class="scope">{role.scope}</span>}

@@ -12,7 +12,7 @@ export const copy = {
   },
   experience: {
     headline: { before: "7+ years of ", highlight: "leading", after: " and building." } satisfies Headline,
-    lead: "Every role with the impact, the tech and the scope. Claim-level detail only.",
+    lead: "Every role with the impact, the tech and the scope.",
   },
   projects: {
     headline: { before: "Seven things, ", highlight: "built", after: " with care." } satisfies Headline,

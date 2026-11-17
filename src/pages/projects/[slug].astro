@@ -21,7 +21,7 @@ const next = nextProject(project.slug);
 ---
 
 <BaseLayout title={`${project.name} | Shardul Lingwal`} description={project.pitch}>
-  <main class="page-main">
+  <main id="main" class="page-main">
     <PageHead crumb={project.name} lead={project.pitch} tags={project.tags}>
       {project.name}
       <div slot="after">
@@ -36,7 +36,7 @@ const next = nextProject(project.slug);
         {project.links && project.links.length > 0 && (
           <div class="project-links">
             {project.links.map((link) => (
-              <a href={link.href} target="_blank" rel="noopener">{link.label}</a>
+              <a href={link.href} target="_blank" rel="noopener">{link.label} <span class="visually-hidden">(opens in new tab)</span></a>
             ))}
           </div>
         )}

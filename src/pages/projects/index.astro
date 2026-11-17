@@ -11,7 +11,7 @@ const { headline } = copy.projects;
 ---
 
 <BaseLayout title={meta.projects.title} description={meta.projects.description}>
-  <main class="page-main">
+  <main id="main" class="page-main">
     <PageHead label="Things I've built" lead={copy.projects.lead}>
       {headline.before}<span class="highlight">{headline.highlight}</span>{headline.after}
     </PageHead>
@@ -19,7 +19,7 @@ const { headline } = copy.projects;
     <Section tone={2}>
       <div class="project-grid">
         {projects.map((project) => (
-          <ProjectCard {project} />
+          <ProjectCard {project} level={2} />
         ))}
       </div>
     </Section>

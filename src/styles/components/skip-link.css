@@ -1,0 +1,23 @@
+/*
+  Skip link. Hidden until it takes keyboard focus, then sits above the nav.
+  Imported by SkipLink. Uses only tokens from tokens.css.
+*/
+
+.skip-link {
+  position: fixed;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 30;
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid var(--color-line);
+  border-radius: var(--radius-card);
+  background: var(--color-card);
+  color: var(--color-text);
+  font-weight: 700;
+  box-shadow: var(--shadow-hard);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}

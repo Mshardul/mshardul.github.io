@@ -14,7 +14,7 @@ const { headline } = copy.experience;
 ---
 
 <BaseLayout title={meta.experience.title} description={meta.experience.description}>
-  <main class="page-main">
+  <main id="main" class="page-main">
     <PageHead label="Experience" lead={copy.experience.lead}>
       {headline.before}<span class="highlight">{headline.highlight}</span>{headline.after}
     </PageHead>
@@ -22,7 +22,7 @@ const { headline } = copy.experience;
     <Section tone={2}>
       <div class="timeline">
         {roles.map((role) => (
-          <TimelineRole {role} detail />
+          <TimelineRole {role} detail level={2} />
         ))}
       </div>
     </Section>
