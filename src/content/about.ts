@@ -1,4 +1,5 @@
 export const about = [
-  "A short professional bio in two or three paragraphs: what I do, how I work, what I care about in engineering.",
-  "Outside work: a few lines about interests, written in a human voice.",
+  "I spend most of my time on architecture, research, and meetings at the start of a project. As we settle in, epic planning grows to around 30% and proofs of concept for developers to around 20%, alongside sprints, reviews, and mentoring. As the project finds its pace, architecture work fades toward zero.",
+  "I like building things that help people, from personal projects I open to friends and family to architecturally challenging problems at work. Programming language is never a barrier. I use Cursor and Claude every day for coding, documentation and research, and write specs first (Spec Kit, BMAD) so AI-written code stays reviewable. I make the design calls; the tools speed up the typing.",
+  "Outside work, I enjoy sudoku, chess, badminton, scooty rides, mountains, travel, books across genres, and poetry.",
 ];

@@ -4,6 +4,7 @@ import Cta from "../components/Cta.astro";
 import { roles } from "../content/experience.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/section.css";
+import "../styles/components/tag.css";
 import "../styles/components/timeline.css";
 ---
 
@@ -19,21 +20,17 @@ import "../styles/components/timeline.css";
       <div class="section__inner">
         <div class="timeline">
           {roles.map((role) => (
-            "gap" in role ? (
-              <div class="timeline__gap"></div>
-            ) : (
-              <div class="timeline__role">
-                <div class="timeline__when">{role.start} – {role.end}</div>
-                <h3 class="heading heading--item">{role.title}, {role.company}</h3>
-                <ul>
-                  {role.bullets.map((bullet) => <li>{bullet}</li>)}
-                </ul>
-                <div class="tag-list">
-                  {role.tech.map((tech) => <span class="tag">{tech}</span>)}
-                </div>
-                {role.scope && <span class="scope">{role.scope}</span>}
+            <div class="timeline__role">
+              <div class="timeline__when">{role.start} – {role.end}</div>
+              <h3 class="heading heading--item">{role.title}, {role.company}</h3>
+              {role.scope && <span class="scope">{role.scope}</span>}
+              <ul>
+                {role.bullets.map((bullet) => <li>{bullet}</li>)}
+              </ul>
+              <div class="tag-list">
+                {role.tech.map((tech) => <span class="tag">{tech}</span>)}
               </div>
-            )
+            </div>
           ))}
         </div>
       </div>

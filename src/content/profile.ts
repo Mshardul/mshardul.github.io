@@ -1,12 +1,14 @@
 export const profile = {
   name: "Shardul Lingwal",
-  role: "Engineering Lead",
-  headline: "I lead teams that build things people use.",
-  summary: "Two or three lines summarising what I do, how I work and what I'm looking for next. Placeholder text.",
+  role: "Backend Engineering Lead · Python · Distributed Systems",
+  headline: "Backend lead. I build distributed systems from zero and lead the team that ships them.",
+  summary:
+    "7+ years building and leading production software. At McKinsey & Company I led the backend team from first commit to client go-live. Earlier I built multi-gateway payments at Bhanzu and a campaign platform at AIfluence.",
   facts: [
-    { title: "Role", note: "Company" },
-    { title: "10+ years", note: "Experience" },
-    { title: "City, Country", note: "Location" },
-    { title: "Leadership · Web · Mobile", note: "Core focus" },
+    { title: "Senior Software Engineer I", note: "McKinsey & Company" },
+    { title: "7+ years", note: "Experience" },
+    { title: "Dehradun, India", note: "Remote" },
+    { title: "Backend · Distributed systems · Zero-to-one", note: "Core focus" },
+    { title: "Executive MBA, IIM Kashipur", note: "In progress" },
   ],
 };

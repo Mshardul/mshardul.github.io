@@ -6,9 +6,17 @@
 
 .fact-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   gap: var(--space-4);
   margin-top: var(--space-6);
+}
+
+.fact {
+  grid-column: span 2;
+}
+
+.fact:nth-child(n + 4) {
+  grid-column: span 3;
 }
 
 .fact {
@@ -85,6 +93,15 @@
 @media (max-width: 700px) {
   .fact-grid {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .fact,
+  .fact:nth-child(n + 4) {
+    grid-column: auto;
+  }
+
+  .fact:last-child {
+    grid-column: span 2;
   }
 
   .skill-grid {

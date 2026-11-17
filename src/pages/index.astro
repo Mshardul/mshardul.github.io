@@ -10,6 +10,7 @@ import { about } from "../content/about.ts";
 import { githubUrl, linkedinUrl } from "../lib/contact.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/section.css";
+import "../styles/components/tag.css";
 ---
 
 <BaseLayout title={profile.name} description={profile.summary}>
@@ -43,15 +44,13 @@ import "../styles/components/section.css";
         </div>
         <div class="timeline">
           {roles.map((role) => (
-            "gap" in role ? (
-              <div class="timeline__gap"></div>
-            ) : (
-              <div class="timeline__role">
-                <div class="timeline__when">{role.start} – {role.end}</div>
-                <h3 class="heading heading--item">{role.title}, {role.company}</h3>
-                <p class="timeline__text">{role.summary}</p>
-              </div>
-            )
+            <div class="timeline__role">
+              <div class="timeline__when">{role.start} – {role.end}</div>
+              <h3 class="heading heading--item">{role.title}, {role.company}</h3>
+              <ul class="timeline__highlights">
+                {role.highlights.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
           ))}
         </div>
       </div>
