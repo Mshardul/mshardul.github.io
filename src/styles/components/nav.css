@@ -61,7 +61,6 @@
   white-space: nowrap;
 }
 
-.nav__toggle,
 .nav__menu {
   padding: 0.3em 0.85em;
   border: var(--border-width-thin) solid var(--color-line);
@@ -81,7 +80,6 @@
 
 .nav__name,
 .nav__pill,
-.nav__toggle,
 .nav__menu {
   white-space: nowrap;
 }

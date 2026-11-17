@@ -8,6 +8,7 @@ import { run as styleRun } from '../scripts/guards/style.ts';
 import { run as placeholdersRun } from '../scripts/guards/placeholders.ts';
 import { run as privateTermsRun } from '../scripts/guards/private-terms.ts';
 import { run as noindexRun } from '../scripts/guards/noindex.ts';
+import { run as cssUsageRun } from '../scripts/guards/css-usage.ts';
 
 /** A default terms file that does not exist, so tests never read the real local list. */
 const NO_DEFAULT = join(tmpdir(), 'guard-no-such-dir', '.private-terms');
@@ -244,4 +245,96 @@ test('noindex fails when INDEXABLE=true but robots still disallows', () => {
   strictEqual(failures.length, 1);
   strictEqual(failures[0].guard, 'noindex');
   strictEqual(failures[0].file, 'public/robots.txt');
+});
+
+const CSS_FILE = 'src/styles/components/box.css';
+const BOX_ASTRO = 'src/components/Box.astro';
+
+function cssUsage(files: Record<string, string>) {
+  return cssUsageRun({ file: '', content: '' }, { files });
+}
+
+test('css-usage passes when every class is defined, used, and the file is imported', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '.box { color: red; }',
+    [BOX_ASTRO]: '---\nimport "../styles/components/box.css";\n---\n<div class="box"></div>',
+  }), []);
+});
+
+test('css-usage fails on a component CSS file imported by no file', () => {
+  const failures = cssUsage({
+    [CSS_FILE]: '.box { color: red; }',
+    [BOX_ASTRO]: '<div class="box"></div>',
+  });
+  strictEqual(failures.some((f) => f.file === CSS_FILE && f.line === 1), true);
+});
+
+test('css-usage fails on a class defined in CSS but used nowhere', () => {
+  const failures = cssUsage({
+    [CSS_FILE]: '.box { color: red; }\n.ghost { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box"></div>',
+  });
+  deepStrictEqual(failures, [{ guard: 'css-usage', file: CSS_FILE, line: 2 }]);
+});
+
+test('css-usage fails on a class used in markup but defined nowhere', () => {
+  const failures = cssUsage({
+    [CSS_FILE]: '.box { color: red; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box zzmissing"></div>',
+  });
+  deepStrictEqual(failures, [{ guard: 'css-usage', file: BOX_ASTRO, line: 2 }]);
+});
+
+test('css-usage reads classes inside @media blocks and ignores declarations and comments', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '/* .commented { } */\n@media (max-width: 700px) {\n  .box { margin: 0.5em; background: url(a.png); }\n}',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box"></div>',
+  }), []);
+});
+
+test('css-usage matches classes built in a template literal and a conditional', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '.btn { color: red; }\n.btn.primary { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<a class={`btn ${primary ? "primary" : ""}`}></a>',
+  }), []);
+});
+
+test('css-usage treats a dynamic class prefix as a use and not as an undefined class', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '.tone-1 { color: red; }\n.tone-2 { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<section class={`tone-${tone}`}></section>',
+  }), []);
+});
+
+test('css-usage counts a class inside :not() as a reference, not a definition', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '.box a:not(.link) { color: red; }\n.link { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box"><a class="link"></a></div>',
+  }), []);
+});
+
+test('css-usage counts a class added by a script as used', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '.box { color: red; }\nhtml.is-ready { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box"></div>',
+    'src/scripts/init.ts': 'document.documentElement.classList.add("is-ready");',
+  }), []);
+});
+
+test('css-usage counts a class used only as a script selector as used', () => {
+  deepStrictEqual(cssUsage({
+    [CSS_FILE]: '.box { color: red; }\n.hook { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box hook"></div>',
+    'src/scripts/init.ts': 'document.querySelector(".hook");',
+  }), []);
+});
+
+test('css-usage failures never contain a class name', () => {
+  const failures = cssUsage({
+    [CSS_FILE]: '.box { color: red; }\n.zzghostclass { color: blue; }',
+    [BOX_ASTRO]: 'import "../styles/components/box.css";\n<div class="box zzmissingclass"></div>',
+  });
+  strictEqual(failures.length, 2);
+  const serialized = JSON.stringify(failures);
+  ok(!serialized.includes('zzghostclass') && !serialized.includes('zzmissingclass'), 'class name leaked into failure output');
 });

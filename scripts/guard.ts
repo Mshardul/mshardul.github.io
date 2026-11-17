@@ -7,6 +7,7 @@ import { run as placeholders } from "./guards/placeholders.ts";
 import { run as style } from "./guards/style.ts";
 import { run as cssHygiene } from "./guards/css-hygiene.ts";
 import { run as noindex } from "./guards/noindex.ts";
+import { run as cssUsage } from "./guards/css-usage.ts";
 import {
   type Failure,
   type GuardCtx,
@@ -38,6 +39,10 @@ const WARN_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [
 const MESSAGE_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [privateTerms];
 
 const GLOBAL_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [noindex];
+
+// Repo-level warn guards: warn until Task 10 clears the CSS-usage failures,
+// then move to GLOBAL_GUARDS.
+const GLOBAL_WARN_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [cssUsage];
 
 function readFile(path: string): string {
   try {
@@ -163,6 +168,11 @@ function main(argv: string[]): number {
     for (const guard of GLOBAL_GUARDS) {
       for (const f of guard({ file: "", content: "" })) {
         addFailure(failures, seen, f);
+      }
+    }
+    for (const guard of GLOBAL_WARN_GUARDS) {
+      for (const f of guard({ file: "", content: "" })) {
+        addFailure(strict ? failures : warnings, strict ? seen : warnSeen, f);
       }
     }
   }
