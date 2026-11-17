@@ -15,7 +15,36 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4.2.2
+
+      - name: Setup Node
+        uses: actions/setup-node@v4.1.0
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run guards
+        run: npm run guard
+        env:
+          CI: true
+
+      - name: Run tests
+        run: npm test
+
+      - name: Typecheck
+        run: npm run check
+
+      - name: Build
+        run: npm run build
+
   deploy:
+    needs: verify
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

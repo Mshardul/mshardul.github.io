@@ -1,0 +1,29 @@
+# Private terms list for the guards. Mock data only: copy this file to
+# .private-terms (gitignored), replace the mock words with your own, and never
+# commit the real file.
+#
+# The guards read .private-terms at the repo root automatically. To use a list
+# elsewhere, set PRIVATE_TERMS_FILE to its path; the variable always wins.
+#
+# One term per line. Whole-word and case-insensitive. Blank lines and lines
+# starting with # are ignored. If the list is missing or empty, the guard fails
+# closed and blocks the commit (CI skips it).
+
+# colleagues (names of people you work or worked with)
+zzcolleagueone
+zzcolleaguetwo
+
+# clients and domain words (client names, products, industries that identify them)
+zzclientone
+zzclienttwo
+zzdomainword
+
+# codenames (internal project and product names)
+zzcodenameone
+zzcodenametwo
+
+# freelance practice name
+zzpracticename
+
+# private paths and local setup details
+zzprivatepath

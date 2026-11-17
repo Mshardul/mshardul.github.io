@@ -21,6 +21,9 @@ npm-debug.log*
 # agent workspace (superpowers executing-plans ledger, briefs, review packages)
 .superpowers/
 
+# private terms list for the guards (PRIVATE_TERMS_FILE may point here)
+.private-terms
+
 # local planning docs (not published)
 docs/plan/
 docs/superpowers/

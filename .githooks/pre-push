@@ -1,0 +1,40 @@
+#!/bin/sh
+
+# Full guard over the working tree (blocks on private terms, email outside
+# contact.ts, css hygiene, noindex). Placeholder/style guards only warn.
+node scripts/guard.ts || exit 1
+
+# Git invokes pre-push with:
+#   $1 = remote name, $2 = remote URL
+#   stdin: <local ref> <local sha> <remote ref> <remote sha> (one per line)
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ -z "$local_sha" ] && continue
+
+  # Deleting a remote branch pushes nothing.
+  if [ "$local_sha" = "0000000000000000000000000000000000000000" ]; then
+    continue
+  fi
+
+  if [ "$remote_sha" != "0000000000000000000000000000000000000000" ] \
+     && git cat-file -e "$remote_sha^{commit}" 2>/dev/null; then
+    # Existing branch whose remote tip we have: scan what is between.
+    commits=$(git log --format='%H' --reverse "$remote_sha..$local_sha") || {
+      echo "pre-push: failed to list commits for $local_ref" >&2
+      exit 1
+    }
+  else
+    # New branch, or a remote tip we do not have (for example a force-push
+    # after a history rewrite): scan everything not on a remote-tracking branch.
+    commits=$(git log --format='%H' --reverse "$local_sha" --not --remotes) || {
+      echo "pre-push: failed to list commits for $local_ref" >&2
+      exit 1
+    }
+  fi
+
+  [ -z "$commits" ] && continue
+
+  # Message and added lines of every commit, reported as <short sha> <path>:<line>.
+  # shellcheck disable=SC2086
+  set -- $(for c in $commits; do echo "--commit $c"; done)
+  node scripts/guard.ts "$@" || exit 1
+done
