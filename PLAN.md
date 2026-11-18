@@ -11,5 +11,4 @@ The plan lives in [docs/plan/](docs/plan/README.md), split by topic:
 - [Open, leaning and parked](docs/plan/open-and-parked.md)
 - [Build gates](docs/plan/README.md#build-gates-stop-and-ask-at-each)
 
-Locked design reference: [docs/design/bold-mockup.html](docs/design/bold-mockup.html)
-Homepage scroll reference: [docs/design/scroll/index.html](docs/design/scroll/index.html)
+Approved design reference: [docs/design/site/index.html](docs/design/site/index.html)
