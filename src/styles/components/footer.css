@@ -36,6 +36,9 @@
 }
 
 .footer__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
   color: var(--color-link);
   text-decoration: underline;
   text-underline-offset: var(--underline-offset);

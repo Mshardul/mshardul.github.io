@@ -46,9 +46,25 @@ function bindNavMenu() {
   const newBtn = menuBtn.cloneNode(true) as HTMLElement;
   menuBtn.parentNode?.replaceChild(newBtn, menuBtn);
 
-  newBtn.addEventListener("click", () => {
-    const expanded = links.classList.toggle("nav__links--open");
-    newBtn.setAttribute("aria-expanded", String(expanded));
+  const setOpen = (open: boolean) => {
+    links.classList.toggle("nav__links--open", open);
+    newBtn.setAttribute("aria-expanded", String(open));
+  };
+  const isOpen = () => links.classList.contains("nav__links--open");
+
+  newBtn.addEventListener("click", () => setOpen(!isOpen()));
+
+  // Escape closes the menu and returns focus to the button.
+  links.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && isOpen()) {
+      setOpen(false);
+      newBtn.focus();
+    }
+  });
+
+  // Following a menu link closes the menu (same-page anchors do not reload).
+  links.addEventListener("click", (event) => {
+    if ((event.target as Element).closest("a")) setOpen(false);
   });
 }
 

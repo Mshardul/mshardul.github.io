@@ -40,7 +40,9 @@
 }
 
 .see {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
   margin-top: var(--space-3);
   font-size: var(--text-sm);
   font-weight: 700;

@@ -13,5 +13,8 @@
 }
 
 .contact-list > a:not(.btn) {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
   color: var(--color-link);
 }

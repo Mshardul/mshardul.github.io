@@ -30,3 +30,6 @@ npm-debug.log*
 # local planning docs (not published)
 docs/plan/
 docs/superpowers/
+
+# Playwright MCP snapshots and console logs
+.playwright-mcp/

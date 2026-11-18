@@ -18,6 +18,7 @@
   --color-card: #fff;
   --color-link: #b82e0e;
   --color-shadow: #1a1a1a;
+  --color-focus: #1a1a1a; /* focus ring, light theme */
   --color-ink: #1a1a1a; /* text on the fixed bright colours below, both themes */
 
   /* colour: fixed bright blocks */
@@ -86,6 +87,7 @@
   --underline-offset: 3px;
   --content-width: 1040px;
   --hairline: 1px;
+  --target-min: 24px; /* minimum pointer target size, WCAG 2.5.8 */
 
   /* motion */
   --duration-reveal: 0.6s;
@@ -105,6 +107,7 @@
   --color-on-accent: #15122a;
   --color-card: #201b3f;
   --color-link: #ff7a5c;
+  --color-focus: #ff7a5c;
   --color-shadow: #ff7a5c;
   --color-surface-1: #15122a;
   --color-surface-2: #241d4a;
