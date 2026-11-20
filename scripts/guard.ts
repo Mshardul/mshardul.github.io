@@ -8,6 +8,7 @@ import { run as style } from "./guards/style.ts";
 import { run as cssHygiene } from "./guards/css-hygiene.ts";
 import { run as noindex } from "./guards/noindex.ts";
 import { run as cssUsage } from "./guards/css-usage.ts";
+import { run as techIcons } from "./guards/tech-icons.ts";
 import {
   type Failure,
   type GuardCtx,
@@ -38,7 +39,7 @@ const WARN_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [
 // generic-bans/placeholders/style are scoped to src trees.
 const MESSAGE_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [privateTerms];
 
-const GLOBAL_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [noindex, cssUsage];
+const GLOBAL_GUARDS: Array<(ctx: GuardCtx) => Failure[]> = [noindex, cssUsage, techIcons];
 
 function readFile(path: string): string {
   try {

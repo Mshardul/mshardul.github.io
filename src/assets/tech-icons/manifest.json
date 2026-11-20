@@ -1,0 +1,152 @@
+{
+  "icons": [
+    {
+      "label": "Python",
+      "file": "python.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "FastAPI",
+      "file": "fastapi.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Celery",
+      "file": "celery.svg",
+      "source": "celery project logo, traced to single colour",
+      "version": "celery/celery docs/images/celery_512.png",
+      "license": "unverified"
+    },
+    {
+      "label": "Redis",
+      "file": "redis.svg",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "PostgreSQL",
+      "file": "postgresql.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Flask",
+      "file": "flask.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "DynamoDB",
+      "file": "amazondynamodb.svg",
+      "source": "simple-icons",
+      "version": "13.21.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "AWS",
+      "file": "amazonwebservices.svg",
+      "source": "simple-icons",
+      "version": "13.21.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Go",
+      "file": "go.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "React",
+      "file": "react.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "MySQL",
+      "file": "mysql.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "MongoDB",
+      "file": "mongodb.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "GitLab CI/CD",
+      "file": "gitlab.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Angular",
+      "file": "angular.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "HTML/CSS",
+      "file": "html5.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Bootstrap",
+      "file": "bootstrap.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Material UI",
+      "file": "mui.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": ".NET",
+      "file": "dotnet.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "C#",
+      "file": "csharp.svg",
+      "source": "simple-icons",
+      "version": "12.4.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Azure",
+      "file": "microsoftazure.svg",
+      "source": "simple-icons",
+      "version": "12.4.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "SQL",
+      "file": "database.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    }
+  ],
+  "_note": "Technology logos are trademarks of their owners. Each icon is a vendored SVG file; add a technology here before using it in content. Run npm run guard."
+}
