@@ -33,3 +33,6 @@ docs/superpowers/
 
 # Playwright MCP snapshots and console logs
 .playwright-mcp/
+
+# python virtualenv
+.venv/

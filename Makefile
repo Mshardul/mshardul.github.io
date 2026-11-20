@@ -1,4 +1,17 @@
-.PHONY: screenshots
+.PHONY: up mockup screenshots
+
+# Serve the static design mockups at http://localhost:8000/docs/design/mockup/.
+# Served from the repo root because the mockups load logos and the photo from
+# ../../../src/assets. Needs .venv (python3 -m venv .venv). Change the port with
+#   make mockup PORT=9000
+PORT ?= 8000
+mockup:
+	.venv/bin/python -m http.server $(PORT) --bind 127.0.0.1
+
+# Start the Astro dev server (hot reload) at http://localhost:4321/.
+# Pass extra flags with ARGS, e.g. make up ARGS="--host --port 3000"
+up:
+	npm run dev -- $(ARGS)
 
 # Build, then screenshot every view in every screen size, theme and JS setting
 # into .screenshots/<yyyymmdd>-<HHMMSS>/. Narrow it with ARGS, e.g.

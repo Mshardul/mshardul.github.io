@@ -11,4 +11,4 @@ The plan lives in [docs/plan/](docs/plan/README.md), split by topic:
 - [Open, leaning and parked](docs/plan/open-and-parked.md)
 - [Build gates](docs/plan/README.md#build-gates-stop-and-ask-at-each)
 
-Approved design reference: [docs/design/site/index.html](docs/design/site/index.html)
+Approved design reference: [docs/design/mockup/index.html](docs/design/mockup/index.html)

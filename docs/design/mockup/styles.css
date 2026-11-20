@@ -254,3 +254,33 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .sitefoot p{margin-top:4px}
 .sitefoot nav{display:flex;gap:10px 26px;flex-wrap:wrap;align-items:flex-start}
 .sitefoot nav a{color:var(--text);text-decoration:none;font-weight:500}.sitefoot nav a:hover{color:var(--blue)}
+
+/* home: how I work, education, outside work */
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;margin-top:48px;position:relative}
+.phases::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:var(--line)}
+.step{position:relative;padding-top:36px}
+.step::before{content:"";position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--blue)}
+.step:first-child::before{background:var(--blue)}
+.step .when{font-weight:600;font-size:14.5px;color:var(--mute)}
+.step h3{font-size:clamp(21px,2vw,26px);line-height:1.2;margin:4px 0 8px}
+.step p{font-size:16.5px;max-width:34ch}
+.aiwork{margin-top:48px;padding:28px 32px;background:var(--soft);border:1px solid var(--line);border-radius:14px;display:grid;grid-template-columns:260px 1fr;gap:12px 40px;align-items:start}
+.aiwork h3{font-size:clamp(21px,2vw,26px);line-height:1.2}
+.aiwork p{max-width:62ch;font-size:17.5px}
+@media(max-width:860px){
+  .phases{grid-template-columns:1fr;gap:28px;padding-left:34px}
+  .phases::before{left:7px;right:auto;top:8px;bottom:8px;width:2px;height:auto}
+  .step{padding-top:0}
+  .step::before{left:-34px;top:6px}
+  .aiwork{grid-template-columns:1fr}
+}
+.beyond{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(36px,6vw,80px)}
+.beyond h2{max-width:none}
+.beyond .lead{margin-top:16px;font-size:18px}
+.edu.compact{margin-top:26px}
+.edu.compact .er{grid-template-columns:1fr auto;gap:2px 20px;padding:16px 0}
+.edu.compact .er b{font-size:clamp(18px,1.8vw,21px)}
+.edu.compact .er span{grid-column:1;font-size:16px}
+.edu.compact .er em{grid-row:1;grid-column:2}
+.beyond .tags.big{margin-top:24px}
+@media(max-width:860px){.beyond{grid-template-columns:1fr}}
