@@ -1,12 +1,90 @@
 /*
-  Design tokens. Every colour, size, spacing step, radius, border, shadow and
-  duration lives here. Ported from docs/design/scroll/css/tokens.css (locked).
-  Other CSS files only use var(--...). Breakpoint: 700px.
+  Design tokens. Every colour, size, space, radius, border, shadow and duration lives here
+  (decisions 29, 30, 38-40; docs/design/css-inventory.md). Other CSS uses only var(--...).
+  Add a role here before using a new value.
+
+  Breakpoints cannot be custom properties, so CSS uses three literal values in @media:
+    phone 560px, tablet 760px, desktop-narrow 980px
+
+  The "legacy" block at the end belongs to the previous design and is removed when the
+  last page is ported (port stage 3).
 */
-:root {
+
+:root{
+  /* colour (frozen palette) */
+  --bg:#ffffff; --soft:#f4f6fa; --ink:#0d1f3c; --text:#26324a; --mute:#5b667c; --line:#dfe4ec;
+  --blue:#1c4fd8; --blue-d:#173fae; --on-blue:#fff; --navy:#0d1f3c; --on-navy:#fff; --ok:#16a06a;
+  --focus:#1c4fd8;
+  --control-border:var(--mute); /* borders of controls (3:1); dividers and cards keep --line */
+
+  /* colour: controls on dark surfaces (same values as before, now named) */
+  --btn-on-dark-bg:#fff; --btn-on-dark-fg:#0d1f3c; --btn-on-dark-hover:#e8edf7;
+  --ghost-on-dark-border:rgba(255,255,255,.4); --check-on-dark-bg:rgba(255,255,255,.14);
+  --shadow-pop:0 16px 36px -16px rgba(13,31,60,.28);
+  --shadow-hover:0 14px 34px -18px rgba(28,79,216,.35);
+
+  /* type */
+  --serif:'Newsreader',Georgia,serif; --sans:'Public Sans',system-ui,sans-serif;
+  --fs-caption:13px; --fs-meta:14px; --fs-text-sm:16px; --fs-text:17px; --fs-lead:19px;
+  --fs-h4:clamp(19px,2vw,24px);
+  --fs-h3:clamp(21px,2.2vw,26px);
+  --fs-h3-lg:clamp(24px,3vw,34px);
+  --fs-h2:clamp(30px,3.8vw,46px);
+  --fs-h2-xl:clamp(34px,4.2vw,52px);
+  --fs-stat:clamp(40px,4.6vw,60px);
+  --fs-h1:clamp(38px,5.4vw,60px);
+  --fs-h1-xl:clamp(44px,7vw,92px);
+  --lh-display:1.1; --lh-heading:1.25; --lh-text:1.55; --lh-body:1.65;
+  --track-heading:-.015em; --track-display:-.03em;
+  --measure-heading:20ch; --measure-narrow:34ch; --measure-text:60ch;
+
+  /* spacing scale: the only spacing numbers */
+  --sp-1:4px; --sp-2:8px; --sp-3:12px; --sp-4:16px; --sp-5:24px; --sp-6:32px; --sp-7:48px;
+
+  /* spacing roles */
+  --gap-inline:var(--sp-2);   /* icon to label, chip rows */
+  --gap-stack:var(--sp-3);    /* label to title, list items, button groups */
+  --gap-text:var(--sp-4);     /* heading to paragraph, inner content */
+  --gap-block:var(--sp-5);    /* grid and card gaps */
+  --gap-content:var(--sp-6);  /* title block to its content */
+  --gap-region:var(--sp-7);   /* section heading to its content */
+  --pad-control-sm:var(--sp-4); --pad-control:var(--sp-5); --pad-control-lg:var(--sp-6);
+  --pad-card:var(--sp-5); --pad-card-feature:clamp(28px,3.4vw,44px);
+  --pad-row:var(--sp-6); --pad-row-sm:var(--sp-5); --pad-cell:var(--sp-5);
+  --pad-section:clamp(40px,5vw,64px); --pad-section-tight:var(--sp-6);
+  --pad-hero:clamp(40px,6vw,72px);
+  --pad-pagehead:clamp(48px,7vw,88px); --pad-pagehead-end:clamp(28px,4vw,48px);
+  --pad-band:clamp(48px,6vw,80px);
+  --pad-fullpage:clamp(72px,12vw,160px);
+  --gap-split:clamp(32px,6vw,88px);
+  --gutter:var(--sp-5);
+  --max:1160px; --header-h:72px;
+
+  /* shape */
+  --radius-control:8px; --radius-card:14px; --radius-pill:99px; --radius-circle:50%; --radius-focus:4px;
+  --bw-hair:1px; --bw-control:1.5px; --bw-rule:2px; --bw-focus:3px;
+  --duration:.15s;
+
+  /* control and icon sizes */
+  --control-h:40px; --button-h:48px; --button-h-lg:56px;
+  /* component dimensions (the css-hygiene guard keeps raw px out of component CSS) */
+  --w-row-when:200px; --w-row-label:260px; --w-row-action:190px; --w-row-year:150px;
+  --w-photo:440px; --w-note:260px; --h-mark:28px; --w-mark-max:130px;
+  --blur-header:10px; --focus-offset:3px; --press-offset:1px; --offscreen:-999px;
+  --icon-sm:16px; --icon-md:18px; --icon-lg:24px; --dot:8px; --avatar:56px;
+}
+@media(pointer:coarse){:root{--control-h:44px}}
+
+:root[data-theme="dark"]{
+  --bg:#0a1424; --soft:#101d33; --ink:#f1f4fa; --text:#c6cfe0; --mute:#93a0b8; --line:#1f2e49;
+  --blue:#5b86ff; --blue-d:#7b9dff; --on-blue:#07122a; --navy:#1a2f57; --on-navy:#f1f4fa; --ok:#3bd391; --focus:#8ba9ff;
+}
+
+/* ===== legacy: previous design tokens, removed in port stage 3 ===== */
+:root { /* legacy */
   /* fonts */
-  --font-head: "Space Grotesk", Inter, sans-serif;
-  --font-body: Inter, -apple-system, Helvetica, sans-serif;
+  --font-head: var(--serif);
+  --font-body: var(--sans);
 
   /* colour: semantic */
   --color-bg: #fff4e0;
@@ -57,8 +135,6 @@
   /* shape */
   --border-width: 2.5px;
   --border-width-thin: 2px;
-  --radius-card: 22px;
-  --radius-pill: 999px;
   --radius-sheet: 36px;
   --shadow-hard: 5px 5px 0 var(--color-shadow);
   --dot-size: 16px;

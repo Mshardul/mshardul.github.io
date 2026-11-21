@@ -1,5 +1,6 @@
 ---
-import "../styles/components/button.css";
+// Bridge for the old pages: removed in port stage 3 when the pages use Button directly.
+import Button from "./Button.astro";
 
 interface Props {
   primary?: boolean;
@@ -11,15 +12,4 @@ interface Props {
 const { primary = false, label, href, mail = false } = Astro.props;
 ---
 
-{mail ? (
-  <a class={`btn ${primary ? "primary" : ""}`} href="#" data-mail data-mail-subject={label}>
-    {label}
-    <noscript>Enable JavaScript to email me</noscript>
-  </a>
-) : href ? (
-  <a class={`btn ${primary ? "primary" : ""}`} href={href}>
-    {label}
-  </a>
-) : (
-  <button class={`btn ${primary ? "primary" : ""}`}>{label}</button>
-)}
+<Button {label} {href} {mail} subject={label} variant={primary ? "primary" : "ghost"} />

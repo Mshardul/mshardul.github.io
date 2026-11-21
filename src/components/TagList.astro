@@ -1,5 +1,6 @@
 ---
-import "../styles/components/tag.css";
+// Bridge for the old pages: removed in port stage 3 when the pages use ChipList directly.
+import ChipList from "./ChipList.astro";
 
 interface Props {
   items: string[];
@@ -8,6 +9,4 @@ interface Props {
 const { items } = Astro.props;
 ---
 
-<div class="tag-list">
-  {items.map((item) => <span class="tag">{item}</span>)}
-</div>
+<ChipList {items} />

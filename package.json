@@ -16,8 +16,8 @@
     "prepare": "git config core.hooksPath .githooks"
   },
   "dependencies": {
-    "@fontsource/inter": "5.1.0",
-    "@fontsource/space-grotesk": "5.1.0",
+    "@fontsource/newsreader": "5.1.0",
+    "@fontsource/public-sans": "5.1.0",
     "astro": "7.4.12"
   },
   "devDependencies": {

@@ -1,0 +1,47 @@
+---
+import "../styles/components/button.css";
+import Icon from "./Icon.astro";
+
+interface Props {
+  label: string;
+  /** Link target. Leave out for an email button (see `mail`) or a plain <button>. */
+  href?: string;
+  variant?: "primary" | "ghost";
+  size?: "sm";
+  /** Icon before the label; `arrow` after it. */
+  icon?: "mail" | "download" | "arrow";
+  /** Email button: the address is put together in the browser (see src/scripts/init.ts). */
+  mail?: boolean;
+  /** Subject line of the email. */
+  subject?: string;
+  download?: boolean;
+  class?: string;
+}
+
+const {
+  label,
+  href,
+  variant = "primary",
+  size,
+  icon,
+  mail = false,
+  subject,
+  download = false,
+  class: extra,
+} = Astro.props;
+
+const Tag = mail || href ? "a" : "button";
+const attrs = mail
+  ? { href: "#", "data-mail": "", "data-mail-subject": subject }
+  : href
+    ? { href, download: download || undefined }
+    : { type: "button" as const };
+const ghost = variant === "ghost";
+const small = size === "sm";
+const before = icon && icon !== "arrow" ? icon : undefined;
+---
+
+<Tag class:list={["button", { "button--ghost": ghost, "button--sm": small }, extra]} {...attrs}>
+  {before && <Icon name={before} />}{label}{icon === "arrow" && <Icon name="arrow" />}
+  {mail && !small && <noscript>Enable JavaScript to email me</noscript>}
+</Tag>

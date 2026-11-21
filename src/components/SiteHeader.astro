@@ -1,0 +1,32 @@
+---
+import "../styles/components/site-header.css";
+import Button from "./Button.astro";
+import { profile } from "../content/profile.ts";
+
+interface Props {
+  current?: "home" | "experience" | "projects" | "build";
+}
+
+const { current } = Astro.props;
+
+const links = [
+  { key: "experience", label: "Experience", href: "/experience" },
+  { key: "projects", label: "Projects", href: "/projects" },
+  { key: "build", label: "Build with me", href: "/build-with-me" },
+] as const;
+---
+
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="/">{profile.name}</a>
+    <nav class="nav-links" id="nav-links" aria-label="Main">
+      {links.map((link) => (
+        <a class="nav-link" href={link.href} aria-current={current === link.key ? "page" : undefined}>{link.label}</a>
+      ))}
+      <Button mail subject="Get in touch" label="Get in touch" class="nav-cta-mobile" />
+    </nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="Switch to dark theme">◐</button>
+    <Button mail subject="Get in touch" label="Get in touch" size="sm" />
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+  </div>
+</header>

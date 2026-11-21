@@ -9,6 +9,12 @@
   padding: 0 var(--space-gutter);
 }
 
+.container {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
 /* Detail pages sit below the fixed nav. */
 .page-main {
   padding-top: var(--nav-height);

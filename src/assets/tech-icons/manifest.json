@@ -17,9 +17,9 @@
     {
       "label": "Celery",
       "file": "celery.svg",
-      "source": "celery project logo, traced to single colour",
-      "version": "celery/celery docs/images/celery_512.png",
-      "license": "unverified"
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
     },
     {
       "label": "Redis",

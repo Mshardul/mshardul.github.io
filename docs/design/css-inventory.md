@@ -211,6 +211,27 @@ Not done: tick icon on the feature cards still bakes colours into a data-URI ima
 
 Bug fixed during review: the home "Tools I ship with" chips were unstyled after the rename (the list had an inline style that the rename script skipped).
 
+## 15. Port log (to `src/`, decisions 46-48)
+
+**Stage 1 done:** fonts and tokens.
+
+- `package.json`: added `@fontsource/newsreader` and `@fontsource/public-sans` (exact `5.1.0`, same pin as the old font packages); removed `@fontsource/inter` and `@fontsource/space-grotesk`.
+- `BaseLayout.astro`: imports Newsreader 500/600 and Public Sans 400-700.
+- `src/styles/tokens.css`: the mockup tokens plus the component dimensions the `css-hygiene` guard needs (`--w-row-when`, `--w-photo`, `--blur-header` and similar). The previous design's tokens stay in a marked "legacy" block so the old pages still build; `--font-head` and `--font-body` point at the new fonts. The block is removed in stage 3.
+- Result: `npm run guard` (same 32 non-blocking warnings), `npm run check` and `npm run build` pass. The site looks like the old design in the new fonts until stage 2 and 3.
+
+**Stage 2 done:** global components.
+
+- New components: `Button` (variants, small size, icons, email buttons with a subject), `Icon` (mail, download, arrow), `ChipList` (inline tech icons from `src/assets/tech-icons/`), `SiteHeader` (brand, nav, theme toggle, "Get in touch", menu button), `SiteFooter` (follows the mockup). `SkipLink` restyled.
+- New CSS: `button.css` (rewritten, with active and disabled states), `chip.css`, `icon.css`, `site-header.css`, `site-footer.css`, `skip-link.css`; `base.css` rewritten to the mockup base (sticky-header `scroll-margin-top`, `text-wrap`, focus ring); `.container` added to `helpers.css`.
+- Removed: `Nav`, `Footer`, `ThemeToggle` and their CSS, plus `tag.css`. `Cta` and `TagList` stay as thin bridges onto `Button` and `ChipList` until stage 3 removes them.
+- Celery icon is now the Simple Icons mark (decision 42), manifest updated (`simple-icons` 16.38.0, CC0).
+- Menu: label "Menu"/"Close" with `aria-expanded`, Escape closes it and returns focus, links work without JS. The small header email button is hidden without JS (the address is only put together by script, which the `email-location` guard requires).
+- Footer follows the mockup (decision 48), so the old LinkedIn and GitHub links are gone from it.
+- **Existing bug fixed:** `astro:page-load` and `astro:after-swap` were listened for on `window`, but Astro fires them on `document` without bubbling, so after a client-side page change nothing re-ran (theme toggle, menu, email links, theme re-apply). Both listeners are now on `document`, and the theme toggle binds only once.
+- Checks: guard (same 32 non-blocking warnings), `npm run check` (0 errors), `npm test` (46 pass), build. Browser check on the built site: menu opens and closes with the right label, Escape returns focus, the theme toggle label follows the theme, and the menu and email links still work after a page change.
+- Note: the `css-usage` guard only reads files git knows about, so new files need `git add` (or `git add -N`) before the guard sees them.
+
 ## 12. What happens on approval
 
 - New file `docs/design/mockup/tokens.css` (colours as today plus the roles above), and `styles.css` rewritten to use only role classes and tokens.

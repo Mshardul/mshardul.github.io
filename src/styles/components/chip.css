@@ -1,0 +1,29 @@
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--gap-inline);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-inline);
+  font-size: var(--fs-meta);
+  font-weight: 500;
+  padding: var(--sp-1) var(--sp-3);
+  border: var(--bw-hair) solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--text);
+  background: var(--bg);
+}
+
+.chip--sm {
+  font-size: var(--fs-caption);
+}
+
+.logo-icon {
+  flex: none;
+  fill: currentColor;
+  width: var(--icon-sm);
+  height: var(--icon-sm);
+}

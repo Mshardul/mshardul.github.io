@@ -1,0 +1,22 @@
+---
+import "../styles/components/site-footer.css";
+import { profile } from "../content/profile.ts";
+import { hasResume, RESUME_URL } from "../lib/site.ts";
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div>
+      <b>{profile.name}</b>
+      <p>Backend Engineering Lead · Dehradun, India · Remote</p>
+    </div>
+    <nav aria-label="Footer">
+      <a href="/experience">Experience</a>
+      <a href="/projects">Projects</a>
+      <a href="/build-with-me">Build with me</a>
+      <a href="#" data-mail>Email</a>
+      {hasResume && <a href={RESUME_URL} download>Resume</a>}
+    </nav>
+    <p class="site-footer__credits">Technology and employer logos belong to their owners. Icons from Simple Icons (CC0) and Lucide.</p>
+  </div>
+</footer>

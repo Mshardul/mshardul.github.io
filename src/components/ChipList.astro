@@ -1,0 +1,41 @@
+---
+import "../styles/components/chip.css";
+
+type Item = string | { label: string; icon?: string };
+
+interface Props {
+  items: Item[];
+  /** Smaller text, for chips inside a card. */
+  small?: boolean;
+}
+
+const { items, small = false } = Astro.props;
+
+// Inline the tech icons so they take the chip's text colour. Keys are the file names
+// without ".svg" (python, fastapi, ...), as listed in src/assets/tech-icons/manifest.json.
+const files = import.meta.glob("../assets/tech-icons/*.svg", {
+  query: "?raw",
+  import: "default",
+  eager: true,
+}) as Record<string, string>;
+const icons: Record<string, string> = {};
+for (const [path, raw] of Object.entries(files)) {
+  const key = path.split("/").pop()!.replace(".svg", "");
+  icons[key] = raw
+    .replace(/<title>.*?<\/title>/, "")
+    .replace(' role="img"', ' class="logo-icon" aria-hidden="true" focusable="false"');
+}
+---
+
+<div class="chip-list">
+  {items.map((item) => {
+    const label = typeof item === "string" ? item : item.label;
+    const icon = typeof item === "string" ? undefined : icons[item.icon ?? ""];
+    return (
+      <span class={small ? "chip chip--sm" : "chip"}>
+        {icon && <Fragment set:html={icon} />}
+        {label}
+      </span>
+    );
+  })}
+</div>
