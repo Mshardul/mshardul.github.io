@@ -1,15 +1,17 @@
 /*
-  Visual check runner: `make screenshots`.
+  Visual check runner: `make screenshots` (built site) and `make screenshots-mockup`
+  (static design mockups in docs/design/mockup).
 
-  Serves the built `dist/` on a free local port and screenshots every page view
-  in every browser, screen size, theme and JS setting, into
-  `.screenshots/<yyyymmdd>-<HHMMSS>/<browser>/<screen>/<view>--<theme>--js-<on|off>.png`.
+  Serves the target on a free local port and screenshots every page view in every
+  browser, screen size, theme and JS setting, into
+  `.screenshots/<yyyymmdd>-<HHMMSS>[-mockup]/<browser>/<screen>/<view>--<theme>--js-<on|off>.png`.
 
   A view is a path, optionally with a `#id`. A hash view scrolls to that
   element and captures one viewport; a view without a hash captures the full
   page unless it is marked `full: false`.
 
   Filters (all optional, comma-separated): --view, --screen, --theme, --js, --browser
+  Target: --target site (default) | mockup
   e.g. node scripts/screenshots.ts --view home,experience --screen mobile --theme dark
 */
 
@@ -21,9 +23,12 @@ import { chromium, webkit, type Browser, type BrowserType } from "playwright";
 import { projects } from "../src/content/projects.ts";
 
 const DIST = resolve("dist");
+const REPO = resolve(".");
 const OUT_ROOT = resolve(".screenshots");
 
-type View = { name: string; url: string; full: boolean };
+// `click` is a selector to click before the shot, e.g. to open a menu. The view is
+// skipped when JS is off or the element is not visible (the menu button is hidden on desktop).
+type View = { name: string; url: string; full: boolean; click?: string };
 
 const homeSections = ["experience", "built", "skills", "education", "about", "build", "contact"];
 
@@ -36,6 +41,27 @@ const VIEWS: View[] = [
   { name: "build-with-me", url: "/build-with-me", full: true },
   { name: "not-found", url: "/404.html", full: true },
 ];
+
+// The mockups are static files that load assets from ../../../src and ../../../public,
+// so they are served from the repo root, not from a folder of their own.
+const MOCKUP_BASE = "/docs/design/mockup";
+const mockupSections = ["proof", "help", "experience", "beyond", "contact"];
+const MOCKUP_VIEWS: View[] = [
+  { name: "home", url: `${MOCKUP_BASE}/index.html`, full: false },
+  ...mockupSections.map((id) => ({ name: `home-${id}`, url: `${MOCKUP_BASE}/index.html#${id}`, full: false })),
+  { name: "home-menu-open", url: `${MOCKUP_BASE}/index.html`, full: false, click: "#menu" },
+  { name: "experience", url: `${MOCKUP_BASE}/experience.html`, full: true },
+  { name: "projects", url: `${MOCKUP_BASE}/projects.html`, full: true },
+  { name: "project", url: `${MOCKUP_BASE}/project.html`, full: true },
+  { name: "build-with-me", url: `${MOCKUP_BASE}/build-with-me.html`, full: true },
+  { name: "not-found", url: `${MOCKUP_BASE}/404.html`, full: true },
+  { name: "coming-soon", url: `${MOCKUP_BASE}/coming-soon.html`, full: true },
+];
+
+const TARGETS = {
+  site: { root: DIST, views: VIEWS, suffix: "", notFound: join(DIST, "404.html") },
+  mockup: { root: REPO, views: MOCKUP_VIEWS, suffix: "-mockup", notFound: undefined },
+};
 
 const SCREENS = [
   { name: "mobile", width: 390, height: 844 },
@@ -63,18 +89,22 @@ const MIME: Record<string, string> = {
   ".txt": "text/plain",
 };
 
-function serveDist(): Promise<{ server: Server; origin: string }> {
+function serveDir(root: string, notFound: string | undefined): Promise<{ server: Server; origin: string }> {
   const server = createServer((req, res) => {
     const pathname = decodeURIComponent((req.url ?? "/").split(/[?#]/)[0]);
-    let file = join(DIST, pathname);
-    if (!file.startsWith(DIST)) {
+    let file = join(root, pathname);
+    if (!file.startsWith(root)) {
       res.writeHead(403).end();
       return;
     }
     if (existsSync(file) && statSync(file).isDirectory()) file = join(file, "index.html");
     let status = 200;
     if (!existsSync(file)) {
-      file = join(DIST, "404.html");
+      if (!notFound) {
+        res.writeHead(404).end();
+        return;
+      }
+      file = notFound;
       status = 404;
     }
     res.writeHead(status, { "content-type": MIME[extname(file)] ?? "application/octet-stream" });
@@ -113,14 +143,19 @@ async function main() {
       theme: { type: "string" },
       js: { type: "string" },
       browser: { type: "string" },
+      target: { type: "string" },
     },
   });
 
-  if (!existsSync(join(DIST, "index.html"))) {
+  const targetName = values.target ?? "site";
+  if (!(targetName in TARGETS)) throw new Error(`Unknown target: ${targetName}. Known: ${Object.keys(TARGETS).join(", ")}`);
+  const target = TARGETS[targetName as keyof typeof TARGETS];
+
+  if (targetName === "site" && !existsSync(join(DIST, "index.html"))) {
     throw new Error("dist/ is missing. Run `make screenshots` (it builds first) or `npm run build`.");
   }
 
-  const views = pick(VIEWS, values.view, (v) => v.name, "view");
+  const views = pick(target.views, values.view, (v) => v.name, "view");
   const screens = pick(SCREENS, values.screen, (s) => s.name, "screen");
   const themes = pick(THEMES, values.theme, (t) => t, "theme");
   const jsModes = pick(JS_MODES, values.js, (j) => j, "js mode");
@@ -129,8 +164,8 @@ async function main() {
     if (!BROWSERS[name]) throw new Error(`Unknown browser: ${name}. Known: ${Object.keys(BROWSERS).join(", ")}`);
   }
 
-  const runDir = join(OUT_ROOT, stamp());
-  const { server, origin } = await serveDist();
+  const runDir = join(OUT_ROOT, stamp() + target.suffix);
+  const { server, origin } = await serveDir(target.root, target.notFound);
   let count = 0;
   const failures: string[] = [];
 
@@ -149,12 +184,18 @@ async function main() {
             });
             const page = await context.newPage();
             for (const view of views) {
+              if (view.click && js === "off") continue;
               const file = join(dir, `${view.name}--${theme}--js-${js}.png`);
               try {
                 await page.goto(origin + view.url, { waitUntil: "load" });
                 await page.evaluate(() => document.fonts.ready).catch(() => {});
                 // Let reveal transitions and scroll-to-hash settle.
                 await page.waitForTimeout(view.url.includes("#") ? 900 : 300);
+                if (view.click) {
+                  if (!(await page.locator(view.click).isVisible())) continue;
+                  await page.click(view.click);
+                  await page.waitForTimeout(200);
+                }
                 await page.screenshot({ path: file, fullPage: view.full });
                 count += 1;
               } catch (error) {

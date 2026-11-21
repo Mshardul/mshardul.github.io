@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Shardul Lingwal | Backend Engineering Lead</title>
 <meta name="description" content="Backend engineering lead with 7+ years of professional experience.">
@@ -9,130 +10,131 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="../../../public/favicon.svg">
+<link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="wrap">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="container">
   <a class="brand" href="index.html">Shardul Lingwal</a>
-  <nav class="links" id="links" aria-label="Main">
-    <a class="l" href="experience.html">Experience</a>
-    <a class="l" href="projects.html">Projects</a>
-    <a class="l" href="build-with-me.html">Build with me</a>
-    <a class="btn mob-cta" href="mailto:hello@example.com">Get in touch</a>
+  <nav class="nav-links" id="links" aria-label="Main">
+    <a class="nav-link" href="experience.html">Experience</a>
+    <a class="nav-link" href="projects.html">Projects</a>
+    <a class="nav-link" href="build-with-me.html">Build with me</a>
+    <a class="button nav-cta-mobile" href="mailto:hello@example.com">Get in touch</a>
   </nav>
-  <button class="tg" id="tg" aria-label="Switch to dark theme">◐</button>
-  <a class="btn sm" href="mailto:hello@example.com">Get in touch</a>
-  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+  <button class="theme-toggle" id="tg" aria-label="Switch to dark theme">◐</button>
+  <a class="button button--sm" href="mailto:hello@example.com">Get in touch</a>
+  <button class="menu-toggle" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
 </div></header>
 <main id="main">
-<section class="hero"><div class="wrap">
+<section class="hero"><div class="container">
   <div>
-    <span class="avail"><i></i>Available for lead roles and contract work</span>
+    <div class="hero-top"><img class="avatar" src="../../../src/assets/profile.jpg" alt="Shardul Lingwal" onerror="this.style.display=\'none\'"><span class="chip chip--status"><i></i>Available for lead roles and contract work</span></div>
     <h1>I take backend systems from first commit to client go-live.</h1>
-    <p class="sub">Backend engineering lead with 7+ years of professional experience. I design distributed systems and lead the team that ships them, most recently at McKinsey &amp; Company.</p>
-    <div class="cta"><a class="btn" href="#contact"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Get in touch</a><a class="btn ghost" href="../../../public/resume/Shardul_Lingwal_Resume.pdf" download><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Download resume</a></div>
-    <p class="loc"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Dehradun, India · Remote · UTC+5:30</p>
+    <p class="hero-sub">Backend engineering lead with 7+ years of professional experience. I design distributed systems and lead the team that ships them, most recently at McKinsey &amp; Company.</p>
+    <div class="actions"><a class="button" href="#contact"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Get in touch</a><a class="button button--ghost" href="../../../public/resume/Shardul_Lingwal_Resume.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Download resume</a></div>
+    <p class="meta-line"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>Dehradun, India · Remote · UTC+5:30</p>
   </div>
-  <div class="photo">
-    <div class="frame">
+  <div class="hero-photo">
+    <div class="hero-photo__frame">
       <img src="../../../src/assets/profile.jpg" alt="Shardul Lingwal" onerror="this.style.display='none'">
-      <div class="ph"><div><b>SL</b>Your photo goes here<br><span style="font-size:12.5px">save it as docs/design/photo.jpg</span></div></div>
+      <div class="placeholder"><div><b>SL</b>Your photo goes here<br><small>save it as docs/design/photo.jpg</small></div></div>
     </div>
-    <div class="now"><small>Currently</small><b>Senior Software Engineer I</b><br>McKinsey &amp; Company</div>
+    <div class="hero-note"><small>Currently</small><b>Senior Software Engineer I</b><br>McKinsey &amp; Company</div>
   </div>
 </div></section>
 
-<div class="trust"><div class="wrap">
+<div class="logo-strip"><div class="container">
   <p>Where I’ve worked</p>
-  <ul><li><img class="mk" src="../../../src/assets/logos/mckinsey.svg" alt="McKinsey &amp; Company" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="nm">McKinsey &amp; Company</span></li><li><img class="mk" src="../../../src/assets/logos/bhanzu.png" alt="Bhanzu" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="nm">Bhanzu</span></li><li><img class="mk" src="../../../src/assets/logos/aifluence.png" alt="AIfluence" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="nm">AIfluence</span></li><li><img class="mk" src="../../../src/assets/logos/ge.svg" alt="GE Digital" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="nm">GE Digital</span></li><li><img class="mk" src="../../../src/assets/logos/infosys.svg" alt="Infosys" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="nm">Infosys</span></li><li><img class="mk" src="../../../src/assets/logos/bluewater.png" alt="Blue Water Trade Winds" onerror="this.parentNode.classList.add('nologo');this.remove()"><span class="nm">Blue Water Trade Winds</span></li></ul>
+  <ul><li><img class="company-mark" src="../../../src/assets/logos/mckinsey.svg" alt="McKinsey &amp; Company" onerror="this.parentNode.classList.add('is-nologo');this.remove()"><span class="company-name">McKinsey &amp; Company</span></li><li><img class="company-mark" src="../../../src/assets/logos/bhanzu.png" alt="Bhanzu" onerror="this.parentNode.classList.add('is-nologo');this.remove()"><span class="company-name">Bhanzu</span></li><li><img class="company-mark" src="../../../src/assets/logos/aifluence.png" alt="AIfluence" onerror="this.parentNode.classList.add('is-nologo');this.remove()"><span class="company-name">AIfluence</span></li><li><img class="company-mark" src="../../../src/assets/logos/ge.svg" alt="GE Digital" onerror="this.parentNode.classList.add('is-nologo');this.remove()"><span class="company-name">GE Digital</span></li><li><img class="company-mark" src="../../../src/assets/logos/infosys.svg" alt="Infosys" onerror="this.parentNode.classList.add('is-nologo');this.remove()"><span class="company-name">Infosys</span></li><li><img class="company-mark" src="../../../src/assets/logos/bluewater.png" alt="Blue Water Trade Winds" onerror="this.parentNode.classList.add('is-nologo');this.remove()"><span class="company-name">Blue Water Trade Winds</span></li></ul>
 </div></div>
 
-<section class="s" id="proof"><div class="wrap">
+<section class="section" id="proof"><div class="container">
   <p class="eyebrow">Track record</p>
   <h2>Hard backend problems, delivered.</h2>
   <p class="lead">Scheduling, ingestion pipelines, multi-gateway payments and platform architecture, each taken to production.</p>
   <div class="stats">
-    <div><div class="n">7+</div><p>Years of professional experience</p></div>
-    <div><div class="n">12</div><p>Developers led at once, on a payments team</p></div>
-    <div><div class="n">4</div><p>Payment providers behind one orchestrator</p></div>
-    <div><div class="n">0 → live</div><p>First commit to client go-live, as backend lead</p></div>
+    <div><div class="stat-value">7+</div><p>Years of professional experience</p></div>
+    <div><div class="stat-value">12</div><p>Developers led at once, on a payments team</p></div>
+    <div><div class="stat-value">4</div><p>Payment providers behind one orchestrator</p></div>
+    <div><div class="stat-value">0 → live</div><p>First commit to client go-live, as backend lead</p></div>
   </div>
 
-  <p class="eyebrow stk">Tools I ship with</p>
-  <div class="tags big" style="margin-top:12px"><span><svg class="lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11.858 0c-.978.005-1.913.088-2.736.234C6.7.662 6.26 1.558 6.26 3.21v2.182h5.725v.727H4.111c-1.664 0-3.121 1-3.577 2.903-.526 2.181-.549 3.542 0 5.82.407 1.694 1.379 2.902 3.043 2.902h1.969v-2.616c0-1.89 1.635-3.557 3.576-3.557h5.72c1.591 0 2.862-1.31 2.862-2.91v-5.45c0-1.553-1.309-2.718-2.863-2.977A18 18 0 0 0 11.858 0M8.762 1.755c.591 0 1.074.491 1.074 1.095 0 .601-.483 1.087-1.074 1.087A1.08 1.08 0 0 1 7.688 2.85c0-.604.48-1.095 1.074-1.095m9.656 4.364v2.543c0 1.971-1.671 3.63-3.577 3.63H9.122c-1.566 0-2.862 1.34-2.862 2.91v5.452c0 1.551 1.349 2.464 2.862 2.91 1.813.532 3.55.628 5.72 0 1.44-.418 2.862-1.258 2.862-2.91V18.47h-5.719v-.727h8.582c1.664 0 2.284-1.16 2.862-2.903.598-1.793.573-3.518 0-5.819-.41-1.656-1.196-2.903-2.862-2.903zm-3.216 13.807a1.08 1.08 0 0 1 1.074 1.088c0 .604-.48 1.094-1.074 1.094-.592 0-1.075-.49-1.075-1.094 0-.601.483-1.088 1.075-1.088"/></svg>Python</span><span><svg class="lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .0387C5.3729.0384.0003 5.3931 0 11.9988c-.001 6.6066 5.372 11.9628 12 11.9625 6.628.0003 12.001-5.3559 12-11.9625-.0003-6.6057-5.3729-11.9604-12-11.96m-.829 5.4153h7.55l-7.5805 5.3284h5.1828L5.279 18.5436q2.9466-6.5444 5.892-13.0896"/></svg>FastAPI</span><span><svg class="lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z"/></svg>PostgreSQL</span><span><svg class="lg wide" viewBox="0 150 512 212" aria-hidden="true" focusable="false"><path fill="currentColor" fill-opacity="0.74" d="M438.8 347.4C434.9 345.3 435.3 344.6 439.2 346.6C443.0 348.5 443.7 349.0 442.4 349.0C441.9 348.9 440.3 348.2 438.8 347.4ZM429.0 341.3C417.6 333.7 403.2 319.1 398.9 310.7C397.4 307.7 398.5 309.1 405.5 318.4C411.7 326.7 421.0 335.2 429.8 340.9C434.3 343.7 435.8 345.0 434.7 345.0C434.6 345.0 432.0 343.4 429.0 341.3ZM12.1 303.2C5.7 290.4 1.0 272.8 1.0 261.4L1.0 256.0L192.0 256.0L383.0 256.0L383.2 251.2C383.2 248.6 383.6 252.1 384.0 259.0C384.9 274.5 387.7 286.6 393.3 298.4L397.6 307.5L206.3 307.2C78.2 307.1 15.1 307.3 15.5 308.0C15.8 308.5 15.9 309.0 15.6 309.0C15.3 309.0 13.7 306.4 12.1 303.2ZM388.6 223.0C388.9 221.6 389.7 219.8 390.2 219.0C390.8 218.0 390.9 218.3 390.4 220.0C390.1 221.4 389.3 223.2 388.8 224.0C388.2 225.0 388.1 224.7 388.6 223.0ZM391.0 216.7C391.0 216.3 392.1 213.7 393.5 211.0C394.9 208.3 396.0 205.8 396.0 205.5C396.0 205.2 310.3 205.0 205.5 205.0C100.7 205.0 15.0 204.7 15.0 204.2C15.0 202.0 23.4 191.4 31.4 183.4C46.0 168.9 62.5 160.0 82.5 155.9C91.1 154.1 99.7 154.0 284.5 154.1C397.1 154.2 475.0 154.6 471.6 155.1C438.7 159.9 411.1 179.5 395.3 209.5C393.0 213.9 391.0 217.1 391.0 216.7Z"/><path fill="currentColor" fill-opacity="1.0" d="M88.6 356.9C58.5 352.5 30.7 334.0 15.6 308.2C15.0 307.3 53.3 307.0 205.7 307.0L396.6 307.0L401.0 313.8C414.3 334.1 439.3 350.9 463.9 356.0C472.3 357.8 468.4 357.9 283.5 357.8C179.6 357.8 91.8 357.4 88.6 356.9ZM1.5 247.8C2.4 236.7 6.0 223.1 10.5 213.2L14.3 205.0L205.1 205.0C310.1 205.0 396.0 205.2 396.0 205.4C396.0 205.6 394.4 209.2 392.4 213.5C388.0 223.0 384.4 236.8 383.5 247.8L382.7 256.0L191.7 256.0L0.7 256.0L1.5 247.8Z"/><path fill="currentColor" fill-opacity="0.36" d="M470.5 356.5C389.8 343.7 356.1 247.8 410.9 186.8C427.4 168.5 454.3 155.9 480.5 154.3C489.5 153.8 491.1 154.0 495.5 155.9C516.1 165.0 516.3 194.1 496.0 202.8C493.5 203.9 488.0 205.1 483.8 205.4C455.1 207.9 435.0 228.7 435.0 256.0C435.0 283.3 455.1 304.1 483.8 306.6C496.9 307.7 504.2 312.1 508.6 321.5C513.2 331.1 510.9 344.2 503.4 351.2C496.3 357.8 487.6 359.2 470.5 356.5Z"/></svg>Celery</span><span><svg class="lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 2.661l.54.997-1.797.644 2.409.218.748 1.246.467-1.121 2.077-.208-1.61-.613.426-1.017-1.578.519zm6.905 2.077L13.76 6.182l3.292 1.298.353-.146 3.293-1.298zm-10.51.312a2.97 1.153 0 0 0-2.97 1.152 2.97 1.153 0 0 0 2.97 1.153 2.97 1.153 0 0 0 2.97-1.153 2.97 1.153 0 0 0-2.97-1.152zM24 6.805s-8.983 4.278-10.395 4.953c-1.226.561-1.901.561-3.261.094C8.318 11.022 0 7.241 0 7.241v1.038c0 .24.332.499.966.8 1.277.613 8.34 3.677 9.45 4.206 1.112.53 1.9.54 3.313-.197 1.412-.738 8.049-3.905 9.326-4.57.654-.342.945-.602.945-.84zm-10.042.602L8.39 8.26l3.884 1.61zM24 10.637s-8.983 4.279-10.395 4.954c-1.226.56-1.901.56-3.261.093C8.318 14.854 0 11.074 0 11.074v1.038c0 .238.332.498.966.8 1.277.612 8.34 3.676 9.45 4.205 1.112.53 1.9.54 3.313-.197 1.412-.737 8.049-3.905 9.326-4.57.654-.332.945-.602.945-.84zm0 3.842l-10.395 4.954c-1.226.56-1.901.56-3.261.094C8.318 18.696 0 14.916 0 14.916v1.038c0 .239.332.499.966.8 1.277.613 8.34 3.676 9.45 4.206 1.112.53 1.9.54 3.313-.198 1.412-.737 8.049-3.904 9.326-4.569.654-.343.945-.613.945-.841z"/></svg>Redis</span><span><svg class="lg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z"/></svg>GitLab CI/CD</span></div>
+  <p class="eyebrow eyebrow--spaced">Tools I ship with</p>
+  <div class="chip-list chip-list--tight"><span class="chip"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M11.858 0c-.978.005-1.913.088-2.736.234C6.7.662 6.26 1.558 6.26 3.21v2.182h5.725v.727H4.111c-1.664 0-3.121 1-3.577 2.903-.526 2.181-.549 3.542 0 5.82.407 1.694 1.379 2.902 3.043 2.902h1.969v-2.616c0-1.89 1.635-3.557 3.576-3.557h5.72c1.591 0 2.862-1.31 2.862-2.91v-5.45c0-1.553-1.309-2.718-2.863-2.977A18 18 0 0 0 11.858 0M8.762 1.755c.591 0 1.074.491 1.074 1.095 0 .601-.483 1.087-1.074 1.087A1.08 1.08 0 0 1 7.688 2.85c0-.604.48-1.095 1.074-1.095m9.656 4.364v2.543c0 1.971-1.671 3.63-3.577 3.63H9.122c-1.566 0-2.862 1.34-2.862 2.91v5.452c0 1.551 1.349 2.464 2.862 2.91 1.813.532 3.55.628 5.72 0 1.44-.418 2.862-1.258 2.862-2.91V18.47h-5.719v-.727h8.582c1.664 0 2.284-1.16 2.862-2.903.598-1.793.573-3.518 0-5.819-.41-1.656-1.196-2.903-2.862-2.903zm-3.216 13.807a1.08 1.08 0 0 1 1.074 1.088c0 .604-.48 1.094-1.074 1.094-.592 0-1.075-.49-1.075-1.094 0-.601.483-1.088 1.075-1.088"/></svg>Python</span><span class="chip"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 .0387C5.3729.0384.0003 5.3931 0 11.9988c-.001 6.6066 5.372 11.9628 12 11.9625 6.628.0003 12.001-5.3559 12-11.9625-.0003-6.6057-5.3729-11.9604-12-11.96m-.829 5.4153h7.55l-7.5805 5.3284h5.1828L5.279 18.5436q2.9466-6.5444 5.892-13.0896"/></svg>FastAPI</span><span class="chip"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z"/></svg>PostgreSQL</span><span class="chip"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M2.303 0A2.298 2.298 0 0 0 0 2.303v19.394A2.298 2.298 0 0 0 2.303 24h19.394A2.298 2.298 0 0 0 24 21.697V2.303A2.298 2.298 0 0 0 21.697 0zm8.177 3.072c4.098 0 7.028 1.438 7.68 1.764l-1.194 2.55c-2.442-1.057-4.993-1.41-5.672-1.41-1.574 0-2.17.922-2.17 1.763v8.494c0 .869.596 1.791 2.17 1.791.679 0 3.23-.38 5.672-1.41l1.194 2.496c-.435.271-3.637 1.818-7.68 1.818-1.112 0-4.64-.244-4.64-4.64V7.713c0-4.397 3.528-4.64 4.64-4.64z"/></svg>Celery</span><span class="chip"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M10.5 2.661l.54.997-1.797.644 2.409.218.748 1.246.467-1.121 2.077-.208-1.61-.613.426-1.017-1.578.519zm6.905 2.077L13.76 6.182l3.292 1.298.353-.146 3.293-1.298zm-10.51.312a2.97 1.153 0 0 0-2.97 1.152 2.97 1.153 0 0 0 2.97 1.153 2.97 1.153 0 0 0 2.97-1.153 2.97 1.153 0 0 0-2.97-1.152zM24 6.805s-8.983 4.278-10.395 4.953c-1.226.561-1.901.561-3.261.094C8.318 11.022 0 7.241 0 7.241v1.038c0 .24.332.499.966.8 1.277.613 8.34 3.677 9.45 4.206 1.112.53 1.9.54 3.313-.197 1.412-.738 8.049-3.905 9.326-4.57.654-.342.945-.602.945-.84zm-10.042.602L8.39 8.26l3.884 1.61zM24 10.637s-8.983 4.279-10.395 4.954c-1.226.56-1.901.56-3.261.093C8.318 14.854 0 11.074 0 11.074v1.038c0 .238.332.498.966.8 1.277.612 8.34 3.676 9.45 4.205 1.112.53 1.9.54 3.313-.197 1.412-.737 8.049-3.905 9.326-4.57.654-.332.945-.602.945-.84zm0 3.842l-10.395 4.954c-1.226.56-1.901.56-3.261.094C8.318 18.696 0 14.916 0 14.916v1.038c0 .239.332.499.966.8 1.277.613 8.34 3.676 9.45 4.206 1.112.53 1.9.54 3.313-.198 1.412-.737 8.049-3.904 9.326-4.569.654-.343.945-.613.945-.841z"/></svg>Redis</span><span class="chip"><svg class="logo-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="m23.6004 9.5927-.0337-.0862L20.3.9814a.851.851 0 0 0-.3362-.405.8748.8748 0 0 0-.9997.0539.8748.8748 0 0 0-.29.4399l-2.2055 6.748H7.5375l-2.2057-6.748a.8573.8573 0 0 0-.29-.4412.8748.8748 0 0 0-.9997-.0537.8585.8585 0 0 0-.3362.4049L.4332 9.5015l-.0325.0862a6.0657 6.0657 0 0 0 2.0119 7.0105l.0113.0087.03.0213 4.976 3.7264 2.462 1.8633 1.4995 1.1321a1.0085 1.0085 0 0 0 1.2197 0l1.4995-1.1321 2.4619-1.8633 5.006-3.7489.0125-.01a6.0682 6.0682 0 0 0 2.0094-7.003z"/></svg>GitLab CI/CD</span></div>
 </div></section>
 
-<section class="s" id="help" style="padding-top:0"><div class="wrap">
+<section class="section section--flush-top" id="help"><div class="container">
   <p class="eyebrow">How I can help</p>
   <h2>Two ways to work together.</h2>
-  <div class="paths">
-    <article class="path">
+  <div class="choice-grid">
+    <article class="card card--feature card--heavy">
       <h3>Hiring a backend lead</h3>
       <p>Someone who sets the architecture, then leads, mentors and hires the team through delivery.</p>
       <ul>
         <li>Led the backend team from first commit to client go-live</li>
         <li>Hardens systems against stuck jobs, duplicate dispatch and memory failures</li>
       </ul>
-      <a class="btn" href="mailto:hello@example.com?subject=Lead%20role">Discuss a role<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="button" href="mailto:hello@example.com?subject=Lead%20role"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Get in touch</a>
     </article>
-    <article class="path alt">
+    <article class="card card--feature">
       <h3>Need something built</h3>
       <p>Web apps, mobile apps, Mac apps and Chrome extensions, from small tools to large platforms.</p>
       <ul>
         <li>Backend and architecture done properly from day one</li>
         <li>Specs first, with Cursor and Claude in daily use, so AI-written code stays reviewable.</li>
       </ul>
-      <a class="btn" href="mailto:hello@example.com?subject=Project">Describe your project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <a class="button" href="mailto:hello@example.com?subject=Project"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Get in touch</a>
     </article>
   </div>
 </div></section>
 
-<section class="s xp" id="experience"><div class="wrap">
+<section class="section section--soft" id="experience"><div class="container">
   <p class="eyebrow">Experience</p>
   <h2>Where I’ve done the work.</h2>
-  <div class="jobs">
-<article class="job"><div class="when">May 2025 – Present</div><div>
-  <h3>McKinsey &amp; Company</h3><p class="role">Senior Software Engineer I · Led and mentored 3 backend engineers; informal lead</p>
+  <div class="rows rows--light rows--loose">
+<article class="row row--job"><div class="row__when">May 2025 – Present</div><div>
+  <h3>McKinsey &amp; Company</h3><p class="row__role">Senior Software Engineer I</p><p class="row__impact">Led and mentored 3 backend engineers; informal lead</p>
   <ul><li>Led the backend team from first commit to client go-live.</li><li>Built the scheduling layer and hardened the distributed ingestion pipeline.</li><li>Owned cross-service integration and built session auth with role-based access.</li></ul></div></article>
-<article class="job"><div class="when">Oct 2022 – Jun 2024</div><div>
-  <h3>Bhanzu</h3><p class="role">SDE IV · Led a team of up to 12 developers; informal lead</p>
+<article class="row row--job"><div class="row__when">Oct 2022 – Jun 2024</div><div>
+  <h3>Bhanzu</h3><p class="row__role">SDE IV</p><p class="row__impact">Led a team of up to 12 developers; informal lead</p>
   <ul><li>Led the Registration and Payments team for about nine months.</li><li>Designed on-site multi-gateway payments across multiple providers.</li></ul></div></article>
-<article class="job"><div class="when">Nov 2021 – Oct 2022</div><div>
-  <h3>AIfluence</h3><p class="role">Senior Full Stack Engineer · Second engineer; team grew to 6</p>
+<article class="row row--job"><div class="row__when">Nov 2021 – Oct 2022</div><div>
+  <h3>AIfluence</h3><p class="row__role">Senior Full Stack Engineer</p><p class="row__impact">Second engineer; team grew to 6</p>
   <ul><li>Designed the architecture of a campaign platform integrating about five social-media APIs.</li></ul></div></article>
-<article class="job"><div class="when">Jan 2020 – Oct 2021</div><div>
-  <h3>GE Digital</h3><p class="role">Software Engineering Specialist, Digital Technology Intern · First India hire on a US team of about 10</p>
+<article class="row row--job"><div class="row__when">Jan 2020 – Oct 2021</div><div>
+  <h3>GE Digital</h3><p class="row__role">Software Engineering Specialist, Digital Technology Intern</p><p class="row__impact">First India hire on a US team of about 10</p>
   <ul><li>Built a reusable configurable Angular component library.</li></ul></div></article>
-<article class="job"><div class="when">Feb 2017 – Nov 2017</div><div>
-  <h3>Infosys</h3><p class="role">Systems Engineer</p>
+<article class="row row--job"><div class="row__when">Feb 2017 – Nov 2017</div><div>
+  <h3>Infosys</h3><p class="row__role">Systems Engineer</p>
   <ul><li>Built a real-time logistics-tracking web app during training.</li></ul></div></article>
 </div>
-  <div class="seeall"><a class="btn ghost" href="experience.html">See full experience<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+  <div class="actions"><a class="button button--ghost" href="experience.html">See full experience<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
 </div></section>
 
-<section class="s" id="beyond"><div class="wrap">
+<section class="section" id="beyond"><div class="container">
   <p class="eyebrow">Education</p>
   <h2>Where I studied.</h2>
-  <div class="edustrip"><div class="ed"><b>Executive MBA</b><span>IIM Kashipur</span><em>2025 – Present</em></div><div class="ed"><b>M.Tech CSE</b><span>IIIT Bangalore</span><em>2018 – 2020</em></div><div class="ed"><b>B.Tech CSE</b><span>Graphic Era University</span><em>2013 – 2017</em></div><div class="ed"><b>Claude Certified Developer – Foundations</b><span>Anthropic</span><em>Oct 2026</em></div></div>
-  <div class="outside"><p class="ol">Away from the keyboard</p><div class="tags big"><span>Sudoku</span><span>Chess</span><span>Badminton</span><span>Scooter rides</span><span>Mountains</span><span>Travel</span><span>Books across genres</span><span>Poetry</span></div></div>
+  <div class="edu-strip"><div class="edu-item"><b>Executive MBA</b><span>IIM Kashipur</span><em>2025 – Present</em></div><div class="edu-item"><b>M.Tech CSE</b><span>IIIT Bangalore</span><em>2018 – 2020</em></div><div class="edu-item"><b>B.Tech CSE</b><span>Graphic Era University</span><em>2013 – 2017</em></div><div class="edu-item"><b>Claude Certified Developer – Foundations</b><span>Anthropic</span><em>Oct 2026</em></div></div>
+  <div class="outside-work"><p class="outside-work__label">Away from the keyboard</p><div class="chip-list"><span class="chip">Sudoku</span><span class="chip">Chess</span><span class="chip">Badminton</span><span class="chip">Scooter rides</span><span class="chip">Mountains</span><span class="chip">Travel</span><span class="chip">Books across genres</span><span class="chip">Poetry</span></div></div>
 </div></section>
 
-<section class="contact" id="contact"><div class="wrap">
+<section class="contact-band" id="contact"><div class="container">
   <div>
     <h2>Let’s talk about what you’re building.</h2>
     <p>Hiring a lead or need a project built? Send a line about what you need and I’ll take it from there.</p>
   </div>
-  <div class="acts">
-    <a class="btn" href="mailto:hello@example.com"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Get in touch</a>
-    <a class="btn ghost" href="../../../public/resume/Shardul_Lingwal_Resume.pdf" download><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Download resume</a>
+  <div class="contact-band__actions">
+    <a class="button" href="mailto:hello@example.com"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>Get in touch</a>
+    <a class="button button--ghost" href="../../../public/resume/Shardul_Lingwal_Resume.pdf" download><svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>Download resume</a>
     <small>Dehradun, India · Remote</small>
   </div>
 </div></section>
-</main><footer class="sitefoot"><div class="wrap">
+</main><footer class="site-footer"><div class="container">
   <div><b>Shardul Lingwal</b><p>Backend Engineering Lead · Dehradun, India · Remote</p></div>
   <nav aria-label="Footer"><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="build-with-me.html">Build with me</a><a href="mailto:hello@example.com">Email</a><a href="../../../public/resume/Shardul_Lingwal_Resume.pdf" download>Resume</a></nav>
-<p class="credits">Technology and employer logos belong to their owners. Icons from Simple Icons (CC0) and Lucide; Celery mark traced from the project’s logo.</p>
+<p class="site-footer__credits">Technology and employer logos belong to their owners. Icons from Simple Icons (CC0) and Lucide.</p>
 </div></footer>
 <script src="site.js"></script>
 </body>

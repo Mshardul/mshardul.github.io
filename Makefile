@@ -1,4 +1,4 @@
-.PHONY: up mockup screenshots
+.PHONY: up mockup screenshots screenshots-mockup
 
 # Serve the static design mockups at http://localhost:8000/docs/design/mockup/.
 # Served from the repo root because the mockups load logos and the photo from
@@ -20,3 +20,9 @@ up:
 screenshots:
 	npm run build
 	node scripts/screenshots.ts $(ARGS)
+
+# Screenshot the static design mockups (docs/design/mockup) the same way, into
+# .screenshots/<yyyymmdd>-<HHMMSS>-mockup/. No build needed. Same ARGS filters:
+#   make screenshots-mockup ARGS="--view home --screen mobile"
+screenshots-mockup:
+	node scripts/screenshots.ts --target mockup $(ARGS)

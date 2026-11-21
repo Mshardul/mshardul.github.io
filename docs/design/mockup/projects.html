@@ -2,6 +2,7 @@
 <html lang="en" data-theme="light">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add('js')</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Things I’ve built | Shardul Lingwal</title>
 <meta name="description" content="A curated set of projects, each with its own page and the story behind it.">
@@ -9,68 +10,69 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" type="image/svg+xml" href="../../../public/favicon.svg">
+<link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
-<header class="nav"><div class="wrap">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="container">
   <a class="brand" href="index.html">Shardul Lingwal</a>
-  <nav class="links" id="links" aria-label="Main">
-    <a class="l" href="experience.html">Experience</a>
-    <a class="l" href="projects.html" aria-current="page">Projects</a>
-    <a class="l" href="build-with-me.html">Build with me</a>
-    <a class="btn mob-cta" href="mailto:hello@example.com">Get in touch</a>
+  <nav class="nav-links" id="links" aria-label="Main">
+    <a class="nav-link" href="experience.html">Experience</a>
+    <a class="nav-link" href="projects.html" aria-current="page">Projects</a>
+    <a class="nav-link" href="build-with-me.html">Build with me</a>
+    <a class="button nav-cta-mobile" href="mailto:hello@example.com">Get in touch</a>
   </nav>
-  <button class="tg" id="tg" aria-label="Switch to dark theme">◐</button>
-  <a class="btn sm" href="mailto:hello@example.com">Get in touch</a>
-  <button class="menu-btn" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
+  <button class="theme-toggle" id="tg" aria-label="Switch to dark theme">◐</button>
+  <a class="button button--sm" href="mailto:hello@example.com">Get in touch</a>
+  <button class="menu-toggle" id="menu" aria-expanded="false" aria-controls="links">Menu</button>
 </div></header>
 <main id="main">
-<section class="pagehead"><div class="wrap">
+<section class="page-head"><div class="container">
   <p class="eyebrow">Projects</p>
   <h1>Seven things, built with care.</h1>
   <p class="lead">A curated set, not every repo. Each one has its own page with the story behind it.</p>
   
 </div></section>
-<section class="s" style="padding-top:36px"><div class="wrap">
-  <p class="tmpl">Layout preview. Pitches and screenshots are placeholders until each project’s content is written.</p>
-  <div class="filters" role="group" aria-label="Filter projects"><button class="fchip" aria-pressed="true" data-f="All">All</button><button class="fchip" aria-pressed="false" data-f="Web">Web</button><button class="fchip" aria-pressed="false" data-f="Mac app">Mac app</button><button class="fchip" aria-pressed="false" data-f="Open source">Open source</button><button class="fchip" aria-pressed="false" data-f="Live">Live</button><button class="fchip" aria-pressed="false" data-f="Download">Download</button></div>
-  <p class="count" id="count" aria-live="polite">7 projects</p>
-  <div class="cards" id="cards"><a class="pcard" href="project.html" data-tags="Web|Open source">
-  <div class="thumb"><span class="mono" aria-hidden="true">ju</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>jugnu</h3><div class="tags kind"><span>Web</span><span>Open source</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="pcard" href="project.html" data-tags="Mac app|Download">
-  <div class="thumb"><span class="mono" aria-hidden="true">To</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>Tools</h3><div class="tags kind"><span>Mac app</span><span>Download</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="pcard" href="project.html" data-tags="Web|Open source">
-  <div class="thumb"><span class="mono" aria-hidden="true">Sy</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>SystemDesign-Wiki</h3><div class="tags kind"><span>Web</span><span>Open source</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="pcard" href="project.html" data-tags="Web|Live">
-  <div class="thumb"><span class="mono" aria-hidden="true">to</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>tool-stack</h3><div class="tags kind"><span>Web</span><span>Live</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="pcard" href="project.html" data-tags="Web|Live">
-  <div class="thumb"><span class="mono" aria-hidden="true">Dr</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>DrawIt</h3><div class="tags kind"><span>Web</span><span>Live</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="pcard" href="project.html" data-tags="Web|Live">
-  <div class="thumb"><span class="mono" aria-hidden="true">In</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>Ink2Doc</h3><div class="tags kind"><span>Web</span><span>Live</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="pcard" href="project.html" data-tags="Web|Open source">
-  <div class="thumb"><span class="mono" aria-hidden="true">Co</span><span class="mockonly">screenshot slot</span></div>
-  <div class="pb"><h3>ContentVault</h3><div class="tags kind"><span>Web</span><span>Open source</span></div>
-  <p>One-line pitch for the project.</p><span class="more">View project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a></div>
+<section class="section section--tight-top"><div class="container">
+  <p class="mock-note">Layout preview. Pitches and screenshots are placeholders until each project’s content is written.</p>
+  <div class="filter-bar" role="group" aria-label="Filter projects"><button class="chip chip--filter" aria-pressed="true" data-f="All">All</button><button class="chip chip--filter" aria-pressed="false" data-f="Web">Web</button><button class="chip chip--filter" aria-pressed="false" data-f="Mac app">Mac app</button><button class="chip chip--filter" aria-pressed="false" data-f="Open source">Open source</button><button class="chip chip--filter" aria-pressed="false" data-f="Live">Live</button><button class="chip chip--filter" aria-pressed="false" data-f="Download">Download</button></div>
+  <p class="result-count" id="count" aria-live="polite">7 projects</p>
+  <div class="card-grid" id="cards"><a class="card card--link card--project" href="coming-soon.html" data-tags="Web|Open source">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">ju</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>jugnu</h3><div class="chip-list"><span class="chip chip--sm">Web</span><span class="chip chip--sm">Open source</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="card card--link card--project" href="coming-soon.html" data-tags="Mac app|Download">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">To</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>Tools</h3><div class="chip-list"><span class="chip chip--sm">Mac app</span><span class="chip chip--sm">Download</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="card card--link card--project" href="coming-soon.html" data-tags="Web|Open source">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">Sy</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>SystemDesign-Wiki</h3><div class="chip-list"><span class="chip chip--sm">Web</span><span class="chip chip--sm">Open source</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="card card--link card--project" href="coming-soon.html" data-tags="Web|Live">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">to</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>tool-stack</h3><div class="chip-list"><span class="chip chip--sm">Web</span><span class="chip chip--sm">Live</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="card card--link card--project" href="coming-soon.html" data-tags="Web|Live">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">Dr</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>DrawIt</h3><div class="chip-list"><span class="chip chip--sm">Web</span><span class="chip chip--sm">Live</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="card card--link card--project" href="coming-soon.html" data-tags="Web|Live">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">In</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>Ink2Doc</h3><div class="chip-list"><span class="chip chip--sm">Web</span><span class="chip chip--sm">Live</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a><a class="card card--link card--project" href="coming-soon.html" data-tags="Web|Open source">
+  <div class="card__thumb"><span class="card__mono" aria-hidden="true">Co</span><span class="mock-flag">screenshot slot</span></div>
+  <div class="card__body"><h3>ContentVault</h3><div class="chip-list"><span class="chip chip--sm">Web</span><span class="chip chip--sm">Open source</span></div>
+  <p>One-line pitch for the project.</p><span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span></div></a></div>
 </div></section>
-<section class="contact" id="contact"><div class="wrap">
+<section class="contact-band" id="contact"><div class="container">
   <div><h2>Need something like this?</h2><p>Tell me what you want built and I’ll tell you how I’d approach it.</p></div>
-  <div class="acts"><a class="btn" href="build-with-me.html">Start a project<svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
+  <div class="contact-band__actions"><a class="button" href="build-with-me.html">Start a project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a></div>
 </div></section>
-</main><footer class="sitefoot"><div class="wrap">
+</main><footer class="site-footer"><div class="container">
   <div><b>Shardul Lingwal</b><p>Backend Engineering Lead · Dehradun, India · Remote</p></div>
   <nav aria-label="Footer"><a href="experience.html">Experience</a><a href="projects.html">Projects</a><a href="build-with-me.html">Build with me</a><a href="mailto:hello@example.com">Email</a><a href="#">Resume</a></nav>
-<p class="credits">Technology and employer logos belong to their owners. Icons from Simple Icons (CC0) and Lucide; Celery mark traced from the project’s logo.</p>
+<p class="site-footer__credits">Technology and employer logos belong to their owners. Icons from Simple Icons (CC0) and Lucide.</p>
 </div></footer>
 <script src="site.js"></script>
 <script>
-const chips=[...document.querySelectorAll('.fchip')],cards=[...document.querySelectorAll('.pcard')],count=document.getElementById('count');
+const chips=[...document.querySelectorAll('.chip--filter')],cards=[...document.querySelectorAll('.card--project')],count=document.getElementById('count');
 chips.forEach(c=>c.onclick=()=>{chips.forEach(x=>x.setAttribute('aria-pressed',x===c));const f=c.dataset.f;let n=0;
  cards.forEach(k=>{const show=f==='All'||k.dataset.tags.split('|').includes(f);k.hidden=!show;if(show)n++});count.textContent=n+(n===1?' project':' projects')});
 </script>
