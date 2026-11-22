@@ -1,27 +1,87 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import PageHead from "../../components/PageHead.astro";
-import ProjectCard from "../../components/ProjectCard.astro";
-import Section from "../../components/Section.astro";
+import Button from "../../components/Button.astro";
+import ChipList from "../../components/ChipList.astro";
+import Card from "../../components/Card.astro";
 import { projects } from "../../content/projects.ts";
-import { copy } from "../../content/copy.ts";
 import { meta } from "../../content/meta.ts";
+import "../../styles/components/pagehead.css";
+import "../../styles/components/section.css";
+import "../../styles/components/card.css";
+import "../../styles/components/chip.css";
+import "../../styles/components/contact-band.css";
 
-const { headline } = copy.projects;
+const filters = ["All", ...new Set(projects.flatMap((p) => p.tags))];
+const numberWords = ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
+const countWord = numberWords[projects.length] ?? String(projects.length);
 ---
 
-<BaseLayout title={meta.projects.title} description={meta.projects.description}>
-  <main id="main" class="page-main">
-    <PageHead label="Things I've built" lead={copy.projects.lead}>
-      {headline.before}<span class="highlight">{headline.highlight}</span>{headline.after}
+<BaseLayout title={meta.projects.title} description={meta.projects.description} current="projects">
+  <main id="main">
+    <PageHead label="Projects" lead="A curated set, not every repo. Each one has its own page with the story behind it.">
+      {countWord} things, built with care.
     </PageHead>
 
-    <Section tone={2}>
-      <div class="project-grid">
-        {projects.map((project) => (
-          <ProjectCard {project} level={2} />
-        ))}
+    <section class="section section--tight-top">
+      <div class="container">
+        <div class="filter-bar" role="group" aria-label="Filter projects">
+          {filters.map((f, i) => (
+            <button class="chip chip--filter" aria-pressed={i === 0 ? "true" : "false"} data-f={f}>{f}</button>
+          ))}
+        </div>
+        <p id="count" aria-live="polite">{projects.length} projects</p>
+        <div class="card-grid" id="cards">
+          {projects.map((project) => (
+            <Card project link href="/coming-soon" dataTags={project.tags.join("|")}>
+              <div class="card__thumb">
+                <span class="card__mono" aria-hidden="true">{project.name.slice(0, 2)}</span>
+              </div>
+              <div class="card__body">
+                <h3>{project.name}</h3>
+                <ChipList items={project.tags.map((t) => ({ label: t }))} small />
+                <p>{project.pitch}</p>
+                <span class="card__more">View project<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+              </div>
+            </Card>
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="container">
+        <div>
+          <h2>Need something like this?</h2>
+          <p>Tell me what you want built and I&rsquo;ll tell you how I&rsquo;d approach it.</p>
+        </div>
+        <div class="contact-band__actions">
+          <Button label="Start a project" href="/build-with-me" icon="arrow" />
+        </div>
+      </div>
+    </section>
   </main>
+  <script>
+    function bindProjectFilter() {
+      const chips = [...document.querySelectorAll<HTMLElement>(".chip--filter")];
+      const cards = [...document.querySelectorAll<HTMLElement>(".card--project")];
+      const count = document.getElementById("count");
+      if (!chips.length || !count) return;
+      chips.forEach((c) => {
+        c.addEventListener("click", () => {
+          chips.forEach((x) => x.setAttribute("aria-pressed", String(x === c)));
+          const f = c.dataset.f!;
+          let n = 0;
+          cards.forEach((k) => {
+            const show = f === "All" || k.dataset.tags!.split("|").includes(f);
+            k.hidden = !show;
+            if (show) n++;
+          });
+          count.textContent = n + (n === 1 ? " project" : " projects");
+        });
+      });
+    }
+    // Fresh DOM after each client-side navigation, so bind on every page-load.
+    document.addEventListener("astro:page-load", bindProjectFilter);
+  </script>
 </BaseLayout>

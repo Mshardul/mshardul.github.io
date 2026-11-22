@@ -1,37 +1,91 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Cta from "../components/Cta.astro";
-import Band from "../components/Band.astro";
 import PageHead from "../components/PageHead.astro";
-import Section from "../components/Section.astro";
-import TimelineRole from "../components/TimelineRole.astro";
+import Button from "../components/Button.astro";
+import ChipList from "../components/ChipList.astro";
 import { roles } from "../content/experience.ts";
-import { copy } from "../content/copy.ts";
 import { meta } from "../content/meta.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
+import "../styles/components/pagehead.css";
+import "../styles/components/section.css";
+import "../styles/components/row.css";
+import "../styles/components/chip.css";
+import "../styles/components/contact-band.css";
 
-const { headline } = copy.experience;
+const techIcon: Record<string, string> = {
+  Python: "python",
+  FastAPI: "fastapi",
+  Celery: "celery",
+  Redis: "redis",
+  Flask: "flask",
+  DynamoDB: "amazondynamodb",
+  AWS: "amazonwebservices",
+  Go: "go",
+  React: "react",
+  MySQL: "mysql",
+  MongoDB: "mongodb",
+  "GitLab CI/CD": "gitlab",
+  Angular: "angular",
+  "HTML/CSS": "html5",
+  Bootstrap: "bootstrap",
+  "Material UI": "mui",
+  ".NET": "dotnet",
+  "C#": "csharp",
+  Azure: "microsoftazure",
+  SQL: "database",
+};
 ---
 
-<BaseLayout title={meta.experience.title} description={meta.experience.description}>
-  <main id="main" class="page-main">
-    <PageHead label="Experience" lead={copy.experience.lead}>
-      {headline.before}<span class="highlight">{headline.highlight}</span>{headline.after}
+<BaseLayout title={meta.experience.title} description={meta.experience.description} current="experience">
+  <main id="main">
+    <PageHead label="Experience" lead="Every role with the impact, the tech and the scope.">
+      7+ years of leading and building.
+      <Fragment slot="after">
+        <div class="actions">
+          {hasResume && <Button label="Download resume" href={RESUME_URL} download icon="download" />}
+          <Button mail subject="Get in touch" label="Get in touch" icon="mail" variant="ghost" />
+        </div>
+      </Fragment>
     </PageHead>
 
-    <Section tone={2}>
-      <div class="timeline">
-        {roles.map((role) => (
-          <TimelineRole {role} detail level={2} />
-        ))}
+    <section class="section section--soft">
+      <div class="container">
+        <div class="rows rows--light rows--loose rows--flush">
+          {roles.map((role) => (
+            <article class="row row--job">
+              <div class="row__when">{role.start} &ndash; {role.end}</div>
+              <div>
+                <h3>{role.company}</h3>
+                <p class="row__role">{role.title}</p>
+                {role.scope && <p class="row__impact">{role.scope}</p>}
+                <ul>
+                  {role.highlights.map((bullet) => (
+                    <li>{bullet}</li>
+                  ))}
+                </ul>
+                <ChipList
+                  items={role.tech.map((t) => ({ label: t, icon: techIcon[t] ?? "" }))}
+                />
+              </div>
+            </article>
+          ))}
+        </div>
       </div>
-    </Section>
+    </section>
 
-    <Section tone={3}>
-      <Band heading="Like what you see?" spaced>
-        {hasResume && <Cta primary label="Download resume" href={RESUME_URL} />}
-        <Cta primary={!hasResume} label="Let's talk" mail />
-      </Band>
-    </Section>
+    <section class="contact-band" id="contact">
+      <div class="container">
+        <div>
+          <h2>Let&rsquo;s talk about what you&rsquo;re building.</h2>
+          <p>Hiring a lead or need a project built? Send a line about what you need.</p>
+        </div>
+        <div class="contact-band__actions">
+          <Button mail subject="Get in touch" label="Get in touch" icon="mail" />
+          {hasResume && (
+            <Button label="Download resume" href={RESUME_URL} download icon="download" variant="ghost" />
+          )}
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>

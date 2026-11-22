@@ -1,100 +1,302 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Section from "../components/Section.astro";
-import ProjectCard from "../components/ProjectCard.astro";
-import TagList from "../components/TagList.astro";
-import FactGrid from "../components/FactGrid.astro";
-import Band from "../components/Band.astro";
-import TimelineRole from "../components/TimelineRole.astro";
-import Cta from "../components/Cta.astro";
+import Button from "../components/Button.astro";
+import { Image } from "astro:assets";
+import logo0 from "../assets/logos/mckinsey.svg";
+import logo1 from "../assets/logos/bhanzu.png";
+import logo2 from "../assets/logos/aifluence.png";
+import logo3 from "../assets/logos/ge.svg";
+import logo4 from "../assets/logos/infosys.svg";
+import logo5 from "../assets/logos/bluewater.png";
+import profilePhoto from "../assets/profile.jpg";
+import ChipList from "../components/ChipList.astro";
 import Card from "../components/Card.astro";
 import { profile } from "../content/profile.ts";
-import { roles } from "../content/experience.ts";
-import { projects } from "../content/projects.ts";
-import { skillGroups } from "../content/skills.ts";
 import { education } from "../content/education.ts";
-import { about } from "../content/about.ts";
-import { copy } from "../content/copy.ts";
 import { meta } from "../content/meta.ts";
-import { githubUrl, linkedinUrl } from "../lib/contact.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
-import "../styles/components/skills.css";
-import "../styles/components/bio.css";
-import "../styles/components/contact.css";
-import "../styles/components/blob.css";
+import "../styles/components/hero.css";
+import "../styles/components/section.css";
+import "../styles/components/stats.css";
+import "../styles/components/card.css";
+import "../styles/components/chip.css";
+import "../styles/components/row.css";
 ---
 
-<BaseLayout title={meta.home.title} description={meta.home.description}>
-  <main id="main" data-scroll="stack">
-    <Section tone={1} id="intro" reveal>
-      <span class="label">{profile.role}</span>
-      <h1 class="heading heading--hero">{profile.headline}</h1>
-      <p class="lead">{profile.summary}</p>
-      <div class="btn-row">
-        {hasResume && <Cta primary label="Download resume" href={RESUME_URL} />}
-        <Cta primary={!hasResume} label="Let's talk" mail />
-      </div>
-      <FactGrid facts={profile.facts} />
-      <div class="blob"></div>
-    </Section>
-
-    <Section tone={2} id="experience" heading="Experience" reveal link={{ label: "Full experience →", href: "/experience" }}>
-      <div class="timeline">
-        {roles.map((role) => (
-          <TimelineRole {role} />
-        ))}
-      </div>
-    </Section>
-
-    <Section tone={3} id="built" heading="Things I've built" reveal link={{ label: "All projects →", href: "/projects" }}>
-      <div class="project-grid">
-        {projects.map((project) => (
-          <ProjectCard {project} />
-        ))}
-      </div>
-    </Section>
-
-    <Section tone={4} id="skills" heading="Skills" reveal>
-      <div class="skill-grid">
-        {skillGroups.map((group) => (
-          <div>
-            <h3 class="skill-grid__title">{group.title}</h3>
-            <TagList items={group.items} />
+<BaseLayout title={meta.home.title} description={meta.home.description} current="home">
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <div>
+          <div class="hero-top">
+            <Image class="avatar" src={profilePhoto} alt="Shardul Lingwal" width={96} height={96} />
+            <span class="chip chip--status">
+              <i></i>
+              Available for lead roles and contract work
+            </span>
           </div>
-        ))}
+          <h1>{profile.headline}</h1>
+          <p class="hero-sub">{profile.summary}</p>
+          <div class="actions">
+            <Button mail subject="Get in touch" label="Get in touch" icon="mail" />
+            {hasResume && (
+              <Button label="Download resume" href={RESUME_URL} download icon="download" />
+            )}
+          </div>
+          <p class="meta-line">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+            Dehradun, India &middot; Remote &middot; UTC+5:30
+          </p>
+        </div>
+        <div class="hero-photo">
+          <div class="hero-photo__frame">
+            <Image src={profilePhoto} alt="Shardul Lingwal" width={640} />
+            <div class="placeholder" aria-hidden="true">
+              <b>SL</b>
+            </div>
+          </div>
+          <div class="hero-note">
+            <small>Currently</small>
+            <b>Senior Software Engineer I</b><br />
+            McKinsey &amp; Company
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
 
-    <Section tone={1} id="education" heading="Education" reveal>
-      {education.map((item) => (
-        <Card note={`${item.institution} · ${item.years}`}>
-          <h3 class="heading heading--item">{item.degree}</h3>
-        </Card>
-      ))}
-    </Section>
-
-    <Section tone={2} id="about" heading="About" reveal>
-      <div class="bio">
-        {about.map((paragraph) => (
-          <p class="bio__paragraph">{paragraph}</p>
-        ))}
+    <div class="logo-strip">
+      <div class="container">
+        <p>Where I&rsquo;ve worked</p>
+        <ul>
+          <li>
+            <img class="company-mark" src={logo0.src} alt="McKinsey &amp; Company" width={logo0.width} height={logo0.height} />
+            <span class="company-name">McKinsey &amp; Company</span>
+          </li>
+          <li>
+            <img class="company-mark" src={logo1.src} alt="Bhanzu" width={logo1.width} height={logo1.height} />
+            <span class="company-name">Bhanzu</span>
+          </li>
+          <li>
+            <img class="company-mark" src={logo2.src} alt="AIfluence" width={logo2.width} height={logo2.height} />
+            <span class="company-name">AIfluence</span>
+          </li>
+          <li>
+            <img class="company-mark" src={logo3.src} alt="GE Digital" width={logo3.width} height={logo3.height} />
+            <span class="company-name">GE Digital</span>
+          </li>
+          <li>
+            <img class="company-mark" src={logo4.src} alt="Infosys" width={logo4.width} height={logo4.height} />
+            <span class="company-name">Infosys</span>
+          </li>
+          <li>
+            <img class="company-mark" src={logo5.src} alt="Blue Water Trade Winds" width={logo5.width} height={logo5.height} />
+            <span class="company-name">Blue Water Trade Winds</span>
+          </li>
+        </ul>
       </div>
-    </Section>
+    </div>
 
-    <Section tone={3} id="build" reveal>
-      <Band heading="Build with me" text={copy.home.buildBandText}>
-        <Cta href="/build-with-me" label="See what I build →" primary />
-      </Band>
-    </Section>
+    <section class="section" id="proof">
+      <div class="container">
+        <p class="eyebrow">Track record</p>
+        <h2>Hard backend problems, delivered.</h2>
+        <p class="lead">
+          Scheduling, ingestion pipelines, multi-gateway payments and platform architecture, each
+          taken to production.
+        </p>
+        <div class="stats">
+          <div>
+            <div class="stat-value">7+</div>
+            <p>Years of professional experience</p>
+          </div>
+          <div>
+            <div class="stat-value">12</div>
+            <p>Developers led at once, on a payments team</p>
+          </div>
+          <div>
+            <div class="stat-value">4</div>
+            <p>Payment providers behind one orchestrator</p>
+          </div>
+          <div>
+            <div class="stat-value">0 &rarr; live</div>
+            <p>first commit to go-live, as backend lead</p>
+          </div>
+        </div>
 
-    <Section tone={4} id="contact" heading="Get in touch" reveal>
-      <p class="lead">{copy.home.contactLead}</p>
-      <div class="contact-list">
-        <Cta label="Email" mail />
-        <a href={linkedinUrl} target="_blank" rel="noopener">LinkedIn <span class="visually-hidden">(opens in new tab)</span></a>
-        <a href={githubUrl} target="_blank" rel="noopener">GitHub <span class="visually-hidden">(opens in new tab)</span></a>
-        {hasResume && <a href={RESUME_URL}>Download resume</a>}
+        <p class="eyebrow eyebrow--spaced">Tools I ship with</p>
+        <div class="chip-group--tight">
+          <ChipList items={[{ label: "Python", icon: "python" }, { label: "FastAPI", icon: "fastapi" }, { label: "Celery", icon: "celery" }, { label: "Redis", icon: "redis" }, { label: "PostgreSQL", icon: "postgresql" }]} small />
+        </div>
       </div>
-    </Section>
+    </section>
+
+    <section class="section section--flush-top" id="help">
+      <div class="container">
+        <p class="eyebrow">How I can help</p>
+        <h2>Two ways to work together.</h2>
+        <div class="choice-grid">
+          <Card feature heavy>
+            <h3>Hiring a backend lead</h3>
+            <p>
+              Someone who sets the architecture, then leads, mentors and hires the team through
+              delivery.
+            </p>
+            <ul>
+              <li>Led the backend team from first commit to go-live</li>
+              <li>
+                Hardens systems against stuck jobs, duplicate dispatch and memory failures
+              </li>
+            </ul>
+            <Button mail subject="Lead role" label="Get in touch" icon="mail" />
+          </Card>
+          <Card feature>
+            <h3>Need something built</h3>
+            <p>
+              Web apps, mobile apps, Mac apps and Chrome extensions, from small tools to large
+              platforms.
+            </p>
+            <ul>
+              <li>Backend and architecture done properly from day one</li>
+              <li>
+                Specs first, with Cursor and Claude in daily use, so AI-written code stays
+                reviewable.
+              </li>
+            </ul>
+            <Button mail subject="Project" label="Get in touch" icon="mail" />
+          </Card>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="experience">
+      <div class="container">
+        <p class="eyebrow">Experience</p>
+        <h2>Where I&rsquo;ve done the work.</h2>
+        <div class="rows rows--light rows--loose">
+          <article class="row row--job">
+            <div class="row__when">May 2025 &ndash; Present</div>
+            <div>
+              <h3>McKinsey &amp; Company</h3>
+              <p class="row__role">Senior Software Engineer I</p>
+              <p class="row__impact">Led and mentored 3 backend engineers; informal lead</p>
+              <ul>
+                <li>Led the backend team from first commit to go-live.</li>
+                <li>
+                  Built the scheduling layer and hardened the distributed ingestion pipeline.
+                </li>
+                <li>
+                  Owned cross-service integration and built session auth with role-based access.
+                </li>
+              </ul>
+            </div>
+          </article>
+          <article class="row row--job">
+            <div class="row__when">Oct 2022 &ndash; Jun 2024</div>
+            <div>
+              <h3>Bhanzu</h3>
+              <p class="row__role">SDE IV</p>
+              <p class="row__impact">Led a team of up to 12 developers; informal lead</p>
+              <ul>
+                <li>Led the Registration and Payments team for about nine months.</li>
+                <li>
+                  Designed on-site multi-gateway payments across multiple providers.
+                </li>
+              </ul>
+            </div>
+          </article>
+          <article class="row row--job">
+            <div class="row__when">Nov 2021 &ndash; Oct 2022</div>
+            <div>
+              <h3>AIfluence</h3>
+              <p class="row__role">Senior Full Stack Engineer</p>
+              <p class="row__impact">Second engineer; team grew to 6</p>
+              <ul>
+                <li>
+                  Designed the architecture of a campaign platform integrating about five
+                  social-media APIs.
+                </li>
+              </ul>
+            </div>
+          </article>
+          <article class="row row--job">
+            <div class="row__when">Jan 2020 &ndash; Oct 2021</div>
+            <div>
+              <h3>GE Digital</h3>
+              <p class="row__role">
+                Software Engineering Specialist, Digital Technology Intern
+              </p>
+              <p class="row__impact">First India hire on a US team of about 10</p>
+              <ul>
+                <li>Built a reusable configurable Angular component library.</li>
+              </ul>
+            </div>
+          </article>
+          <article class="row row--job">
+            <div class="row__when">Feb 2017 &ndash; Nov 2017</div>
+            <div>
+              <h3>Infosys</h3>
+              <p class="row__role">Systems Engineer</p>
+              <ul>
+                <li>Built a real-time logistics-tracking web app during training.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+        <div class="actions">
+          <Button label="See full experience" href="/experience" icon="arrow" variant="ghost" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="beyond">
+      <div class="container">
+        <p class="eyebrow">Education</p>
+        <h2>Where I studied.</h2>
+        <div class="edu-strip">
+          {education.map((item) => (
+            <div class="edu-item">
+              <b>{item.degree}</b>
+              <span>{item.institution}</span>
+              <em>{item.years}</em>
+            </div>
+          ))}
+        </div>
+        <div class="outside-work">
+          <p class="outside-work__label">Away from the keyboard</p>
+          <div class="chip-list">
+            <span class="chip">Sudoku</span>
+            <span class="chip">Chess</span>
+            <span class="chip">Badminton</span>
+            <span class="chip">Scooter rides</span>
+            <span class="chip">Mountains</span>
+            <span class="chip">Travel</span>
+            <span class="chip">Books across genres</span>
+            <span class="chip">Poetry</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="container">
+        <div>
+          <h2>Let&rsquo;s talk about what you&rsquo;re building.</h2>
+          <p>
+            Hiring a lead or need a project built? Send a line about what you need and I&rsquo;ll
+            take it from there.
+          </p>
+        </div>
+        <div class="contact-band__actions">
+          <Button mail subject="Get in touch" label="Get in touch" icon="mail" />
+          {hasResume && (
+            <Button label="Download resume" href={RESUME_URL} download icon="download" variant="ghost" />
+          )}
+          <small>Dehradun, India &middot; Remote</small>
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>

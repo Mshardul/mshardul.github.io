@@ -215,22 +215,38 @@ Bug fixed during review: the home "Tools I ship with" chips were unstyled after 
 
 **Stage 1 done:** fonts and tokens.
 
-- `package.json`: added `@fontsource/newsreader` and `@fontsource/public-sans` (exact `5.1.0`, same pin as the old font packages); removed `@fontsource/inter` and `@fontsource/space-grotesk`.
+- `package.json`: added `@fontsource/newsreader` and `@fontsource/public-sans` (exact `5.1.0`); removed `@fontsource/inter` and `@fontsource/space-grotesk`.
 - `BaseLayout.astro`: imports Newsreader 500/600 and Public Sans 400-700.
-- `src/styles/tokens.css`: the mockup tokens plus the component dimensions the `css-hygiene` guard needs (`--w-row-when`, `--w-photo`, `--blur-header` and similar). The previous design's tokens stay in a marked "legacy" block so the old pages still build; `--font-head` and `--font-body` point at the new fonts. The block is removed in stage 3.
-- Result: `npm run guard` (same 32 non-blocking warnings), `npm run check` and `npm run build` pass. The site looks like the old design in the new fonts until stage 2 and 3.
+- `src/styles/tokens.css`: the mockup tokens plus component dimensions. The previous design's tokens stay in a marked "legacy" block; removed in stage 3.
+- Result: `npm run guard` (same 32 non-blocking warnings), `npm run check` and `npm run build` pass.
 
 **Stage 2 done:** global components.
 
-- New components: `Button` (variants, small size, icons, email buttons with a subject), `Icon` (mail, download, arrow), `ChipList` (inline tech icons from `src/assets/tech-icons/`), `SiteHeader` (brand, nav, theme toggle, "Get in touch", menu button), `SiteFooter` (follows the mockup). `SkipLink` restyled.
-- New CSS: `button.css` (rewritten, with active and disabled states), `chip.css`, `icon.css`, `site-header.css`, `site-footer.css`, `skip-link.css`; `base.css` rewritten to the mockup base (sticky-header `scroll-margin-top`, `text-wrap`, focus ring); `.container` added to `helpers.css`.
-- Removed: `Nav`, `Footer`, `ThemeToggle` and their CSS, plus `tag.css`. `Cta` and `TagList` stay as thin bridges onto `Button` and `ChipList` until stage 3 removes them.
-- Celery icon is now the Simple Icons mark (decision 42), manifest updated (`simple-icons` 16.38.0, CC0).
-- Menu: label "Menu"/"Close" with `aria-expanded`, Escape closes it and returns focus, links work without JS. The small header email button is hidden without JS (the address is only put together by script, which the `email-location` guard requires).
-- Footer follows the mockup (decision 48), so the old LinkedIn and GitHub links are gone from it.
-- **Existing bug fixed:** `astro:page-load` and `astro:after-swap` were listened for on `window`, but Astro fires them on `document` without bubbling, so after a client-side page change nothing re-ran (theme toggle, menu, email links, theme re-apply). Both listeners are now on `document`, and the theme toggle binds only once.
-- Checks: guard (same 32 non-blocking warnings), `npm run check` (0 errors), `npm test` (46 pass), build. Browser check on the built site: menu opens and closes with the right label, Escape returns focus, the theme toggle label follows the theme, and the menu and email links still work after a page change.
-- Note: the `css-usage` guard only reads files git knows about, so new files need `git add` (or `git add -N`) before the guard sees them.
+- New components: `Button`, `Icon`, `ChipList`, `SiteHeader`, `SiteFooter`. `SkipLink` restyled. `Cta` and `TagList` thin bridges until stage 3.
+- New CSS: `button.css`, `chip.css`, `icon.css`, `site-header.css`, `site-footer.css`, `skip-link.css`; `base.css` rewritten; `.container` added to `helpers.css`.
+- Removed: `Nav`, `Footer`, `ThemeToggle`, `tag.css`.
+- Celery icon is the Simple Icons mark (decision 42).
+- Bug fixed: `astro:page-load` / `astro:after-swap` listeners moved from `window` to `document`; theme toggle binds idempotently; `init()` adds the `js` class.
+- Checks: guard (32 warnings), check (0 errors), test (46 pass), build.
+
+**Stage 3 done:** the pages, then the old-design cleanup.
+
+Pages ported from the mockup (decision 48: mockup text as is; `src/content` is not the reference):
+- `src/pages/index.astro` — hero (avatar + chip--status badge on phones, decision 3), logo-strip, stats, skills chips, feature cards (heavy + plain), experience rows, education strip (`edu-strip`), outside-work chips, contact band.
+- `src/pages/experience.astro` — page-head, job rows (`row--job` with tech chips), contact band.
+- `src/pages/projects/index.astro` — page-head, filter bar (`chip--filter`, hidden without JS), project grid (`card--link card--project` → coming-soon, decision 51), result count, contact band.
+- `src/pages/projects/[slug].astro` — page-head with breadcrumb (decision with crumb), story rows (`row--story`), next-project card → coming-soon (decision 51), contact band.
+- `src/pages/build-with-me.astro` — page-head, build rows (`row--build` → coming-soon / experience), three "ways to start" arrow links (`link-arrow`, decisions 11/15), contact band.
+- `src/pages/404.astro` — `.not-found` (Go home / See projects).
+- `src/pages/coming-soon.astro` (new) — `.not-found` (See projects / Go home), permanent fallback per decision 16.
+
+New CSS: `card.css` (`--feature`, `--heavy`, `--panel`, `--link`, `--project`), `row.css` (`--job`, `--story`, `--build`), `stats.css` (`.stats`, `.edu-strip`, `.strengths`, `.outside-work`), `hero.css`, `contact-band.css`, `pagehead.css` (`.page-head`, `.breadcrumb`, `.next-project`, `.not-found`), `section.css` (`.section`, `.eyebrow`, `.lead`, `.actions`, `.logo-strip`), `chip.css` (added `.chip--status`, `.chip--filter`, `.chip-list--tight`, `.filter-bar`). New token `--tick-mask` (mask + `currentColor`, no baked colours, fixes the css-hygiene data-URI issue). On-dark button/focus rules added to `.card--heavy` and `.contact-band`. Card grid last row centred (decision 14). Role line in two lines (decision 19). Hiring card heavy, "Need something built" outlined (decision 28).
+
+Old design deleted after confirming nothing references it: legacy token block in `tokens.css`, `typography.css`, `helpers.css` stripped to `.container`, `bio.css`, `blob.css`, `skills.css`, `contact.css`, `fact-grid.css`, `band.css`, `timeline.css`, `scope.css`, `project-card.css`, `project-detail.css`, `service.css`, `stack.css`; components `FactGrid`, `Band`, `Cta`, `TagList`, `TimelineRole`, `ProjectCard`, `Section`; `tests/stack.test.ts` and `src/lib/stack.ts`; reveal/stack-offset code in `init.ts`.
+
+Checks at completion: `npm run guard` — 0 failures, 29 expected placeholder warnings (28 from `src/content/projects.ts` placeholder copy, 1 from the mockup `placeholder` class in the hero — both expected per decision 48 / guard note); `npm run check` — 0 errors; `npm test` — 46 pass; `npm run build` — 13 pages.
+
+Screenshots: `make screenshots` (built site) and `make screenshots-mockup` taken for home, experience, projects, build-with-me, not-found (+coming-soon on the mockup) at desktop/mobile, light/dark, JS off. Pixel comparison shows overlapping-region differences of roughly 2-21% across views, with page heights differing — attributable to decision-48 content differences and font rendering (mockup uses Google Fonts; the port uses pinned @fontsource). No failed local assets; no horizontal overflow.
 
 ## 12. What happens on approval
 

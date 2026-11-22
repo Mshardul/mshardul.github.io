@@ -1,7 +1,16 @@
+/*
+  Chip component. .chip-list and .chip with variants: --status, --filter, --sm.
+  Imported by ChipList. Uses only tokens from tokens.css.
+*/
+
 .chip-list {
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap-inline);
+}
+
+.chip-group--tight {
+  margin-top: var(--gap-stack);
 }
 
 .chip {
@@ -17,13 +26,58 @@
   background: var(--bg);
 }
 
-.chip--sm {
-  font-size: var(--fs-caption);
-}
-
-.logo-icon {
+.chip .logo-icon {
   flex: none;
   fill: currentColor;
   width: var(--icon-sm);
   height: var(--icon-sm);
+}
+
+.chip--sm {
+  font-size: var(--fs-caption);
+}
+
+.chip--status {
+  gap: var(--gap-stack);
+  padding: var(--sp-2) var(--sp-4) var(--sp-2) var(--sp-3);
+  background: var(--soft);
+}
+
+.chip--status i {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: var(--radius-circle);
+  background: var(--ok);
+  box-shadow: 0 0 0 var(--sp-1) color-mix(in srgb, var(--ok) 22%, transparent);
+}
+
+.chip--filter {
+  min-height: var(--control-h);
+  padding: 0 var(--pad-control-sm);
+  border-width: var(--bw-control);
+  border-color: var(--control-border);
+  background: transparent;
+  font: 600 var(--fs-meta) var(--sans);
+  cursor: pointer;
+}
+
+.chip--filter:hover {
+  border-color: var(--ink);
+}
+
+.chip--filter[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+
+/* Filter chips are interactive only; hidden without JS. */
+.js .filter-bar {
+  display: flex;
+}
+
+.filter-bar {
+  display: none;
+  gap: var(--gap-inline);
+  flex-wrap: wrap;
 }

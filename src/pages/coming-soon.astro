@@ -1,0 +1,22 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
+import "../styles/components/pagehead.css";
+import "../styles/components/section.css";
+---
+
+<BaseLayout title="Coming soon | Shardul Lingwal" description="This page is not ready yet.">
+  <main id="main">
+    <section class="not-found">
+      <div class="container">
+        <p class="eyebrow">Coming soon</p>
+        <h1>This page is on its way.</h1>
+        <p class="lead">It is not ready yet. Come back soon, or look at what is already here.</p>
+        <div class="actions">
+          <Button label="See projects" href="/projects" />
+          <Button label="Go home" href="/" variant="ghost" />
+        </div>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

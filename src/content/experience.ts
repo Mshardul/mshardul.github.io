@@ -17,7 +17,7 @@ export const roles: Role[] = [
     end: "Present",
     scope: "Led and mentored 3 backend engineers; informal lead",
     highlights: [
-      "Led the backend team from first commit to client go-live.",
+      "Led the backend team from first commit to go-live.",
       "Built the scheduling layer and hardened the distributed ingestion pipeline.",
       "Owned cross-service integration and built session auth with role-based access.",
     ],

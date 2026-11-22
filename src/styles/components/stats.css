@@ -1,0 +1,121 @@
+/*
+  Stats row and education strip. Uses only tokens from tokens.css.
+*/
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 var(--gap-block);
+  margin-top: var(--gap-region);
+}
+
+.stats > * {
+  padding-top: var(--pad-cell);
+  border-top: var(--bw-rule) solid var(--ink);
+}
+
+.stat-value {
+  font: 600 var(--fs-stat) / 1 var(--serif);
+  color: var(--ink);
+  letter-spacing: var(--track-display);
+}
+
+.stats p {
+  margin-top: var(--gap-stack);
+  font-size: var(--fs-text-sm);
+  color: var(--mute);
+  max-width: var(--measure-narrow);
+}
+
+@media (max-width: 760px) {
+  .stats {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--gap-block);
+  }
+}
+
+.edu-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0 var(--gap-block);
+  margin-top: var(--gap-content);
+}
+
+.edu-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-1);
+  padding-top: var(--pad-cell);
+  border-top: var(--bw-rule) solid var(--ink);
+}
+
+.edu-item b {
+  font: 600 var(--fs-h4) / var(--lh-heading) var(--serif);
+  color: var(--ink);
+}
+
+.edu-item span {
+  color: var(--text);
+  font-size: var(--fs-text-sm);
+}
+
+.edu-item em {
+  font-style: normal;
+  color: var(--mute);
+  font-size: var(--fs-meta);
+}
+
+@media (max-width: 760px) {
+  .edu-strip {
+    grid-template-columns: 1fr 1fr;
+    row-gap: var(--gap-block);
+  }
+}
+
+.outside-work {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-stack) var(--sp-5);
+  margin-top: var(--gap-content);
+  padding-top: var(--gap-block);
+  border-top: var(--bw-hair) solid var(--line);
+}
+
+.outside-work__label {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.strengths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-content);
+  margin-top: var(--gap-region);
+}
+
+.strengths h3 {
+  font: 600 var(--fs-lead) var(--sans);
+  color: var(--ink);
+  letter-spacing: 0;
+  margin-bottom: var(--sp-2);
+  padding-top: var(--sp-4);
+  border-top: var(--bw-rule) solid var(--ink);
+}
+
+.strengths p {
+  color: var(--text);
+  font-size: var(--fs-text-sm);
+}
+
+@media (max-width: 760px) {
+  .strengths {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .strengths {
+    grid-template-columns: 1fr;
+  }
+}

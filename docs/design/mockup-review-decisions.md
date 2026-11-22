@@ -49,6 +49,9 @@ Source: [mockup-review.md](mockup-review.md). All decisions settled and applied 
 | 46 | Fonts in the port | Self-host Newsreader and Public Sans through pinned `@fontsource` packages; remove the Inter and Space Grotesk packages | Stays self-hosted, no third-party font request, matches the existing setup |
 | 47 | Port order | Stages, each checked before the next: (1) tokens, fonts, base; (2) global components (nav, button, footer, chip, card); (3) pages one at a time, each compared with the mockup screenshots | A mismatch points to one stage; review in small pieces |
 | 48 | Copy in the port | First release follows the mockup text as is; `src/content/` is not the reference. Content polish is a later phase | Review was about design; content is a separate phase |
+| 49 | Stage 3 start | Port stage 3 (the pages) begins now; stages 1-2 are committed and the baseline is green. | Port order is checked page by page so any drift is attributable to one page. |
+| 50 | Page order | home, experience, projects, project template ([slug]), build-with-me, 404, coming-soon; old-design cleanup last. | Every intermediate state stays buildable and reviewable. |
+| 51 | Unfinished links | Projects cards and "Next project" link to the new `coming-soon.astro` for now; real project pages open in a new tab only when they exist in their own repos later. | Decision 16: coming-soon is a permanent fallback, so no link dead-ends. |
 
 ## Obvious fixes (decision 8, veto any)
 

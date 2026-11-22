@@ -1,0 +1,139 @@
+/*
+  Hero section. Uses only tokens from tokens.css.
+*/
+
+.hero {
+  padding: var(--pad-hero) 0 var(--pad-section);
+}
+
+.hero .container {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: var(--gap-split);
+  align-items: center;
+}
+
+.hero h1 {
+  margin: var(--gap-content) 0 var(--gap-block);
+}
+
+.hero-top {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-stack);
+}
+
+.avatar {
+  display: none;
+  width: var(--avatar);
+  height: var(--avatar);
+  flex: none;
+  border-radius: var(--radius-circle);
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: var(--bw-hair) solid var(--line);
+  background: var(--soft);
+}
+
+.hero-sub {
+  font-size: var(--fs-lead);
+  line-height: var(--lh-text);
+  max-width: var(--measure-text);
+  color: var(--text);
+}
+
+.meta-line {
+  display: flex;
+  align-items: center;
+  gap: var(--gap-inline);
+  margin-top: var(--gap-block);
+  color: var(--mute);
+  font-size: var(--fs-meta);
+}
+
+.hero-photo {
+  position: relative;
+  justify-self: end;
+  width: min(100%, var(--w-photo));
+}
+
+.hero-photo__frame {
+  aspect-ratio: 4/5;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--soft);
+  border: var(--bw-hair) solid var(--line);
+  position: relative;
+}
+
+.hero-photo__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: var(--mute);
+  font-size: var(--fs-meta);
+  background: linear-gradient(150deg, var(--soft), color-mix(in srgb, var(--blue) 10%, var(--soft)));
+}
+
+.placeholder b {
+  display: block;
+  font: 600 var(--fs-stat) var(--serif);
+  color: var(--ink);
+  opacity: 0.18;
+  letter-spacing: var(--track-display);
+}
+
+.hero-note {
+  position: absolute;
+  z-index: 3;
+  left: calc(var(--sp-5) * -1);
+  bottom: var(--sp-5);
+  background: var(--bg);
+  border: var(--bw-hair) solid var(--line);
+  border-radius: var(--radius-card);
+  padding: var(--sp-3) var(--sp-4);
+  box-shadow: var(--shadow-pop);
+  max-width: var(--w-note);
+  font-size: var(--fs-meta);
+  line-height: var(--lh-text);
+}
+
+.hero-note small {
+  display: block;
+  color: var(--mute);
+  font-size: var(--fs-caption);
+  margin-bottom: var(--sp-1);
+}
+
+.hero-note b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  /* phone: round avatar beside the badge; headline and CTA stay above the fold (decision 3) */
+  .hero .container {
+    grid-template-columns: 1fr;
+  }
+  .hero-photo {
+    display: none;
+  }
+  .avatar {
+    display: block;
+  }
+  .hero h1 {
+    margin-top: var(--gap-block);
+  }
+}

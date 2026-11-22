@@ -1,68 +1,88 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Cta from "../components/Cta.astro";
-import Card from "../components/Card.astro";
-import Band from "../components/Band.astro";
 import PageHead from "../components/PageHead.astro";
-import Section from "../components/Section.astro";
+import Button from "../components/Button.astro";
+import Icon from "../components/Icon.astro";
 import { meta } from "../content/meta.ts";
-import "../styles/components/service.css";
-
-const services = [
-  { title: "Web apps", text: "One line on the kind of web products I build, from sites to full apps.", project: "jugnu" },
-  { title: "Mobile & desktop", text: "One line on native Mac apps, downloads and mobile work.", project: "tools" },
-  { title: "Chrome extensions", text: "One line on browser extensions I ship.", project: "tool-stack" },
-  { title: "Open source", text: "One line on the tools and docs I maintain in the open.", project: "systemdesign-wiki" },
-];
-
-const engagements = [
-  { title: "One-off project", text: "A defined build, from idea to launch." },
-  { title: "Ongoing", text: "A longer relationship, building and improving over time." },
-  { title: "Consulting", text: "Architecture, reviews and technical leadership." },
-];
+import "../styles/components/pagehead.css";
+import "../styles/components/section.css";
+import "../styles/components/row.css";
+import "../styles/components/stats.css";
+import "../styles/components/chip.css";
+import "../styles/components/contact-band.css";
 ---
 
 <BaseLayout title={meta.build.title} description={meta.build.description} current="build">
-  <main id="main" class="page-main">
+  <main id="main">
     <PageHead label="Build with me" lead="From small tools to full products. Here is what I build and how we can work together.">
-      Web, mobile, Mac and Chrome, <span class="highlight">built</span> properly.
+      Web, mobile, Mac and Chrome, built properly.
       <Fragment slot="after">
-        <div class="btn-row">
-          <Cta primary label="Start a project" mail />
+        <div class="actions">
+          <Button mail subject="Project" label="Get in touch" icon="mail" />
         </div>
       </Fragment>
     </PageHead>
 
-    <Section tone={2} heading="What I build">
-      <div class="svc">
-        {services.map((service) => (
-          <Card>
-            <div class="icon"></div>
-            <h3 class="heading heading--item">{service.title}</h3>
-            <p>{service.text}</p>
-            <a class="see" href={`/projects/${service.project}`}>
-              See: {service.project} →
-            </a>
-          </Card>
-        ))}
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">What I build</p>
+        <h2>Things I can take on.</h2>
+        <div class="rows">
+          <div class="row row--build">
+            <h3>Web apps</h3>
+            <p>Live and open-source web products, with the backend done properly.</p>
+            <a class="link-arrow" href="/coming-soon">jugnu<Icon name="arrow" /></a>
+          </div>
+          <div class="row row--build">
+            <h3>Mac apps</h3>
+            <p>Native desktop tools, shipped as downloads.</p>
+            <a class="link-arrow" href="/coming-soon">Tools<Icon name="arrow" /></a>
+          </div>
+          <div class="row row--build">
+            <h3>Chrome extensions</h3>
+            <p>Browser tools that fit into how people already work.</p>
+            <a class="link-arrow" href="/coming-soon">tool-stack<Icon name="arrow" /></a>
+          </div>
+          <div class="row row--build">
+            <h3>Backend systems</h3>
+            <p>Scheduling, ingestion and payments platforms, from architecture to production.</p>
+            <a class="link-arrow" href="/experience">See: experience<Icon name="arrow" /></a>
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
 
-    <Section tone={3} heading="How we can work">
-      <div class="eng">
-        {engagements.map((engagement) => (
-          <Card>
-            <b>{engagement.title}</b>
-            <p>{engagement.text}</p>
-          </Card>
-        ))}
+    <section class="section section--soft">
+      <div class="container">
+        <p class="eyebrow">How we can work</p>
+        <h2>Three ways to start.</h2>
+        <div class="strengths">
+          <div>
+            <h3><a class="link-arrow" href="#" data-mail data-mail-subject="One-off project">One-off project<Icon name="arrow" /></a></h3>
+            <p>A defined build, from idea to launch.</p>
+          </div>
+          <div>
+            <h3><a class="link-arrow" href="#" data-mail data-mail-subject="Ongoing work">Ongoing<Icon name="arrow" /></a></h3>
+            <p>A longer relationship, building and improving over time.</p>
+          </div>
+          <div>
+            <h3><a class="link-arrow" href="#" data-mail data-mail-subject="Consulting">Consulting<Icon name="arrow" /></a></h3>
+            <p>Architecture, reviews and technical leadership.</p>
+          </div>
+        </div>
       </div>
-    </Section>
+    </section>
 
-    <Section tone={4}>
-      <Band heading="Have something in mind?" text="Send a short note about what you want built.">
-        <Cta primary label="Start a project" mail />
-      </Band>
-    </Section>
+    <section class="contact-band" id="contact">
+      <div class="container">
+        <div>
+          <h2>Have something in mind?</h2>
+          <p>Send a short note about what you want built.</p>
+        </div>
+        <div class="contact-band__actions">
+          <Button mail subject="Project" label="Get in touch" icon="mail" />
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>

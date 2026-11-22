@@ -1,29 +1,83 @@
 /*
-  Shared page header for detail pages: .pagehead and .crumb.
-  Imported only by PageHead. Uses only tokens from tokens.css.
+  Page head, breadcrumb, next-project and not-found. Uses only tokens from tokens.css.
 */
 
-.pagehead {
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: var(--space-7) var(--space-gutter) var(--space-6);
+.page-head {
+  padding: var(--pad-pagehead) 0 var(--pad-pagehead-end);
 }
 
-.pagehead .lead {
-  margin-top: var(--space-2);
+.page-head h1 {
+  max-width: var(--measure-heading);
 }
 
-.crumb {
-  font-size: var(--text-xs);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-muted);
+.page-head .lead {
+  margin-top: var(--gap-text);
 }
 
-.crumb a {
+.page-head .actions {
+  margin-top: var(--gap-block);
+}
+
+.breadcrumb {
+  display: flex;
+  gap: var(--gap-stack);
+  font-size: var(--fs-meta);
+  color: var(--mute);
+  margin-bottom: var(--gap-block);
+}
+
+.breadcrumb a {
+  color: var(--mute);
+}
+
+.breadcrumb a:hover {
+  color: var(--blue);
+}
+
+.page-note {
+  margin-top: var(--gap-stack);
+  color: var(--text);
+  font-size: var(--fs-text-sm);
+}
+
+.next-project {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-top: var(--gap-content);
+  padding: var(--pad-card);
+  color: var(--ink);
+}
+
+.next-project small {
+  font-weight: 600;
+  font-size: var(--fs-meta);
+  color: var(--mute);
+}
+
+.next-project b {
+  font: 600 var(--fs-h3-lg) var(--serif);
   display: inline-flex;
   align-items: center;
-  min-height: var(--target-min);
-  color: var(--color-link);
+  gap: var(--gap-stack);
+}
+
+.next-project .icon {
+  width: var(--icon-lg);
+  height: var(--icon-lg);
+  color: var(--blue);
+}
+
+.not-found {
+  padding: var(--pad-fullpage) 0;
+}
+
+.not-found h1 {
+  font-size: var(--fs-h1-xl);
+  line-height: var(--lh-display);
+}
+
+.not-found .lead {
+  margin-top: var(--gap-text);
 }

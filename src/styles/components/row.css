@@ -1,0 +1,153 @@
+/*
+  Row component. .row base with modifiers: --job, --story, --build.
+  Imported by row-using pages. Uses only tokens from tokens.css.
+*/
+
+.rows {
+  margin-top: var(--gap-content);
+  border-top: var(--bw-rule) solid var(--ink);
+}
+
+.rows--light {
+  border-top: var(--bw-hair) solid var(--line);
+}
+
+.rows--loose {
+  margin-top: var(--gap-region);
+}
+
+.rows--flush {
+  margin-top: 0;
+}
+
+.row {
+  padding: var(--pad-row) 0;
+  border-bottom: var(--bw-hair) solid var(--line);
+}
+
+.row__when {
+  font-weight: 500;
+  font-size: var(--fs-meta);
+  color: var(--mute);
+  padding-top: var(--sp-1);
+}
+
+.row__role {
+  color: var(--ink);
+  font-weight: 600;
+  font-size: var(--fs-text-sm);
+  margin: var(--sp-1) 0 var(--gap-stack);
+}
+
+.row__role:has(+ .row__impact) {
+  margin-bottom: 0;
+}
+
+.row__impact {
+  color: var(--mute);
+  font-size: var(--fs-text-sm);
+  margin: 0 0 var(--gap-stack);
+}
+
+.row--job {
+  display: grid;
+  grid-template-columns: var(--w-row-when) 1fr;
+  gap: var(--sp-2) var(--sp-7);
+}
+
+.row--job h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-heading);
+}
+
+.row--job ul {
+  padding-left: 1.15em;
+  max-width: var(--measure-text);
+}
+
+.row--job li {
+  margin: var(--sp-2) 0;
+}
+
+.row--job li::marker {
+  color: var(--mute);
+}
+
+.row--job .chip-list {
+  margin-top: var(--gap-text);
+}
+
+.row--story {
+  display: grid;
+  grid-template-columns: var(--w-row-label) 1fr;
+  gap: var(--gap-stack) var(--sp-7);
+}
+
+.row--story h2 {
+  font-size: var(--fs-h3);
+  max-width: none;
+  margin: 0;
+}
+
+.row--story p {
+  max-width: var(--measure-text);
+  font-size: var(--fs-lead);
+}
+
+.row--build {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr var(--w-row-action);
+  gap: var(--gap-stack) var(--sp-6);
+  align-items: center;
+}
+
+.row--build h3 {
+  font-size: var(--fs-h3-lg);
+}
+
+.row--build p {
+  font-size: var(--fs-text);
+  max-width: var(--measure-text);
+}
+
+.link-arrow {
+  font-weight: 700;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: var(--bw-rule) solid var(--blue);
+  padding-bottom: var(--sp-1);
+  white-space: nowrap;
+  display: inline-flex;
+  gap: var(--gap-inline);
+  align-items: center;
+  justify-self: end;
+}
+
+.link-arrow:hover {
+  background: color-mix(in srgb, var(--blue) 14%, transparent);
+}
+
+@media (max-width: 760px) {
+  .row--job,
+  .row--story {
+    grid-template-columns: 1fr;
+  }
+  .row--build {
+    grid-template-columns: 1fr;
+    gap: var(--gap-inline);
+  }
+  .row--build .link-arrow {
+    justify-self: start;
+  }
+}
+
+/* Email links get their address from script. Without JS they show as plain text. */
+html:not(.js) .link-arrow[data-mail] {
+  pointer-events: none;
+  border-bottom: 0;
+  color: inherit;
+}
+
+html:not(.js) .link-arrow[data-mail] .icon {
+  display: none;
+}

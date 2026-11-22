@@ -1,20 +1,23 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Cta from "../components/Cta.astro";
-import PageHead from "../components/PageHead.astro";
-import { copy } from "../content/copy.ts";
+import Button from "../components/Button.astro";
 import { meta } from "../content/meta.ts";
+import "../styles/components/pagehead.css";
+import "../styles/components/section.css";
 ---
 
 <BaseLayout title={meta.notFound.title} description={meta.notFound.description}>
-  <main id="main" class="page-main">
-    <PageHead lead={copy.notFound.lead}>
-      {copy.notFound.headline}
-      <Fragment slot="after">
-        <div class="btn-row">
-          <Cta primary label="Back home" href="/" />
+  <main id="main">
+    <section class="not-found">
+      <div class="container">
+        <p class="eyebrow">404</p>
+        <h1>Page not found.</h1>
+        <p class="lead">That page does not exist. Try the home page or the projects.</p>
+        <div class="actions">
+          <Button label="Go home" href="/" />
+          <Button label="See projects" href="/projects" variant="ghost" />
         </div>
-      </Fragment>
-    </PageHead>
+      </div>
+    </section>
   </main>
 </BaseLayout>

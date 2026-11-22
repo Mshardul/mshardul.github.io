@@ -2,13 +2,32 @@
 import "../styles/components/card.css";
 
 interface Props {
-  note?: string;
+  feature?: boolean;
+  heavy?: boolean;
+  panel?: boolean;
+  link?: boolean;
+  project?: boolean;
+  /** Makes the card an <a> (used by the project variant). */
+  href?: string;
+  /** Data attributes forwarded to the root element (e.g. data-tags for filtering). */
+  dataTags?: string;
 }
 
-const { note } = Astro.props;
+const { feature, heavy, panel, link, project, href, dataTags } = Astro.props;
+const Tag = href ? "a" : "div";
+const attrs = href ? { href, "data-tags": dataTags || undefined } : {};
 ---
 
-<div class="card">
+<Tag
+  class="card"
+  class:list={{
+    "card--feature": feature,
+    "card--heavy": heavy,
+    "card--panel": panel,
+    "card--link": link,
+    "card--project": project,
+  }}
+  {...attrs}
+>
   <slot />
-  {note && <p class="card__text">{note}</p>}
-</div>
+</Tag>

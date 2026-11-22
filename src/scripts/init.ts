@@ -1,16 +1,13 @@
 /*
   Client init. Runs on every astro:page-load.
-  Binds: theme toggle, nav menu, mailto links, reveal observer, stack offsets.
-  Disconnects the previous observer first so nothing binds twice.
+  Binds: theme toggle, nav menu, mailto links.
 */
 
 import { buildMailto } from "../lib/mailto.ts";
 import { emailParts } from "../lib/contact.ts";
-import { stackTop } from "../lib/stack.ts";
 import { resolveTheme } from "../lib/theme.ts";
 
-let revealObserver: IntersectionObserver | null = null;
-let resizeHandle: (() => void) | null = null;
+let menuKeyHandler: ((event: KeyboardEvent) => void) | null = null;
 
 /** Bind theme toggle button. The label always names the action it will do. */
 function bindThemeToggle() {
@@ -38,8 +35,6 @@ function bindThemeToggle() {
 
   update();
 }
-
-let menuKeyHandler: ((event: KeyboardEvent) => void) | null = null;
 
 /**
  * Bind the nav menu button (phone). The links work without JS; this only opens and
@@ -93,73 +88,6 @@ function bindMailtoLinks() {
   });
 }
 
-/** Set up reveal IntersectionObserver for .reveal elements. */
-function bindRevealObserver() {
-  if (revealObserver) {
-    revealObserver.disconnect();
-    revealObserver = null;
-  }
-
-  const elements = document.querySelectorAll<HTMLElement>(".reveal");
-  if (!elements.length) return;
-
-  revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          revealObserver?.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
-
-  elements.forEach((el) => revealObserver!.observe(el));
-}
-
-/** Set up stack offsets for sticky sections on the home page. */
-function bindStackOffsets() {
-  const html = document.documentElement;
-  const stackMain = document.querySelector<HTMLElement>("[data-scroll='stack']");
-
-  if (!stackMain) {
-    html.classList.remove("has-stack");
-    return;
-  }
-
-  html.classList.add("has-stack");
-
-  const sections = document.querySelectorAll<HTMLElement>("[data-scroll='stack'] .section");
-  const applyOffsets = () => {
-    const vh = window.innerHeight;
-    sections.forEach((section) => {
-      const top = stackTop(vh, section.offsetHeight);
-      section.style.top = `${top}px`;
-    });
-  };
-
-  applyOffsets();
-
-  // Clean up previous resize listener so nothing binds twice.
-  if (resizeHandle) {
-    resizeHandle();
-  }
-
-  let rafId: number | null = null;
-  const onResize = () => {
-    if (rafId) cancelAnimationFrame(rafId);
-    rafId = requestAnimationFrame(applyOffsets);
-  };
-  window.addEventListener("resize", onResize);
-  resizeHandle = () => {
-    window.removeEventListener("resize", onResize);
-    if (rafId) cancelAnimationFrame(rafId);
-  };
-
-  document.fonts.ready.then(applyOffsets);
-}
-
 /** Public entry point. Called on every astro:page-load. */
 export function init() {
   // Marks "scripts are running": the phone menu and filter chips depend on it.
@@ -168,8 +96,6 @@ export function init() {
   bindThemeToggle();
   bindNavMenu();
   bindMailtoLinks();
-  bindRevealObserver();
-  bindStackOffsets();
 }
 
 /* ------------------------------------------------------------------ */

@@ -1,17 +1,235 @@
 /*
-  Card component. .card and .card__text.
+  Card component. .card base with modifiers: --feature, --heavy, --panel, --link, --project.
   Imported by Card. Uses only tokens from tokens.css.
 */
 
 .card {
-  padding: var(--space-5);
-  border: var(--border-width) solid var(--color-line);
+  border: var(--bw-hair) solid var(--line);
   border-radius: var(--radius-card);
-  background: var(--color-card);
-  box-shadow: var(--shadow-hard);
+  background: var(--bg);
 }
 
-.card__text {
-  margin-top: var(--space-1);
-  color: var(--color-muted);
+.card--feature {
+  padding: var(--pad-card-feature);
+  display: flex;
+  flex-direction: column;
+}
+
+.card--feature h3 {
+  font-size: var(--fs-h3-lg);
+  line-height: var(--lh-display);
+}
+
+.card--feature > p {
+  margin-top: var(--gap-stack);
+  color: var(--text);
+}
+
+.card--feature ul {
+  list-style: none;
+  padding: 0;
+  margin: var(--gap-block) 0 var(--gap-content);
+  display: grid;
+  gap: var(--gap-stack);
+}
+
+.card--feature li {
+  display: flex;
+  gap: var(--gap-stack);
+  align-items: flex-start;
+  font-size: var(--fs-text-sm);
+}
+
+.card--feature li {
+  position: relative;
+}
+
+/* Disc. The tick is drawn on top of it by ::after. */
+.card--feature li::before {
+  content: "";
+  flex: none;
+  width: var(--icon-md);
+  height: var(--icon-md);
+  margin-top: var(--sp-1);
+  border-radius: var(--radius-circle);
+  background-color: color-mix(in srgb, var(--blue) 16%, transparent);
+}
+
+/* Tick: a mask, so its colour comes from background-color. */
+.card--feature li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: var(--sp-1);
+  width: var(--icon-md);
+  height: var(--icon-md);
+  background-color: var(--blue);
+  -webkit-mask: var(--tick-mask);
+  mask: var(--tick-mask);
+  -webkit-mask-size: var(--icon-md) var(--icon-md);
+  mask-size: var(--icon-md) var(--icon-md);
+  -webkit-mask-position: center;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.card--heavy li::before {
+  background-color: var(--check-on-dark-bg);
+}
+
+.card--heavy li::after {
+  background-color: var(--on-navy);
+}
+
+.card--feature .button {
+  margin-top: auto;
+  align-self: flex-start;
+}
+
+.card--heavy {
+  background: var(--navy);
+  color: var(--on-navy);
+  border-color: var(--navy);
+}
+
+.card--heavy h3 {
+  color: var(--on-navy);
+}
+
+.card--heavy > p {
+  color: color-mix(in srgb, var(--on-navy) 82%, transparent);
+}
+
+.card--heavy .button,
+.contact-band .button {
+  background: var(--btn-on-dark-bg);
+  color: var(--btn-on-dark-fg);
+  border-color: var(--btn-on-dark-bg);
+}
+
+.card--heavy .button:hover,
+.contact-band .button:hover {
+  background: var(--btn-on-dark-hover);
+}
+
+.card--panel {
+  background: var(--soft);
+  padding: var(--pad-card);
+}
+
+.card--panel h3 {
+  font: 700 var(--fs-text-sm) var(--sans);
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.card--panel .chip-list {
+  margin-top: var(--gap-text);
+}
+
+.card--link {
+  text-decoration: none;
+  color: inherit;
+  transition: border-color var(--duration), box-shadow var(--duration);
+}
+
+.card--link:hover {
+  border-color: var(--blue);
+}
+
+.card--project {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card--project[hidden] {
+  display: none;
+}
+
+.card--project:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+.card__thumb {
+  aspect-ratio: 16/10;
+  background: linear-gradient(150deg, var(--soft), color-mix(in srgb, var(--blue) 9%, var(--soft)));
+  border-bottom: var(--bw-hair) solid var(--line);
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.card__mono {
+  font: 600 var(--fs-stat) var(--serif);
+  color: var(--ink);
+  opacity: 0.14;
+  letter-spacing: var(--track-display);
+}
+
+.card__body {
+  padding: var(--pad-card);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-stack);
+  flex: 1;
+}
+
+.card__body h3 {
+  font-size: var(--fs-h3);
+  line-height: var(--lh-display);
+}
+
+.card__body p {
+  color: var(--text);
+  font-size: var(--fs-text-sm);
+}
+
+.card__more {
+  margin-top: auto;
+  padding-top: var(--sp-1);
+  color: var(--blue);
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--gap-inline);
+}
+
+.card-grid {
+  --cols: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap-block);
+  margin-top: var(--gap-text);
+}
+
+.card-grid > .card {
+  flex: 0 0 calc((100% - (var(--cols) - 1) * var(--gap-block)) / var(--cols));
+}
+
+.choice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-block);
+  margin-top: var(--gap-region);
+}
+
+@media (max-width: 980px) {
+  .card-grid {
+    --cols: 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .choice-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .card-grid {
+    --cols: 1;
+  }
 }

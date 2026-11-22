@@ -1,57 +1,107 @@
 /*
-  Section component. .section, tone modifiers, .section__inner,
-  .section__head and .section__link.
-  Imported by Section. Uses only tokens from tokens.css.
+  Section base, eyebrow, lead and actions. Uses only tokens from tokens.css.
 */
 
 .section {
-  position: relative;
+  padding: var(--pad-section) 0;
+}
+
+.section--tight-top {
+  padding-top: var(--pad-section-tight);
+}
+
+.section--flush-top {
+  padding-top: 0;
+}
+
+.section--soft {
+  background: var(--soft);
+  border-block: var(--bw-hair) solid var(--line);
+}
+
+.eyebrow {
+  font-weight: 600;
+  font-size: var(--fs-meta);
+  color: var(--blue);
+  margin-bottom: var(--gap-stack);
+}
+
+.eyebrow--spaced {
+  margin-top: var(--gap-region);
+}
+
+.lead {
+  margin-top: var(--gap-text);
+  font-size: var(--fs-lead);
+  color: var(--text);
+  max-width: var(--measure-text);
+}
+
+.actions {
+  display: flex;
+  gap: var(--gap-stack);
+  flex-wrap: wrap;
+  margin-top: var(--gap-content);
+}
+
+.logo-strip {
+  border-block: var(--bw-hair) solid var(--line);
+  background: var(--soft);
+}
+
+.logo-strip .container {
   display: flex;
   align-items: center;
-  padding: var(--space-8) 0;
-  border-top: var(--border-width) solid var(--color-line);
-  background: var(--color-bg);
+  gap: var(--sp-5) var(--sp-7);
+  flex-wrap: wrap;
+  padding-block: var(--sp-5);
 }
 
-.section--tone-1 {
-  --surface: var(--color-surface-1);
-  background: var(--color-surface-1);
-}
-.section--tone-2 {
-  --surface: var(--color-surface-2);
-  background: var(--color-surface-2);
-}
-.section--tone-3 {
-  --surface: var(--color-surface-3);
-  background: var(--color-surface-3);
-}
-.section--tone-4 {
-  --surface: var(--color-surface-4);
-  background: var(--color-surface-4);
+.logo-strip p {
+  font-size: var(--fs-meta);
+  color: var(--mute);
+  font-weight: 500;
+  flex: none;
 }
 
-.section__inner {
-  position: relative;
-  width: 100%;
-  max-width: var(--content-width);
-  margin: 0 auto;
-  padding: 0 var(--space-gutter);
-}
-
-.section__head {
+.logo-strip ul {
+  list-style: none;
+  padding: 0;
   display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-3);
-  margin-bottom: var(--space-5);
+  gap: var(--sp-4) var(--sp-7);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-.section__link {
-  display: inline-flex;
+.logo-strip li {
+  display: flex;
   align-items: center;
-  min-height: var(--target-min);
-  font-size: var(--text-sm);
-  font-weight: 700;
-  color: var(--color-link);
-  white-space: nowrap;
+  font: 600 var(--fs-lead) var(--serif);
+  color: var(--mute);
+  letter-spacing: var(--track-heading);
+}
+
+.company-mark {
+  height: var(--h-mark);
+  width: auto;
+  max-width: var(--w-mark-max);
+  flex: none;
+  object-fit: contain;
+  filter: brightness(0);
+  opacity: 0.55;
+  transition: opacity var(--duration);
+}
+
+.logo-strip li:hover .company-mark {
+  opacity: 0.9;
+}
+
+:root[data-theme="dark"] .company-mark {
+  filter: brightness(0) invert(1);
+  opacity: 0.6;
+}
+
+.logo-strip li:not(.is-nologo) .company-name {
+  position: absolute;
+  left: var(--offscreen);
 }

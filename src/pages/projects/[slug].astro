@@ -1,13 +1,18 @@
 ---
 import type { GetStaticPaths } from "astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import Cta from "../../components/Cta.astro";
-import Band from "../../components/Band.astro";
 import PageHead from "../../components/PageHead.astro";
-import Section from "../../components/Section.astro";
+import Button from "../../components/Button.astro";
+import Card from "../../components/Card.astro";
+import ChipList from "../../components/ChipList.astro";
+import Icon from "../../components/Icon.astro";
 import { projects, type Project } from "../../content/projects.ts";
 import { nextProject } from "../../lib/projects.ts";
-import "../../styles/components/project-detail.css";
+import "../../styles/components/pagehead.css";
+import "../../styles/components/section.css";
+import "../../styles/components/row.css";
+import "../../styles/components/chip.css";
+import "../../styles/components/contact-band.css";
 
 export const getStaticPaths = (() => {
   return projects.map((project) => ({
@@ -20,60 +25,68 @@ const { project } = Astro.props as { project: Project };
 const next = nextProject(project.slug);
 ---
 
-<BaseLayout title={`${project.name} | Shardul Lingwal`} description={project.pitch}>
-  <main id="main" class="page-main">
-    <PageHead crumb={project.name} lead={project.pitch} tags={project.tags}>
+<BaseLayout title={`${project.name} | Shardul Lingwal`} description={project.pitch} current="projects">
+  <main id="main">
+    <PageHead crumb={project.name} lead={project.pitch}>
       {project.name}
-      <div slot="after">
-        {(project.stack?.length || project.aiNote) && (
-          <div class="project-meta">
-            {project.stack && project.stack.length > 0 && (
-              <p class="project-meta__stack"><strong>Stack:</strong> {project.stack.join(", ")}</p>
-            )}
-            {project.aiNote && <p class="project-meta__note">{project.aiNote}</p>}
-          </div>
-        )}
-        {project.links && project.links.length > 0 && (
-          <div class="project-links">
+      {project.links && project.links.length > 0 && (
+        <Fragment slot="after">
+          <div class="actions">
             {project.links.map((link) => (
-              <a href={link.href} target="_blank" rel="noopener">{link.label} <span class="visually-hidden">(opens in new tab)</span></a>
+              <Button label={link.label} href={link.href} icon="arrow" />
             ))}
           </div>
-        )}
-      </div>
+        </Fragment>
+      )}
     </PageHead>
 
-    <div class="wrap">
-      <div class="bigshot"></div>
-    </div>
-
-    {project.story && (
-      <Section tone={2}>
-        <div class="story">
-          <div>
-            <h2 class="heading heading--item">Why I built it</h2>
-            <p>{project.story.why}</p>
-          </div>
-          <div>
-            <h2 class="heading heading--item">How it works</h2>
-            <p>{project.story.how}</p>
-          </div>
-          <div>
-            <h2 class="heading heading--item">What I learned</h2>
-            <p>{project.story.learned}</p>
-          </div>
+    <section class="section section--tight-top">
+      <div class="container">
+        {project.tags.length > 0 && (
+            <ChipList items={project.tags.map((t) => ({ label: t }))} small />
+        )}
+        <div class="rows rows--loose">
+          {project.story && (
+            <>
+              <div class="row row--story">
+                <h2>Why I built it</h2>
+                <p>{project.story.why}</p>
+              </div>
+              <div class="row row--story">
+                <h2>How it works</h2>
+                <p>{project.story.how}</p>
+              </div>
+              <div class="row row--story">
+                <h2>What I learned</h2>
+                <p>{project.story.learned}</p>
+              </div>
+            </>
+          )}
+          {project.stack && project.stack.length > 0 && (
+            <Card panel>
+              <h3>Stack</h3>
+              <ChipList items={project.stack.map((t) => ({ label: t }))} />
+              {project.aiNote && <p class="page-note">{project.aiNote}</p>}
+            </Card>
+          )}
+          <a class="next-project" href="/coming-soon">
+            <small>Next project</small>
+            <b>{next.name} <Icon name="arrow" /></b>
+          </a>
         </div>
-      </Section>
-    )}
-
-    <Section tone={3}>
-      <Band heading="Need something like this?" text="Tell me what you're building and we'll take it from there.">
-        <Cta primary label="Start a project" mail />
-      </Band>
-      <div class="next">
-        <span>Next project</span>
-        <a href={`/projects/${next.slug}`}>{next.name} →</a>
       </div>
-    </Section>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="container">
+        <div>
+          <h2>Need something like this?</h2>
+          <p>Tell me what you want built and I&rsquo;ll tell you how I&rsquo;d approach it.</p>
+        </div>
+        <div class="contact-band__actions">
+          <Button label="Start a project" href="/build-with-me" icon="arrow" />
+        </div>
+      </div>
+    </section>
   </main>
 </BaseLayout>
