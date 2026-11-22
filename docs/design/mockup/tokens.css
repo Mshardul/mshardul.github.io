@@ -1,6 +1,6 @@
 /*
   Design tokens. Every value used in styles.css comes from here (decisions 29, 30, 38-40;
-  see docs/design/css-inventory.md). Add a role here before using a new value; never write
+  see docs/design/mockup-review-decisions.md). Add a role here before using a new value; never write
   a raw size, space or colour in styles.css.
 
   Breakpoints cannot be custom properties, so styles.css uses three literal values:

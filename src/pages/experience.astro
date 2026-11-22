@@ -59,11 +59,39 @@ const techIcon: Record<string, string> = {
                 <h3>{role.company}</h3>
                 <p class="row__role">{role.title}</p>
                 {role.scope && <p class="row__impact">{role.scope}</p>}
+                {role.context && <p>{role.context}</p>}
                 <ul>
-                  {role.highlights.map((bullet) => (
+                  {role.bullets.map((bullet) => (
                     <li>{bullet}</li>
                   ))}
                 </ul>
+                {role.challenges && (
+                  <>
+                    <p class="eyebrow">Challenges</p>
+                    <ul>
+                      {role.challenges.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {role.outcomes && (
+                  <>
+                    <p class="eyebrow">Outcomes</p>
+                    <ul>
+                      {role.outcomes.map((item) => (
+                        <li>{item}</li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {role.links && (
+                  <p>
+                    {role.links.map((link) => (
+                      <a class="link-arrow" href={link.href} target="_blank" rel="noopener">{link.label}</a>
+                    ))}
+                  </p>
+                )}
                 <ChipList
                   items={role.tech.map((t) => ({ label: t, icon: techIcon[t] ?? "" }))}
                 />

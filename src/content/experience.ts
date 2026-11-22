@@ -4,8 +4,15 @@ export type Role = {
   start: string;
   end: string;
   scope?: string;
+  /** Short form, shown on the home page. */
   highlights: string[];
+  /** Full form, shown on the experience page. */
   bullets: string[];
+  /** Optional depth, shown on the experience page only. Add per role as reviewed content lands. */
+  context?: string;
+  challenges?: string[];
+  outcomes?: string[];
+  links?: { label: string; href: string }[];
   tech: string[];
 };
 

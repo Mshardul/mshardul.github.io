@@ -1,6 +1,6 @@
 /*
   Design tokens. Every colour, size, space, radius, border, shadow and duration lives here
-  (decisions 29, 30, 38-40; docs/design/css-inventory.md). Other CSS uses only var(--...).
+  (decisions 29, 30, 38-40; docs/design/mockup-review-decisions.md). Other CSS uses only var(--...).
   Add a role here before using a new value.
 
   Breakpoints cannot be custom properties, so CSS uses three literal values in @media:

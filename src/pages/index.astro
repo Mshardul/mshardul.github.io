@@ -13,6 +13,7 @@ import ChipList from "../components/ChipList.astro";
 import Card from "../components/Card.astro";
 import { profile } from "../content/profile.ts";
 import { education } from "../content/education.ts";
+import { roles } from "../content/experience.ts";
 import { meta } from "../content/meta.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/hero.css";
@@ -177,74 +178,21 @@ import "../styles/components/contact-band.css";
         <p class="eyebrow">Experience</p>
         <h2>Where I&rsquo;ve done the work.</h2>
         <div class="rows rows--light rows--loose">
-          <article class="row row--job">
-            <div class="row__when">May 2025 &ndash; Present</div>
-            <div>
-              <h3>McKinsey &amp; Company</h3>
-              <p class="row__role">Senior Software Engineer I</p>
-              <p class="row__impact">Led and mentored 3 backend engineers; informal lead</p>
-              <ul>
-                <li>Led the backend team from first commit to go-live.</li>
-                <li>
-                  Built the scheduling layer and hardened the distributed ingestion pipeline.
-                </li>
-                <li>
-                  Owned cross-service integration and built session auth with role-based access.
-                </li>
-              </ul>
-            </div>
-          </article>
-          <article class="row row--job">
-            <div class="row__when">Oct 2022 &ndash; Jun 2024</div>
-            <div>
-              <h3>Bhanzu</h3>
-              <p class="row__role">SDE IV</p>
-              <p class="row__impact">Led a team of up to 12 developers; informal lead</p>
-              <ul>
-                <li>Led the Registration and Payments team for about nine months.</li>
-                <li>
-                  Designed on-site multi-gateway payments across multiple providers.
-                </li>
-              </ul>
-            </div>
-          </article>
-          <article class="row row--job">
-            <div class="row__when">Nov 2021 &ndash; Oct 2022</div>
-            <div>
-              <h3>AIfluence</h3>
-              <p class="row__role">Senior Full Stack Engineer</p>
-              <p class="row__impact">Second engineer; team grew to 6</p>
-              <ul>
-                <li>
-                  Designed the architecture of a campaign platform integrating about five
-                  social-media APIs.
-                </li>
-              </ul>
-            </div>
-          </article>
-          <article class="row row--job">
-            <div class="row__when">Jan 2020 &ndash; Oct 2021</div>
-            <div>
-              <h3>GE Digital</h3>
-              <p class="row__role">
-                Software Engineering Specialist, Digital Technology Intern
-              </p>
-              <p class="row__impact">First India hire on a US team of about 10</p>
-              <ul>
-                <li>Built a reusable configurable Angular component library.</li>
-              </ul>
-            </div>
-          </article>
-          <article class="row row--job">
-            <div class="row__when">Feb 2017 &ndash; Nov 2017</div>
-            <div>
-              <h3>Infosys</h3>
-              <p class="row__role">Systems Engineer</p>
-              <ul>
-                <li>Built a real-time logistics-tracking web app during training.</li>
-              </ul>
-            </div>
-          </article>
+          {roles.map((role) => (
+            <article class="row row--job">
+              <div class="row__when">{role.start} &ndash; {role.end}</div>
+              <div>
+                <h3>{role.company}</h3>
+                <p class="row__role">{role.title}</p>
+                {role.scope && <p class="row__impact">{role.scope}</p>}
+                <ul>
+                  {role.highlights.map((item) => (
+                    <li>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          ))}
         </div>
         <div class="actions">
           <Button label="See full experience" href="/experience" icon="arrow" variant="ghost" />
