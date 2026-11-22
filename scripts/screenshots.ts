@@ -30,15 +30,17 @@ const OUT_ROOT = resolve(".screenshots");
 // skipped when JS is off or the element is not visible (the menu button is hidden on desktop).
 type View = { name: string; url: string; full: boolean; click?: string };
 
-const homeSections = ["experience", "built", "skills", "education", "about", "build", "contact"];
+const homeSections = ["proof", "help", "experience", "beyond", "contact"];
 
 const VIEWS: View[] = [
   { name: "home", url: "/", full: false },
   ...homeSections.map((id) => ({ name: `home-${id}`, url: `/#${id}`, full: false })),
+  { name: "home-menu-open", url: "/", full: false, click: ".menu-toggle" },
   { name: "experience", url: "/experience", full: true },
   { name: "projects", url: "/projects", full: true },
   ...projects.map((p) => ({ name: `project-${p.slug}`, url: `/projects/${p.slug}`, full: true })),
   { name: "build-with-me", url: "/build-with-me", full: true },
+  { name: "coming-soon", url: "/coming-soon", full: true },
   { name: "not-found", url: "/404.html", full: true },
 ];
 

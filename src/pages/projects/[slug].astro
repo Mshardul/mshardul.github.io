@@ -26,7 +26,7 @@ const next = nextProject(project.slug);
 ---
 
 <BaseLayout title={`${project.name} | Shardul Lingwal`} description={project.pitch} current="projects">
-  <main id="main">
+  <main id="main" tabindex="-1">
     <PageHead crumb={project.name} lead={project.pitch}>
       {project.name}
       {project.links && project.links.length > 0 && (
@@ -69,7 +69,7 @@ const next = nextProject(project.slug);
               {project.aiNote && <p class="page-note">{project.aiNote}</p>}
             </Card>
           )}
-          <a class="next-project" href="/coming-soon">
+          <a class="card card--link next-project" href="/coming-soon">
             <small>Next project</small>
             <b>{next.name} <Icon name="arrow" /></b>
           </a>

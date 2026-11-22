@@ -4,6 +4,7 @@ import PageHead from "../components/PageHead.astro";
 import Button from "../components/Button.astro";
 import ChipList from "../components/ChipList.astro";
 import { roles } from "../content/experience.ts";
+import { education } from "../content/education.ts";
 import { meta } from "../content/meta.ts";
 import { hasResume, RESUME_URL } from "../lib/site.ts";
 import "../styles/components/pagehead.css";
@@ -37,7 +38,7 @@ const techIcon: Record<string, string> = {
 ---
 
 <BaseLayout title={meta.experience.title} description={meta.experience.description} current="experience">
-  <main id="main">
+  <main id="main" tabindex="-1">
     <PageHead label="Experience" lead="Every role with the impact, the tech and the scope.">
       7+ years of leading and building.
       <Fragment slot="after">
@@ -68,6 +69,22 @@ const techIcon: Record<string, string> = {
                 />
               </div>
             </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <p class="eyebrow">Education</p>
+        <h2>Where I studied.</h2>
+        <div class="rows">
+          {education.map((item) => (
+            <div class="row row--education">
+              <b>{item.degree}</b>
+              <span>{item.institution}</span>
+              <em>{item.years}</em>
+            </div>
           ))}
         </div>
       </div>

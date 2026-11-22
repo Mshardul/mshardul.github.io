@@ -18,7 +18,7 @@ const countWord = numberWords[projects.length] ?? String(projects.length);
 ---
 
 <BaseLayout title={meta.projects.title} description={meta.projects.description} current="projects">
-  <main id="main">
+  <main id="main" tabindex="-1">
     <PageHead label="Projects" lead="A curated set, not every repo. Each one has its own page with the story behind it.">
       {countWord} things, built with care.
     </PageHead>

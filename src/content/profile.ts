@@ -3,7 +3,7 @@ export const profile = {
   role: "Backend Engineering Lead · Python · Distributed Systems",
   headline: "I take backend systems from first commit to go-live.",
   summary:
-    "7+ years of professional experience building and leading production software. At McKinsey & Company I led the backend team from first commit to go-live. Earlier I built multi-gateway payments at Bhanzu and a campaign platform at AIfluence.",
+    "Backend engineering lead with 7+ years of professional experience. I design distributed systems and lead the team that ships them, most recently at McKinsey &amp; Company.",
   facts: [
     { title: "Senior Software Engineer I", note: "McKinsey & Company" },
     { title: "7+ years", note: "Experience" },

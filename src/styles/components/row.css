@@ -110,6 +110,30 @@
   max-width: var(--measure-text);
 }
 
+.row--education {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr var(--w-row-education-meta);
+  gap: var(--sp-2) var(--sp-5);
+  align-items: baseline;
+  padding: var(--pad-row-sm) 0;
+}
+
+.row--education b {
+  font: 600 var(--fs-h4) var(--serif);
+  color: var(--ink);
+}
+
+.row--education span {
+  color: var(--text);
+}
+
+.row--education em {
+  font-style: normal;
+  color: var(--mute);
+  font-size: var(--fs-meta);
+  text-align: right;
+}
+
 .link-arrow {
   font-weight: 700;
   color: var(--ink);

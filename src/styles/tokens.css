@@ -47,7 +47,7 @@
   --gap-region:var(--sp-7);   /* section heading to its content */
   --pad-control-sm:var(--sp-4); --pad-control:var(--sp-5); --pad-control-lg:var(--sp-6);
   --pad-card:var(--sp-5); --pad-card-feature:clamp(28px,3.4vw,44px);
-  --pad-row:var(--sp-6); --pad-cell:var(--sp-5);
+  --pad-row:var(--sp-6); --pad-row-sm:var(--sp-5); --pad-cell:var(--sp-5);
   --pad-section:clamp(40px,5vw,64px); --pad-section-tight:var(--sp-6);
   --pad-hero:clamp(40px,6vw,72px);
   --pad-pagehead:clamp(48px,7vw,88px); --pad-pagehead-end:clamp(28px,4vw,48px);
@@ -65,7 +65,7 @@
   /* control and icon sizes */
   --control-h:40px; --button-h:48px; --button-h-lg:56px;
   /* component dimensions (the css-hygiene guard keeps raw px out of component CSS) */
-  --w-row-when:200px; --w-row-label:260px; --w-row-action:190px;
+  --w-row-when:200px; --w-row-label:260px; --w-row-action:190px; --w-row-education-meta:150px;
   --w-photo:440px; --w-note:260px; --h-mark:28px; --w-mark-max:130px;
   --blur-header:10px; --focus-offset:3px; --press-offset:1px; --offscreen:-999px;
   --icon-sm:16px; --icon-md:18px; --icon-lg:24px; --dot:8px; --avatar:56px;

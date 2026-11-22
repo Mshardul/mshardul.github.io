@@ -21,10 +21,11 @@ import "../styles/components/stats.css";
 import "../styles/components/card.css";
 import "../styles/components/chip.css";
 import "../styles/components/row.css";
+import "../styles/components/contact-band.css";
 ---
 
 <BaseLayout title={meta.home.title} description={meta.home.description} current="home">
-  <main id="main">
+  <main id="main" tabindex="-1">
     <section class="hero">
       <div class="container">
         <div>
@@ -40,7 +41,7 @@ import "../styles/components/row.css";
           <div class="actions">
             <Button mail subject="Get in touch" label="Get in touch" icon="mail" />
             {hasResume && (
-              <Button label="Download resume" href={RESUME_URL} download icon="download" />
+              <Button label="Download resume" href={RESUME_URL} download icon="download" variant="ghost" />
             )}
           </div>
           <p class="meta-line">

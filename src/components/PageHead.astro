@@ -13,9 +13,11 @@ const { label, lead, crumb } = Astro.props;
 ---
 
 <div class="page-head">
-  {label && <p class="eyebrow">{label}</p>}
-  <h1><slot /></h1>
-  {lead && <p class="lead">{lead}</p>}
-  {crumb && <div class="breadcrumb"><a href="/projects">Projects</a> / {crumb}</div>}
-  <slot name="after" />
+  <div class="container">
+    {label && <p class="eyebrow">{label}</p>}
+    {crumb && <div class="breadcrumb"><a href="/projects">Projects</a> / {crumb}</div>}
+    <h1><slot /></h1>
+    {lead && <p class="lead">{lead}</p>}
+    <slot name="after" />
+  </div>
 </div>

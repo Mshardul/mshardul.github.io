@@ -47,6 +47,13 @@
   min-height: var(--button-h-lg);
   font-size: var(--fs-text);
   padding: 0 var(--pad-control-lg);
+  background: var(--btn-on-dark-bg);
+  color: var(--btn-on-dark-fg);
+  border-color: var(--btn-on-dark-bg);
+}
+
+.contact-band .button:hover {
+  background: var(--btn-on-dark-hover);
 }
 
 .contact-band .button--ghost {
