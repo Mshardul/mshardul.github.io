@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHead from "../components/PageHead.astro";
 import Button from "../components/Button.astro";
 import ChipList from "../components/ChipList.astro";
+import iconManifest from "../assets/tech-icons/manifest.json";
 import { roles } from "../content/experience.ts";
 import { education } from "../content/education.ts";
 import { meta } from "../content/meta.ts";
@@ -13,28 +14,10 @@ import "../styles/components/row.css";
 import "../styles/components/chip.css";
 import "../styles/components/contact-band.css";
 
-const techIcon: Record<string, string> = {
-  Python: "python",
-  FastAPI: "fastapi",
-  Celery: "celery",
-  Redis: "redis",
-  Flask: "flask",
-  DynamoDB: "amazondynamodb",
-  AWS: "amazonwebservices",
-  Go: "go",
-  React: "react",
-  MySQL: "mysql",
-  MongoDB: "mongodb",
-  "GitLab CI/CD": "gitlab",
-  Angular: "angular",
-  "HTML/CSS": "html5",
-  Bootstrap: "bootstrap",
-  "Material UI": "mui",
-  ".NET": "dotnet",
-  "C#": "csharp",
-  Azure: "microsoftazure",
-  SQL: "database",
-};
+// Chip icons come from the manifest: each label maps to an icon file in src/assets/tech-icons.
+const techIcon: Record<string, string> = Object.fromEntries(
+  iconManifest.icons.map((e) => [e.label, e.file.replace(".svg", "")]),
+);
 ---
 
 <BaseLayout title={meta.experience.title} description={meta.experience.description} current="experience">
@@ -59,46 +42,29 @@ const techIcon: Record<string, string> = {
                 <h3>{role.company}</h3>
                 <p class="row__role">{role.title}</p>
                 {role.scope && <p class="row__impact">{role.scope}</p>}
-                {role.context && <p>{role.context}</p>}
                 <ul>
                   {role.bullets.map((bullet) => (
                     <li>{bullet}</li>
                   ))}
                 </ul>
-                {role.challenges && (
-                  <>
-                    <p class="eyebrow">Challenges</p>
-                    <ul>
-                      {role.challenges.map((item) => (
-                        <li>{item}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                {role.outcomes && (
-                  <>
-                    <p class="eyebrow">Outcomes</p>
-                    <ul>
-                      {role.outcomes.map((item) => (
-                        <li>{item}</li>
-                      ))}
-                    </ul>
-                  </>
-                )}
-                {role.links && (
-                  <p>
-                    {role.links.map((link) => (
-                      <a class="link-arrow" href={link.href} target="_blank" rel="noopener">{link.label}</a>
-                    ))}
-                  </p>
-                )}
-                <ChipList
-                  items={role.tech.map((t) => ({ label: t, icon: techIcon[t] ?? "" }))}
-                />
+                <dl class="stack">
+                  {role.stack.map((group) => (
+                    <>
+                      <dt>{group.area}</dt>
+                      <dd>
+                        <ChipList
+                          small
+                          items={group.items.map((t) => ({ label: t, icon: techIcon[t] ?? "" }))}
+                        />
+                      </dd>
+                    </>
+                  ))}
+                </dl>
               </div>
             </article>
           ))}
         </div>
+        <p class="references">References available on request.</p>
       </div>
     </section>
 

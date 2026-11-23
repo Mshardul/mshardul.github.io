@@ -141,8 +141,197 @@
       "license": "CC0-1.0"
     },
     {
-      "label": "SQL",
+      "label": "SQL (T-SQL, MySQL)",
       "file": "database.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    },
+    {
+      "label": "GitLab CI",
+      "file": "gitlab.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Pydantic",
+      "file": "pydantic.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "SQLAlchemy",
+      "file": "sqlalchemy.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Databricks",
+      "file": "databricks.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "OpenTelemetry",
+      "file": "opentelemetry.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Sentry",
+      "file": "sentry.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Grafana",
+      "file": "grafana.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Locust",
+      "file": "locust.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "pytest",
+      "file": "pytest.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Docker",
+      "file": "docker.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Kubernetes",
+      "file": "kubernetes.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "GCP",
+      "file": "googlecloud.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Terraform",
+      "file": "terraform.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "GitHub Actions",
+      "file": "githubactions.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Argo CD",
+      "file": "argo.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "d3",
+      "file": "d3.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Git/GitHub",
+      "file": "github.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "jQuery",
+      "file": "jquery.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "JavaScript",
+      "file": "javascript.svg",
+      "source": "simple-icons",
+      "version": "16.38.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "OpenAI (GPT, Whisper)",
+      "file": "openai.svg",
+      "source": "simple-icons",
+      "version": "13.15.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Playwright",
+      "file": "playwright.svg",
+      "source": "simple-icons",
+      "version": "11.0.0",
+      "license": "CC0-1.0"
+    },
+    {
+      "label": "Flower",
+      "file": "flower.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    },
+    {
+      "label": "Alembic",
+      "file": "git-branch.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    },
+    {
+      "label": "Loki",
+      "file": "scroll-text.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    },
+    {
+      "label": "AssemblyAI",
+      "file": "audio-lines.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    },
+    {
+      "label": "c3",
+      "file": "chart-line.svg",
+      "source": "lucide-static",
+      "version": "1.77.0",
+      "license": "ISC"
+    },
+    {
+      "label": "Google Charts",
+      "file": "chart-column.svg",
       "source": "lucide-static",
       "version": "1.77.0",
       "license": "ISC"

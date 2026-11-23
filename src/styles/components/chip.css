@@ -33,6 +33,10 @@
   height: var(--icon-sm);
 }
 
+.chip .logo-icon[stroke] {
+  fill: none;
+}
+
 .chip--sm {
   font-size: var(--fs-caption);
 }

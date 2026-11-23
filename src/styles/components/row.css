@@ -175,3 +175,25 @@ html:not(.js) .link-arrow[data-mail] {
 html:not(.js) .link-arrow[data-mail] .icon {
   display: none;
 }
+
+.row--job .stack {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: var(--sp-1) var(--sp-5);
+  margin: var(--gap-text) 0 0;
+  align-items: center;
+}
+
+.row--job .stack dt {
+  font-size: var(--fs-caption);
+  color: var(--mute);
+}
+
+.row--job .stack dd {
+  margin: 0;
+}
+
+.references {
+  margin-top: var(--sp-6);
+  color: var(--mute);
+}

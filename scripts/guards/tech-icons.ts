@@ -19,10 +19,10 @@ function readText(path: string): string {
   }
 }
 
-/** Every technology named in a role's `tech: [...]` list. */
+/** Every technology named in a role's `stack` groups (`items: [...]`). */
 export function techNames(experienceSource: string): string[] {
   const names = new Set<string>();
-  for (const m of experienceSource.matchAll(/\btech:\s*\[([^\]]*)\]/g)) {
+  for (const m of experienceSource.matchAll(/\bitems:\s*\[([^\]]*)\]/g)) {
     for (const s of m[1].matchAll(/"([^"]+)"/g)) names.add(s[1]);
   }
   return [...names];

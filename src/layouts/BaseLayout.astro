@@ -39,7 +39,9 @@ const themeScript = inlineThemeScript();
     {INDEXABLE ? null : (
       <meta name="robots" content="noindex, nofollow" />
     )}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <ClientRouter />
     <script set:html={themeScript} />
     <script>
